@@ -10,8 +10,8 @@
     "GRID_MODULE_EN16_RevA": "192",
     "GRID_PARAMETER_HEARTBEAT_interval": "250",
     "GRID_PARAMETER_PING_interval": "100",
-    "GRID_PARAMETER_TEXT_maxlength": "100",
-    "GRID_PARAMETER_PACKET_maxlength": "300",
+    "GRID_PARAMETER_TEXT_maxlength": "120",
+    "GRID_PARAMETER_PACKET_maxlength": "320",
     "GRID_PARAMETER_PACKET_marign": "200",
     "GRID_CONST_NUL": "0x00",
     "GRID_CONST_SOH": "0x01",
@@ -177,5 +177,8 @@
     "GRID_CLASS_CLEARGLOBAL_code": "0x080",
     "GRID_CLASS_CLEARGLOBAL_frame": "%c%03xf%c",
     "GRID_CLASS_CLEARLOCAL_code": "0x081",
-    "GRID_CLASS_CLEARLOCAL_frame": "%c%03xf%c"
+    "GRID_CLASS_CLEARLOCAL_frame": "%c%03xf%c",
+    "GRID_CLASS_DEBUGTEXT_code": "0x090",
+    "GRID_CLASS_DEBUGTEXT_frame_start": "%c%03xf",
+    "GRID_CLASS_DEBUGTEXT_frame_end": "%c"
 }
