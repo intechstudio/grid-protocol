@@ -1,3 +1,20 @@
 
 //Recall bank, element, ev_type 2=EC
-080f000002
+082f00000200
+
+// Set config len=2
+082e0000020002
+
+// Localstore
+082e0000020002
+
+
+
+// IMEDIATE
+085e0012<?lua print(15) ?>
+
+// set led4layer1 color to red
+085e0019<?lua glc(4,1,255,0,0) ?>
+
+
+085e0023<?lua glc(4,1,rnd()//2,0,    0) ?>
