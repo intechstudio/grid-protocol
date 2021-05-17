@@ -367,6 +367,7 @@
     "GRID_EVENT_AC": "01",
     "GRID_EVENT_EC": "02",
     "GRID_EVENT_BC": "03",
+    "GRID_EVENT_MAP": "04",
     "GRID_CLASS_EVENT_code": "0x050",
     "GRID_CLASS_EVENT_frame": "%c%03x_........%c",
     "GRID_CLASS_EVENT_PAGENUMBER_offset": "5",
