@@ -1,7 +1,7 @@
 {
     "GRID_PROTOCOL_VERSION_MAJOR": "1",
     "GRID_PROTOCOL_VERSION_MINOR": "2",
-    "GRID_PROTOCOL_VERSION_PATCH": "7",
+    "GRID_PROTOCOL_VERSION_PATCH": "8",
     "GRID_MODULE_PO16_RevB": "0",
     "GRID_MODULE_PO16_RevC": "8",
     "GRID_MODULE_BU16_RevB": "128",
@@ -159,6 +159,9 @@
     "GRID_LUA_FNC_G_TIMER_STOP_short": "gtp",
     "GRID_LUA_FNC_G_TIMER_STOP_human": "timer_stop",
     "GRID_LUA_FNC_G_TIMER_STOP_fnptr": "l_grid_timer_stop",
+    "GRID_LUA_FNC_G_EVENT_TRIGGER_short": "get",
+    "GRID_LUA_FNC_G_EVENT_TRIGGER_human": "event_trigger",
+    "GRID_LUA_FNC_G_EVENT_TRIGGER_fnptr": "l_grid_event_trigger",
     "GRID_LUA_FNC_G_LOOKUP_short": "glut",
     "GRID_LUA_FNC_G_LOOKUP_human": "lookup",
     "GRID_LUA_FNC_G_LIMIT_short": "glim",
