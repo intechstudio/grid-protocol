@@ -459,7 +459,7 @@
     "GRID_CLASS_EVENTPREVIEW_VALUE_length": "2",
     "GRID_CLASS_ELEMENTNAME_code": "0x052",
     "GRID_CLASS_ELEMENTNAME_frame": "%c%03x_..%c",
-    "GRID_CLASS_ELEMENTNAME_frame_start": "%c%03x_..",
+    "GRID_CLASS_ELEMENTNAME_frame_start": "%c%03x_....",
     "GRID_CLASS_ELEMENTNAME_frame_end": "%c",
     "GRID_CLASS_ELEMENTNAME_NUM_offset": "5",
     "GRID_CLASS_ELEMENTNAME_NUM_length": "2",
