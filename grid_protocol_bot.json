@@ -21,6 +21,7 @@
     "GRID_MODULE_EN16_ND_RevD": "201",
     "GRID_MODULE_EF44_RevA": "32",
     "GRID_MODULE_EF44_RevD": "33",
+    "GRID_MODULE_TEK2_RevA": "17",
     "GRID_PARAMETER_HEARTBEAT_interval": "250",
     "GRID_PARAMETER_PING_interval": "100",
     "GRID_PARAMETER_PACKET_maxlength": "500",
