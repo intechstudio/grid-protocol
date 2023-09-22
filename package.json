@@ -1,0 +1,23 @@
+{
+  "name": "grid-protocol",
+  "version": "1.0.0",
+  "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intechstudio/grid-protocol.git"
+  },
+  "keywords": [
+    "intech",
+    "studio",
+    "grid"
+  ],
+  "author": "intech studio",
+  "bugs": {
+    "url": "https://github.com/intechstudio/grid-protocol/issues"
+  },
+  "homepage": "https://github.com/intechstudio/grid-protocol#readme"
+}
