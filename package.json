@@ -1,6 +1,6 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.26",
+  "version": "1.2.27",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "main": "index.js",
   "scripts": {
