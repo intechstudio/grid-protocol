@@ -36,6 +36,9 @@ class Decoder(srd.Decoder):
     inputs = ['uart']
     outputs = []
     tags = ['Audio', 'PC']
+    options = (
+        {'id': 'data_format', 'desc': 'Displayed data format','default': 'hex', 'values': ('hex', 'dec', 'char')},
+    )
     annotations = (
         ('text-verbose', 'Text (verbose)'),
         ('text-sysreal-verbose', 'SysReal text (verbose)'),
@@ -87,7 +90,7 @@ class Decoder(srd.Decoder):
 
         if data in part["delimiters"]:
 
-            result_string = ' '.join(map(str, part["data"]))
+            result_string = self.options['data_format']+' '+' '.join(map(str, part["data"]))
             self.put(part["ss"], part["es"], self.out_ann, [part["target"], [result_string]])
             part["ss"] = -1
             part["es"] = -1
