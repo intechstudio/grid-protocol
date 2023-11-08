@@ -1,6 +1,6 @@
 [General]
-decode_signals=1
-meta_objs=0
+decode_signals=2
+meta_objs=1
 views=1
 
 [D0]
@@ -102,8 +102,65 @@ decoder0\option3\name=tx_packet_delim
 decoder0\option3\type=x
 decoder0\option3\value=@ByteArray(\n\0\0\0\0\0\0\0)
 decoder0\options=4
-decoder0\row0\visible=true
-decoder0\row1\visible=true
+decoder0\row0\visible=false
+decoder0\row1\visible=false
+decoder0\row2\visible=true
+decoder0\row3\visible=true
+decoder0\row4\visible=true
+decoder0\row5\visible=false
+decoder0\row6\visible=false
+decoder0\row7\visible=true
+decoder0\row8\visible=true
+decoder0\row9\visible=true
+decoder0\visible=true
+decoders=1
+enabled=true
+name=Grid Communication
+
+[decode_signal1]
+channel0\assigned_signal_name=D1: BU16 Debug
+channel0\initial_pin_state=2
+channel0\name=RX
+channel1\initial_pin_state=2
+channel1\name=TX
+channels=2
+color=4286722730
+conv_options=0
+conversion_type=0
+decoder0\ann_class0\visible=true
+decoder0\ann_class1\visible=true
+decoder0\ann_class10\visible=true
+decoder0\ann_class11\visible=true
+decoder0\ann_class12\visible=true
+decoder0\ann_class13\visible=true
+decoder0\ann_class14\visible=true
+decoder0\ann_class15\visible=true
+decoder0\ann_class16\visible=true
+decoder0\ann_class17\visible=true
+decoder0\ann_class2\visible=true
+decoder0\ann_class3\visible=true
+decoder0\ann_class4\visible=true
+decoder0\ann_class5\visible=true
+decoder0\ann_class6\visible=true
+decoder0\ann_class7\visible=true
+decoder0\ann_class8\visible=true
+decoder0\ann_class9\visible=true
+decoder0\id=uart
+decoder0\option0\name=baudrate
+decoder0\option0\type=x
+decoder0\option0\value=@ByteArray(\x80\x84\x1e\0\0\0\0\0)
+decoder0\option1\name=format
+decoder0\option1\type=s
+decoder0\option1\value=@ByteArray(ascii\0)
+decoder0\option2\name=rx_packet_delim
+decoder0\option2\type=x
+decoder0\option2\value=@ByteArray(\n\0\0\0\0\0\0\0)
+decoder0\option3\name=rx_packet_len
+decoder0\option3\type=x
+decoder0\option3\value=@ByteArray(\xff\xff\xff\xff\xff\xff\xff\xff)
+decoder0\options=4
+decoder0\row0\visible=false
+decoder0\row1\visible=false
 decoder0\row2\visible=true
 decoder0\row3\visible=true
 decoder0\row4\visible=true
@@ -115,7 +172,13 @@ decoder0\row9\visible=true
 decoder0\visible=true
 decoders=1
 enabled=true
-name=Grid Communication
+name=BU16 Boot log
+
+[meta_obj0]
+assoc_view=0
+end_time=22 serialization::archive 18 0 0 0 0 90649883 33333333 64770112 43914603 25568913 89504872 -8 0 0 6
+start_time=22 serialization::archive 18 0 0 0 0 90649016 66666667 7939725 71118501 94633006 40130632 -8 0 0 6
+type=selection
 
 [view0]
 D0\trace_height=34
@@ -126,9 +189,9 @@ D4\trace_height=34
 D5\trace_height=34
 D6\trace_height=34
 D7\trace_height=34
-offset=22 serialization::archive 18 0 0 0 0 1 44875262 5000654 27129057 77475454 49859419 0 1 0 6
-scale=0.003249171047310936
-segment_display_mode=1
+offset=22 serialization::archive 18 0 0 0 0 2 27737932 74906361 94462269 28427694 99848904 0 0 0 6
+scale=2.198517422825992e-06
+segment_display_mode=3
 splitter_state=@ByteArray(\0\0\0\xff\0\0\0\x1\0\0\0\x2\0\0\0\x95\0\0\b!\x1\0\0\0\x1\x1\0\0\0\x1\0)
-v_offset=-433
+v_offset=-246
 zero_offset=22 serialization::archive 18 0 0 0 0 0 0 0 0 0 0 0 0 0 6
