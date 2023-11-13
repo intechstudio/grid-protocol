@@ -21,6 +21,10 @@
 import sigrokdecode as srd
 from .lists import *
 
+import json
+
+constant_value = "Foo"
+
 RX = 0
 TX = 1
 
@@ -90,7 +94,7 @@ class Decoder(srd.Decoder):
 
         if data in part["delimiters"]:
 
-            result_string = self.options['data_format']+' '+' '.join(map(str, part["data"]))
+            result_string = self.options['data_format']+' '+constant_value+' '.join(map(str, part["data"]))
             self.put(part["ss"], part["es"], self.out_ann, [part["target"], [result_string]])
             part["ss"] = -1
             part["es"] = -1

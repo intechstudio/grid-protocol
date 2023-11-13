@@ -10,6 +10,13 @@ conversion_type=0
 enabled=true
 name=D0: EN16-G-TX
 
+[D0%3A%20EN16-G-TX]
+color=4279638298
+conv_options=0
+conversion_type=0
+enabled=true
+name=D0: EN16-G-TX
+
 [D1]
 color=4287582722
 conv_options=0
@@ -17,7 +24,21 @@ conversion_type=0
 enabled=true
 name=D1: BU16 Debug
 
+[D1%3A%20BU16%20Debug]
+color=4287582722
+conv_options=0
+conversion_type=0
+enabled=true
+name=D1: BU16 Debug
+
 [D2]
+color=4291559424
+conv_options=0
+conversion_type=0
+enabled=true
+name=D2: EN16-G-RX
+
+[D2%3A%20EN16-G-RX]
 color=4291559424
 conv_options=0
 conversion_type=0
@@ -58,6 +79,13 @@ conv_options=0
 conversion_type=0
 enabled=true
 name=D7
+
+[EB16%20Debug]
+color=4294277376
+conv_options=0
+conversion_type=0
+enabled=true
+name=EB16 Debug
 
 [decode_signal0]
 channel0\assigned_signal_name=D2: EN16-G-RX
@@ -113,7 +141,16 @@ decoder0\row7\visible=true
 decoder0\row8\visible=true
 decoder0\row9\visible=true
 decoder0\visible=true
-decoders=1
+decoder1\ann_class0\visible=true
+decoder1\ann_class1\visible=true
+decoder1\ann_class2\visible=true
+decoder1\id=grid-protocol
+decoder1\options=0
+decoder1\row0\visible=true
+decoder1\row1\visible=true
+decoder1\row2\visible=true
+decoder1\visible=true
+decoders=2
 enabled=true
 name=Grid Communication
 
@@ -182,16 +219,20 @@ type=selection
 
 [view0]
 D0\trace_height=34
+D0%3A%20EN16-G-TX\trace_height=34
 D1\trace_height=34
+D1%3A%20BU16%20Debug\trace_height=34
 D2\trace_height=34
+D2%3A%20EN16-G-RX\trace_height=34
 D3\trace_height=34
 D4\trace_height=34
 D5\trace_height=34
 D6\trace_height=34
 D7\trace_height=34
-offset=22 serialization::archive 18 0 0 0 0 2 27737932 74906361 94462269 28427694 99848904 0 0 0 6
-scale=2.198517422825992e-06
+EB16%20Debug\trace_height=34
+offset=22 serialization::archive 18 0 0 0 0 43007541 2650502 82803242 94297568 45158 31956435 -8 0 0 6
+scale=1.5495285839177453e-07
 segment_display_mode=3
 splitter_state=@ByteArray(\0\0\0\xff\0\0\0\x1\0\0\0\x2\0\0\0\x95\0\0\b!\x1\0\0\0\x1\x1\0\0\0\x1\0)
-v_offset=-246
+v_offset=-381
 zero_offset=22 serialization::archive 18 0 0 0 0 0 0 0 0 0 0 0 0 0 6
