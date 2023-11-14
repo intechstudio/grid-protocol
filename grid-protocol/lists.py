@@ -1,598 +1,595 @@
 # Generated Python code from JSON
 
-GRID_PROTOCOL_VERSION_MAJOR = "1"
-GRID_PROTOCOL_VERSION_MINOR = "2"
-GRID_PROTOCOL_VERSION_PATCH = "27"
-GRID_PARAMETER_DEFAULT_POSITION = "127"
-GRID_PARAMETER_LOCAL_POSITION = "255"
-GRID_PARAMETER_GLOBAL_POSITION = "0"
-GRID_PARAMETER_DEFAULT_ROTATION = "0"
-GRID_PARAMETER_DEFAULT_AGE = "0"
-GRID_MODULE_PO16_RevB = "0"
-GRID_MODULE_PO16_RevC = "8"
-GRID_MODULE_PO16_RevD = "1"
-GRID_MODULE_BU16_RevB = "128"
-GRID_MODULE_BU16_RevC = "136"
-GRID_MODULE_BU16_RevD = "129"
-GRID_MODULE_PBF4_RevA = "64"
-GRID_MODULE_PBF4_RevD = "65"
-GRID_MODULE_EN16_RevA = "192"
-GRID_MODULE_EN16_RevD = "193"
-GRID_MODULE_EN16_ND_RevA = "200"
-GRID_MODULE_EN16_ND_RevD = "201"
-GRID_MODULE_EF44_RevA = "32"
-GRID_MODULE_EF44_RevD = "33"
-GRID_MODULE_TEK2_RevA = "17"
-GRID_PARAMETER_HEARTBEAT_interval = "250"
-GRID_PARAMETER_PING_interval = "100"
-GRID_PARAMETER_PACKET_maxlength = "500"
-GRID_PARAMETER_PACKET_marign = "300"
-GRID_PARAMETER_ACTIONSTRING_maxlength = "400"
-GRID_PARAMETER_SPI_TRANSACTION_length = "512"
-GRID_PARAMETER_SPI_SOURCE_FLAGS_index = "500"
-GRID_PARAMETER_SPI_STATUS_FLAGS_index = "501"
-GRID_PARAMETER_SPI_SYNC1_STATE_index = "502"
-GRID_PARAMETER_SPI_SYNC2_STATE_index = "503"
-GRID_PARAMETER_DOUBLE_BUFFER_MINIMUM_SIZE = "512"
-GRID_CONST_NUL = "0x00"
-GRID_CONST_SOH = "0x01"
-GRID_CONST_STX = "0x02"
-GRID_CONST_ETX = "0x03"
-GRID_CONST_EOB = "0x17"
-GRID_CONST_EOT = "0x04"
-GRID_CONST_LF = "0x0A"
-GRID_CONST_ACK = "0x06"
-GRID_CONST_NAK = "0x15"
-GRID_CONST_CAN = "0x18"
-GRID_CONST_NORTH = "0x11"
-GRID_CONST_EAST = "0x12"
-GRID_CONST_SOUTH = "0x13"
-GRID_CONST_WEST = "0x14"
-GRID_CONST_DCT = "0x0E"
-GRID_CONST_BRC = "0x0F"
-GRID_CONST_BELL = "0x07"
-GRID_PARAMETER_MIDI_NOTEOFF = "0x80"
-GRID_PARAMETER_MIDI_NOTEON = "0x90"
-GRID_PARAMETER_MIDI_CONTROLCHANGE = "0xB0"
-GRID_BRC_frame = "%c%c....................%c"
-GRID_BRC_frame_quick = "%c%c......%02x7f7f%02x%02x0000%c"
-GRID_BRC_LEN_offset = "2"
-GRID_BRC_LEN_length = "4"
-GRID_BRC_ID_offset = "6"
-GRID_BRC_ID_length = "2"
-GRID_BRC_SESSION_offset = "8"
-GRID_BRC_SESSION_length = "2"
-GRID_BRC_SX_offset = "10"
-GRID_BRC_SX_length = "2"
-GRID_BRC_SY_offset = "12"
-GRID_BRC_SY_length = "2"
-GRID_BRC_DX_offset = "14"
-GRID_BRC_DX_length = "2"
-GRID_BRC_DY_offset = "16"
-GRID_BRC_DY_length = "2"
-GRID_BRC_ROT_offset = "18"
-GRID_BRC_ROT_length = "1"
-GRID_BRC_PORTROT_offset = "19"
-GRID_BRC_PORTROT_length = "1"
-GRID_BRC_MSGAGE_offset = "20"
-GRID_BRC_MSGAGE_length = "2"
-GRID_INSTR_length = "1"
-GRID_INSTR_offset = "4"
-GRID_INSTR_ACKNOWLEDGE_code = "0xA"
-GRID_INSTR_NACKNOWLEDGE_code = "0xB"
-GRID_INSTR_CHECK_code = "0xC"
-GRID_INSTR_REPORT_code = "0xD"
-GRID_INSTR_FETCH_code = "0xF"
-GRID_INSTR_EXECUTE_code = "0xE"
-GRID_PARAMETER_CLASSCODE_length = "3"
-GRID_PARAMETER_CLASSCODE_offset = "1"
-GRID_TEMPLATE_UI_PARAMETER_LIST_LENGTH = "20"
-GRID_LUA_FNC_G_LED_RED_human = "led_default_red"
-GRID_LUA_FNC_G_LED_RED_fnptr = "l_led_default_red"
-GRID_LUA_FNC_G_LED_RED_short = "glr"
-GRID_LUA_FNC_G_LED_GRE_human = "led_default_green"
-GRID_LUA_FNC_G_LED_GRE_fnptr = "l_led_default_green"
-GRID_LUA_FNC_G_LED_GRE_short = "glg"
-GRID_LUA_FNC_G_LED_BLU_human = "led_default_blue"
-GRID_LUA_FNC_G_LED_BLU_fnptr = "l_led_default_blue"
-GRID_LUA_FNC_G_LED_BLU_short = "glb"
-GRID_LUA_FNC_G_LED_PHASE_short = "glp"
-GRID_LUA_FNC_G_LED_PHASE_human = "led_value"
-GRID_LUA_FNC_G_LED_PHASE_fnptr = "l_grid_led_layer_phase"
-GRID_LUA_FNC_G_LED_TIMEOUT_short = "glt"
-GRID_LUA_FNC_G_LED_TIMEOUT_human = "led_timeout"
-GRID_LUA_FNC_G_LED_TIMEOUT_fnptr = "l_grid_led_layer_timeout"
-GRID_LUA_FNC_G_LED_MIN_short = "gln"
-GRID_LUA_FNC_G_LED_MIN_human = "led_color_min"
-GRID_LUA_FNC_G_LED_MIN_fnptr = "l_grid_led_layer_min"
-GRID_LUA_FNC_G_LED_MID_short = "gld"
-GRID_LUA_FNC_G_LED_MID_human = "led_color_mid"
-GRID_LUA_FNC_G_LED_MID_fnptr = "l_grid_led_layer_mid"
-GRID_LUA_FNC_G_LED_MAX_short = "glx"
-GRID_LUA_FNC_G_LED_MAX_human = "led_color_max"
-GRID_LUA_FNC_G_LED_MAX_fnptr = "l_grid_led_layer_max"
-GRID_LUA_FNC_G_LED_COLOR_short = "glc"
-GRID_LUA_FNC_G_LED_COLOR_human = "led_color"
-GRID_LUA_FNC_G_LED_COLOR_fnptr = "l_grid_led_layer_color"
-GRID_LUA_FNC_G_LED_FREQUENCY_short = "glf"
-GRID_LUA_FNC_G_LED_FREQUENCY_human = "led_animation_rate"
-GRID_LUA_FNC_G_LED_FREQUENCY_fnptr = "l_grid_led_layer_frequency"
-GRID_LUA_FNC_G_LED_SHAPE_short = "gls"
-GRID_LUA_FNC_G_LED_SHAPE_human = "led_animation_type"
-GRID_LUA_FNC_G_LED_SHAPE_fnptr = "l_grid_led_layer_shape"
-GRID_LUA_FNC_G_LED_PSF_short = "glpfs"
-GRID_LUA_FNC_G_LED_PSF_human = "led_animation_phase_rate_type"
-GRID_LUA_FNC_G_LED_PSF_fnptr = "l_grid_led_layer_pfs"
-GRID_LUA_FNC_G_MIDI_SEND_short = "gms"
-GRID_LUA_FNC_G_MIDI_SEND_human = "midi_send"
-GRID_LUA_FNC_G_MIDI_SEND_fnptr = "l_grid_midi_send"
-GRID_LUA_FNC_G_MIDISYSEX_SEND_short = "gmss"
-GRID_LUA_FNC_G_MIDISYSEX_SEND_human = "midi_sysex_send"
-GRID_LUA_FNC_G_MIDISYSEX_SEND_fnptr = "l_grid_midi_sysex_send"
-GRID_LUA_FNC_G_KEYBOARD_SEND_short = "gks"
-GRID_LUA_FNC_G_KEYBOARD_SEND_human = "keyboard_send"
-GRID_LUA_FNC_G_KEYBOARD_SEND_fnptr = "l_grid_usb_keyboard_send"
-GRID_LUA_FNC_G_MOUSEMOVE_SEND_short = "gmms"
-GRID_LUA_FNC_G_MOUSEMOVE_SEND_human = "mouse_move_send"
-GRID_LUA_FNC_G_MOUSEMOVE_SEND_fnptr = "l_grid_mousemove_send"
-GRID_LUA_FNC_G_MOUSEBUTTON_SEND_short = "gmbs"
-GRID_LUA_FNC_G_MOUSEBUTTON_SEND_human = "mouse_button_send"
-GRID_LUA_FNC_G_MOUSEBUTTON_SEND_fnptr = "l_grid_mousebutton_send"
-GRID_LUA_FNC_G_GAMEPADMOVE_SEND_short = "ggms"
-GRID_LUA_FNC_G_GAMEPADMOVE_SEND_human = "gamepad_move_send"
-GRID_LUA_FNC_G_GAMEPADMOVE_SEND_fnptr = "l_grid_gamepadmove_send"
-GRID_LUA_FNC_G_GAMEPADBUTTON_SEND_short = "ggbs"
-GRID_LUA_FNC_G_GAMEPADBUTTON_SEND_human = "gamepad_button_send"
-GRID_LUA_FNC_G_GAMEPADBUTTON_SEND_fnptr = "l_grid_gamepadbutton_send"
-GRID_LUA_FNC_G_RANDOM_short = "grnd"
-GRID_LUA_FNC_G_RANDOM_human = "random"
-GRID_LUA_FNC_G_RANDOM_fnptr = "l_grid_random"
-GRID_LUA_FNC_G_HWCFG_short = "ghwcfg"
-GRID_LUA_FNC_G_HWCFG_human = "hardware_configuration"
-GRID_LUA_FNC_G_HWCFG_fnptr = "l_grid_hwcfg"
-GRID_LUA_FNC_G_VERSION_MAJOR_short = "gvmaj"
-GRID_LUA_FNC_G_VERSION_MAJOR_human = "version_major"
-GRID_LUA_FNC_G_VERSION_MAJOR_fnptr = "l_grid_version_major"
-GRID_LUA_FNC_G_VERSION_MINOR_short = "gvmin"
-GRID_LUA_FNC_G_VERSION_MINOR_human = "version_minor"
-GRID_LUA_FNC_G_VERSION_MINOR_fnptr = "l_grid_version_minor"
-GRID_LUA_FNC_G_VERSION_PATCH_short = "gvpat"
-GRID_LUA_FNC_G_VERSION_PATCH_human = "version_patch"
-GRID_LUA_FNC_G_VERSION_PATCH_fnptr = "l_grid_version_patch"
-GRID_LUA_FNC_G_MODULE_POSX_short = "gmx"
-GRID_LUA_FNC_G_MODULE_POSX_human = "module_position_x"
-GRID_LUA_FNC_G_MODULE_POSX_fnptr = "l_grid_position_x"
-GRID_LUA_FNC_G_MODULE_POSY_short = "gmy"
-GRID_LUA_FNC_G_MODULE_POSY_human = "module_position_y"
-GRID_LUA_FNC_G_MODULE_POSY_fnptr = "l_grid_position_y"
-GRID_LUA_FNC_G_MODULE_ROT_short = "gmr"
-GRID_LUA_FNC_G_MODULE_ROT_human = "module_rotation"
-GRID_LUA_FNC_G_MODULE_ROT_fnptr = "l_grid_rotation"
-GRID_LUA_FNC_G_PAGE_NEXT_short = "gpn"
-GRID_LUA_FNC_G_PAGE_NEXT_human = "page_next"
-GRID_LUA_FNC_G_PAGE_NEXT_fnptr = "l_grid_page_next"
-GRID_LUA_FNC_G_PAGE_PREV_short = "gpp"
-GRID_LUA_FNC_G_PAGE_PREV_human = "page_previous"
-GRID_LUA_FNC_G_PAGE_PREV_fnptr = "l_grid_page_prev"
-GRID_LUA_FNC_G_PAGE_CURR_short = "gpc"
-GRID_LUA_FNC_G_PAGE_CURR_human = "page_current"
-GRID_LUA_FNC_G_PAGE_CURR_fnptr = "l_grid_page_curr"
-GRID_LUA_FNC_G_PAGE_LOAD_short = "gpl"
-GRID_LUA_FNC_G_PAGE_LOAD_human = "page_load"
-GRID_LUA_FNC_G_PAGE_LOAD_fnptr = "l_grid_page_load"
-GRID_LUA_FNC_G_TIMER_START_short = "gtt"
-GRID_LUA_FNC_G_TIMER_START_human = "timer_start"
-GRID_LUA_FNC_G_TIMER_START_fnptr = "l_grid_timer_start"
-GRID_LUA_FNC_G_TIMER_STOP_short = "gtp"
-GRID_LUA_FNC_G_TIMER_STOP_human = "timer_stop"
-GRID_LUA_FNC_G_TIMER_STOP_fnptr = "l_grid_timer_stop"
-GRID_LUA_FNC_G_TIMER_SOURCE_short = "gts"
-GRID_LUA_FNC_G_TIMER_SOURCE_human = "timer_source"
-GRID_LUA_FNC_G_TIMER_SOURCE_fnptr = "l_grid_timer_source"
-GRID_LUA_FNC_G_EVENT_TRIGGER_short = "get"
-GRID_LUA_FNC_G_EVENT_TRIGGER_human = "event_trigger"
-GRID_LUA_FNC_G_EVENT_TRIGGER_fnptr = "l_grid_event_trigger"
-GRID_LUA_FNC_G_MIDIRX_ENABLED_short = "mre"
-GRID_LUA_FNC_G_MIDIRX_ENABLED_human = "midirx_enabled"
-GRID_LUA_FNC_G_MIDIRX_ENABLED_fnptr = "l_grid_midirx_enabled"
-GRID_LUA_FNC_G_MIDIRX_SYNC_short = "mrs"
-GRID_LUA_FNC_G_MIDIRX_SYNC_human = "midirx_sync"
-GRID_LUA_FNC_G_MIDIRX_SYNC_fnptr = "l_grid_midirx_sync"
-GRID_LUA_FNC_G_ELEMENTNAME_SEND_short = "gens"
-GRID_LUA_FNC_G_ELEMENTNAME_SEND_human = "element_name_send"
-GRID_LUA_FNC_G_ELEMENTNAME_SEND_fnptr = "l_grid_elementname_send"
-GRID_LUA_FNC_G_STRING_GET_short = "gsg"
-GRID_LUA_FNC_G_STRING_GET_human = "string_get"
-GRID_LUA_FNC_G_STRING_GET_fnptr = "l_grid_string_get"
-GRID_LUA_FNC_G_ELEMENTNAME_short = "gen"
-GRID_LUA_FNC_G_ELEMENTNAME_human = "element_name"
-GRID_LUA_FNC_G_LOOKUP_short = "glut"
-GRID_LUA_FNC_G_LOOKUP_human = "lookup"
-GRID_LUA_FNC_G_LIMIT_short = "glim"
-GRID_LUA_FNC_G_LIMIT_human = "limit"
-GRID_LUA_FNC_G_WEBSOCKET_SEND_short = "gwss"
-GRID_LUA_FNC_G_WEBSOCKET_SEND_human = "websocket_send"
-GRID_LUA_FNC_G_WEBSOCKET_SEND_fnptr = "l_grid_websocket_send"
-GRID_LUA_INIT_SCRIPT_1 = "print"
-GRID_LUA_INIT_SCRIPT_2 = "print"
-GRID_LUA_INIT_SCRIPT_3 = "print"
-GRID_LUA_FNC_ACTION_INIT_short = "ini"
-GRID_LUA_FNC_ACTION_INIT_human = "initialize"
-GRID_LUA_FNC_ACTION_ENCODERCHANGE_short = "ec"
-GRID_LUA_FNC_ACTION_ENCODERCHANGE_human = "encoder_change"
-GRID_LUA_FNC_ACTION_BUTTONCHANGE_short = "bc"
-GRID_LUA_FNC_ACTION_BUTTONCHANGE_human = "button_change"
-GRID_LUA_FNC_ACTION_POTMETERCHANGE_short = "pc"
-GRID_LUA_FNC_ACTION_POTMETERCHANGE_human = "potmeter_change"
-GRID_LUA_FNC_ACTION_TIMER_short = "tim"
-GRID_LUA_FNC_ACTION_TIMER_human = "timer"
-GRID_LUA_FNC_ACTION_MAPMODE_short = "map"
-GRID_LUA_FNC_ACTION_MAPMODE_human = "mapmode"
-GRID_LUA_FNC_ACTION_MIDIRX_short = "mrx"
-GRID_LUA_FNC_ACTION_MIDIRX_human = "midirx"
-GRID_LUA_FNC_E_ELEMENT_INDEX_index = "0"
-GRID_LUA_FNC_E_ELEMENT_INDEX_helper = "0"
-GRID_LUA_FNC_E_ELEMENT_INDEX_short = "ind"
-GRID_LUA_FNC_E_ELEMENT_INDEX_human = "element_index"
-GRID_LUA_FNC_E_BUTTON_NUMBER_index = "1"
-GRID_LUA_FNC_E_BUTTON_NUMBER_helper = "1"
-GRID_LUA_FNC_E_BUTTON_NUMBER_short = "bnu"
-GRID_LUA_FNC_E_BUTTON_NUMBER_human = "button_number"
-GRID_LUA_FNC_E_BUTTON_VALUE_index = "2"
-GRID_LUA_FNC_E_BUTTON_VALUE_helper = "2"
-GRID_LUA_FNC_E_BUTTON_VALUE_short = "bva"
-GRID_LUA_FNC_E_BUTTON_VALUE_human = "button_value"
-GRID_LUA_FNC_E_BUTTON_MIN_index = "3"
-GRID_LUA_FNC_E_BUTTON_MIN_helper = "3"
-GRID_LUA_FNC_E_BUTTON_MIN_short = "bmi"
-GRID_LUA_FNC_E_BUTTON_MIN_human = "button_min"
-GRID_LUA_FNC_E_BUTTON_MAX_index = "4"
-GRID_LUA_FNC_E_BUTTON_MAX_helper = "4"
-GRID_LUA_FNC_E_BUTTON_MAX_short = "bma"
-GRID_LUA_FNC_E_BUTTON_MAX_human = "button_max"
-GRID_LUA_FNC_E_BUTTON_MODE_index = "5"
-GRID_LUA_FNC_E_BUTTON_MODE_helper = "5"
-GRID_LUA_FNC_E_BUTTON_MODE_short = "bmo"
-GRID_LUA_FNC_E_BUTTON_MODE_human = "button_mode"
-GRID_LUA_FNC_E_BUTTON_ELAPSED_index = "6"
-GRID_LUA_FNC_E_BUTTON_ELAPSED_helper = "6"
-GRID_LUA_FNC_E_BUTTON_ELAPSED_short = "bel"
-GRID_LUA_FNC_E_BUTTON_ELAPSED_human = "button_elapsed_time"
-GRID_LUA_FNC_E_BUTTON_STATE_index = "7"
-GRID_LUA_FNC_E_BUTTON_STATE_helper = "7"
-GRID_LUA_FNC_E_BUTTON_STATE_short = "bst"
-GRID_LUA_FNC_E_BUTTON_STATE_human = "button_state"
-GRID_LUA_FNC_E_ENCODER_NUMBER_index = "8"
-GRID_LUA_FNC_E_ENCODER_NUMBER_helper = "8"
-GRID_LUA_FNC_E_ENCODER_NUMBER_short = "enu"
-GRID_LUA_FNC_E_ENCODER_NUMBER_human = "encoder_number"
-GRID_LUA_FNC_E_ENCODER_VALUE_index = "9"
-GRID_LUA_FNC_E_ENCODER_VALUE_helper = "9"
-GRID_LUA_FNC_E_ENCODER_VALUE_short = "eva"
-GRID_LUA_FNC_E_ENCODER_VALUE_human = "encoder_value"
-GRID_LUA_FNC_E_ENCODER_MIN_index = "10"
-GRID_LUA_FNC_E_ENCODER_MIN_helper = "10"
-GRID_LUA_FNC_E_ENCODER_MIN_short = "emi"
-GRID_LUA_FNC_E_ENCODER_MIN_human = "encoder_min"
-GRID_LUA_FNC_E_ENCODER_MAX_index = "11"
-GRID_LUA_FNC_E_ENCODER_MAX_helper = "11"
-GRID_LUA_FNC_E_ENCODER_MAX_short = "ema"
-GRID_LUA_FNC_E_ENCODER_MAX_human = "encoder_max"
-GRID_LUA_FNC_E_ENCODER_MODE_index = "12"
-GRID_LUA_FNC_E_ENCODER_MODE_helper = "12"
-GRID_LUA_FNC_E_ENCODER_MODE_short = "emo"
-GRID_LUA_FNC_E_ENCODER_MODE_human = "encoder_mode"
-GRID_LUA_FNC_E_ENCODER_ELAPSED_index = "13"
-GRID_LUA_FNC_E_ENCODER_ELAPSED_helper = "13"
-GRID_LUA_FNC_E_ENCODER_ELAPSED_short = "eel"
-GRID_LUA_FNC_E_ENCODER_ELAPSED_human = "encoder_elapsed_time"
-GRID_LUA_FNC_E_ENCODER_STATE_index = "14"
-GRID_LUA_FNC_E_ENCODER_STATE_helper = "14"
-GRID_LUA_FNC_E_ENCODER_STATE_short = "est"
-GRID_LUA_FNC_E_ENCODER_STATE_human = "encoder_state"
-GRID_LUA_FNC_E_ENCODER_VELOCITY_index = "15"
-GRID_LUA_FNC_E_ENCODER_VELOCITY_helper = "15"
-GRID_LUA_FNC_E_ENCODER_VELOCITY_short = "ev0"
-GRID_LUA_FNC_E_ENCODER_VELOCITY_human = "encoder_velocity"
-GRID_LUA_FNC_E_LIST_length = "16"
-GRID_LUA_E_META_init = "encoder_meta"
-GRID_LUA_FNC_P_ELEMENT_INDEX_index = "0"
-GRID_LUA_FNC_P_ELEMENT_INDEX_helper = "0"
-GRID_LUA_FNC_P_ELEMENT_INDEX_short = "ind"
-GRID_LUA_FNC_P_ELEMENT_INDEX_human = "element_index"
-GRID_LUA_FNC_P_POTMETER_NUMBER_index = "1"
-GRID_LUA_FNC_P_POTMETER_NUMBER_helper = "1"
-GRID_LUA_FNC_P_POTMETER_NUMBER_short = "pnu"
-GRID_LUA_FNC_P_POTMETER_NUMBER_human = "potmeter_number"
-GRID_LUA_FNC_P_POTMETER_VALUE_index = "2"
-GRID_LUA_FNC_P_POTMETER_VALUE_helper = "2"
-GRID_LUA_FNC_P_POTMETER_VALUE_short = "pva"
-GRID_LUA_FNC_P_POTMETER_VALUE_human = "potmeter_value"
-GRID_LUA_FNC_P_POTMETER_MIN_index = "3"
-GRID_LUA_FNC_P_POTMETER_MIN_helper = "3"
-GRID_LUA_FNC_P_POTMETER_MIN_short = "pmi"
-GRID_LUA_FNC_P_POTMETER_MIN_human = "potmeter_min"
-GRID_LUA_FNC_P_POTMETER_MAX_index = "4"
-GRID_LUA_FNC_P_POTMETER_MAX_helper = "4"
-GRID_LUA_FNC_P_POTMETER_MAX_short = "pma"
-GRID_LUA_FNC_P_POTMETER_MAX_human = "potmeter_max"
-GRID_LUA_FNC_P_POTMETER_MODE_index = "5"
-GRID_LUA_FNC_P_POTMETER_MODE_helper = "5"
-GRID_LUA_FNC_P_POTMETER_MODE_short = "pmo"
-GRID_LUA_FNC_P_POTMETER_MODE_human = "potmeter_resolution"
-GRID_LUA_FNC_P_POTMETER_ELAPSED_index = "6"
-GRID_LUA_FNC_P_POTMETER_ELAPSED_helper = "6"
-GRID_LUA_FNC_P_POTMETER_ELAPSED_short = "pel"
-GRID_LUA_FNC_P_POTMETER_ELAPSED_human = "potmeter_elapsed_time"
-GRID_LUA_FNC_P_POTMETER_STATE_index = "7"
-GRID_LUA_FNC_P_POTMETER_STATE_helper = "7"
-GRID_LUA_FNC_P_POTMETER_STATE_short = "pst"
-GRID_LUA_FNC_P_POTMETER_STATE_human = "potmeter_state"
-GRID_LUA_FNC_P_LIST_length = "8"
-GRID_LUA_P_META_init = "potmeter_meta"
-GRID_LUA_P_LIST_deinit = "init_potmeter"
-GRID_LUA_FNC_B_ELEMENT_INDEX_index = "0"
-GRID_LUA_FNC_B_ELEMENT_INDEX_helper = "0"
-GRID_LUA_FNC_B_ELEMENT_INDEX_short = "ind"
-GRID_LUA_FNC_B_ELEMENT_INDEX_human = "element_index"
-GRID_LUA_FNC_B_BUTTON_NUMBER_index = "1"
-GRID_LUA_FNC_B_BUTTON_NUMBER_helper = "1"
-GRID_LUA_FNC_B_BUTTON_NUMBER_short = "bnu"
-GRID_LUA_FNC_B_BUTTON_NUMBER_human = "button_number"
-GRID_LUA_FNC_B_BUTTON_VALUE_index = "2"
-GRID_LUA_FNC_B_BUTTON_VALUE_helper = "2"
-GRID_LUA_FNC_B_BUTTON_VALUE_short = "bva"
-GRID_LUA_FNC_B_BUTTON_VALUE_human = "button_value"
-GRID_LUA_FNC_B_BUTTON_MIN_index = "3"
-GRID_LUA_FNC_B_BUTTON_MIN_helper = "3"
-GRID_LUA_FNC_B_BUTTON_MIN_short = "bmi"
-GRID_LUA_FNC_B_BUTTON_MIN_human = "button_min"
-GRID_LUA_FNC_B_BUTTON_MAX_index = "4"
-GRID_LUA_FNC_B_BUTTON_MAX_helper = "4"
-GRID_LUA_FNC_B_BUTTON_MAX_short = "bma"
-GRID_LUA_FNC_B_BUTTON_MAX_human = "button_max"
-GRID_LUA_FNC_B_BUTTON_MODE_index = "5"
-GRID_LUA_FNC_B_BUTTON_MODE_helper = "5"
-GRID_LUA_FNC_B_BUTTON_MODE_short = "bmo"
-GRID_LUA_FNC_B_BUTTON_MODE_human = "button_mode"
-GRID_LUA_FNC_B_BUTTON_ELAPSED_index = "6"
-GRID_LUA_FNC_B_BUTTON_ELAPSED_helper = "6"
-GRID_LUA_FNC_B_BUTTON_ELAPSED_short = "bel"
-GRID_LUA_FNC_B_BUTTON_ELAPSED_human = "button_elapsed_time"
-GRID_LUA_FNC_B_BUTTON_STATE_index = "7"
-GRID_LUA_FNC_B_BUTTON_STATE_helper = "7"
-GRID_LUA_FNC_B_BUTTON_STATE_short = "bst"
-GRID_LUA_FNC_B_BUTTON_STATE_human = "button_state"
-GRID_LUA_FNC_B_LIST_length = "8"
-GRID_LUA_B_META_init = "button_meta"
-GRID_LUA_B_LIST_deinit = "init_button"
-GRID_LUA_SYS_META_init = "system_meta"
-GRID_LUA_SYS_LIST_deinit = "init_system"
-GRID_LUA_KW_ELEMENT_short = "ele"
-GRID_LUA_KW_ELEMENT_human = "element"
-GRID_PARAMETER_ELAPSED_LIMIT = "10000"
-GRID_PARAMETER_ELEMENTTYPE_SYSTEM_code = "00"
-GRID_PARAMETER_ELEMENTTYPE_POTENTIOMETER_code = "01"
-GRID_PARAMETER_ELEMENTTYPE_BUTTON_code = "02"
-GRID_PARAMETER_ELEMENTTYPE_ENCODER_code = "03"
-GRID_EVENT_INIT = "00"
-GRID_EVENT_AC = "01"
-GRID_EVENT_EC = "02"
-GRID_EVENT_BC = "03"
-GRID_EVENT_MAP = "04"
-GRID_EVENT_MIDIRX = "05"
-GRID_EVENT_TIMER = "06"
-GRID_CLASS_MIDI_code = "0x000"
-GRID_CLASS_MIDI_frame = "%c%03x_........%c"
-GRID_CLASS_MIDI_CHANNEL_offset = "5"
-GRID_CLASS_MIDI_CHANNEL_length = "2"
-GRID_CLASS_MIDI_COMMAND_offset = "7"
-GRID_CLASS_MIDI_COMMAND_length = "2"
-GRID_CLASS_MIDI_PARAM1_offset = "9"
-GRID_CLASS_MIDI_PARAM1_length = "2"
-GRID_CLASS_MIDI_PARAM2_offset = "11"
-GRID_CLASS_MIDI_PARAM2_length = "2"
-GRID_CLASS_MIDISYSEX_code = "0x001"
-GRID_CLASS_MIDISYSEX_frame_start = "%c%03x_...."
-GRID_CLASS_MIDISYSEX_frame_end = "%c"
-GRID_CLASS_MIDISYSEX_LENGTH_offset = "5"
-GRID_CLASS_MIDISYSEX_LENGTH_length = "4"
-GRID_CLASS_MIDISYSEX_PAYLOAD_offset = "9"
-GRID_CLASS_MIDISYSEX_PAYLOAD_length = "2"
-GRID_CLASS_HEARTBEAT_code = "0x010"
-GRID_CLASS_HEARTBEAT_frame = "%c%03x_............%c"
-GRID_CLASS_HEARTBEAT_TYPE_offset = "5"
-GRID_CLASS_HEARTBEAT_TYPE_length = "2"
-GRID_CLASS_HEARTBEAT_HWCFG_offset = "7"
-GRID_CLASS_HEARTBEAT_HWCFG_length = "2"
-GRID_CLASS_HEARTBEAT_VMAJOR_offset = "9"
-GRID_CLASS_HEARTBEAT_VMAJOR_length = "2"
-GRID_CLASS_HEARTBEAT_VMINOR_offset = "11"
-GRID_CLASS_HEARTBEAT_VMINOR_length = "2"
-GRID_CLASS_HEARTBEAT_VPATCH_offset = "13"
-GRID_CLASS_HEARTBEAT_VPATCH_length = "2"
-GRID_CLASS_HEARTBEAT_PORTSTATE_offset = "15"
-GRID_CLASS_HEARTBEAT_PORTSTATE_length = "2"
-GRID_CLASS_SERIALNUMBER_code = "0x011"
-GRID_CLASS_SERIALNUMBER_frame = "%c%03x_................................%c"
-GRID_CLASS_SERIALNUMBER_WORD0_offset = "5"
-GRID_CLASS_SERIALNUMBER_WORD0_length = "8"
-GRID_CLASS_SERIALNUMBER_WORD1_offset = "13"
-GRID_CLASS_SERIALNUMBER_WORD1_length = "8"
-GRID_CLASS_SERIALNUMBER_WORD2_offset = "21"
-GRID_CLASS_SERIALNUMBER_WORD2_length = "8"
-GRID_CLASS_SERIALNUMBER_WORD3_offset = "29"
-GRID_CLASS_SERIALNUMBER_WORD3_length = "8"
-GRID_CLASS_RESETCAUSE_code = "0x012"
-GRID_CLASS_RESETCAUSE_frame = "%c%03x_..%c"
-GRID_CLASS_RESETCAUSE_CAUSE_offset = "5"
-GRID_CLASS_RESETCAUSE_CAUSE_length = "2"
-GRID_CLASS_RESET_code = "0x013"
-GRID_CLASS_RESET_frame = "%c%03xe%c"
-GRID_CLASS_UPTIME_code = "0x014"
-GRID_CLASS_UPTIME_frame = "%c%03x_........%c"
-GRID_CLASS_UPTIME_UPTIME_offset = "5"
-GRID_CLASS_UPTIME_UPTIME_length = "8"
-GRID_CLASS_DEBUGTEXT_code = "0x020"
-GRID_CLASS_DEBUGTEXT_frame_start = "%c%03x_"
-GRID_CLASS_DEBUGTEXT_frame_end = "%c"
-GRID_CLASS_DEBUGTEXT_TEXT_offset = "5"
-GRID_CLASS_DEBUGTEXT_TEXT_length = "0"
-GRID_CLASS_DEBUGTASK_code = "0x021"
-GRID_CLASS_DEBUGTASK_frame_start = "%c%03x_...."
-GRID_CLASS_DEBUGTASK_frame_end = "%c"
-GRID_CLASS_DEBUGTASK_LENGTH_offset = "5"
-GRID_CLASS_DEBUGTASK_LENGTH_length = "4"
-GRID_CLASS_DEBUGTASK_OUTPUT_offset = "9"
-GRID_CLASS_DEBUGTASK_OUTPUT_length = "0"
-GRID_CLASS_WEBSOCKET_code = "0x022"
-GRID_CLASS_WEBSOCKET_frame_start = "%c%03x_"
-GRID_CLASS_WEBSOCKET_frame_end = "%c"
-GRID_CLASS_WEBSOCKET_TEXT_offset = "5"
-GRID_CLASS_WEBSOCKET_TEXT_length = "0"
-GRID_CLASS_PAGEACTIVE_code = "0x030"
-GRID_CLASS_PAGEACTIVE_frame = "%c%03x_..%c"
-GRID_CLASS_PAGEACTIVE_PAGENUMBER_offset = "5"
-GRID_CLASS_PAGEACTIVE_PAGENUMBER_length = "2"
-GRID_CLASS_PAGECOUNT_code = "0x031"
-GRID_CLASS_PAGECOUNT_frame = "%c%03x_..%c"
-GRID_CLASS_PAGECOUNT_PAGENUMBER_offset = "5"
-GRID_CLASS_PAGECOUNT_PAGENUMBER_length = "2"
-GRID_CLASS_LEDPREVIEW_code = "0x042"
-GRID_CLASS_LEDPREVIEW_frame = "%c%03x_............%c"
-GRID_CLASS_LEDPREVIEW_frame_start = "%c%03x_...."
-GRID_CLASS_LEDPREVIEW_frame_end = "%c"
-GRID_CLASS_LEDPREVIEW_LENGTH_offset = "5"
-GRID_CLASS_LEDPREVIEW_LENGTH_length = "4"
-GRID_CLASS_LEDPREVIEW_NUM_offset = "9"
-GRID_CLASS_LEDPREVIEW_NUM_length = "2"
-GRID_CLASS_LEDPREVIEW_RED_offset = "11"
-GRID_CLASS_LEDPREVIEW_RED_length = "2"
-GRID_CLASS_LEDPREVIEW_GRE_offset = "13"
-GRID_CLASS_LEDPREVIEW_GRE_length = "2"
-GRID_CLASS_LEDPREVIEW_BLU_offset = "15"
-GRID_CLASS_LEDPREVIEW_BLU_length = "2"
-GRID_CLASS_EVENT_code = "0x050"
-GRID_CLASS_EVENT_frame = "%c%03x_........%c"
-GRID_CLASS_EVENT_PAGENUMBER_offset = "5"
-GRID_CLASS_EVENT_PAGENUMBER_length = "2"
-GRID_CLASS_EVENT_ELEMENTNUMBER_offset = "7"
-GRID_CLASS_EVENT_ELEMENTNUMBER_length = "2"
-GRID_CLASS_EVENT_EVENTTYPE_offset = "9"
-GRID_CLASS_EVENT_EVENTTYPE_length = "2"
-GRID_CLASS_EVENT_EVENTPARAM_offset = "11"
-GRID_CLASS_EVENT_EVENTPARAM_length = "2"
-GRID_CLASS_EVENTPREVIEW_code = "0x051"
-GRID_CLASS_EVENTPREVIEW_frame = "%c%03x_........%c"
-GRID_CLASS_EVENTPREVIEW_frame_start = "%c%03x_...."
-GRID_CLASS_EVENTPREVIEW_frame_end = "%c"
-GRID_CLASS_EVENTPREVIEW_LENGTH_offset = "5"
-GRID_CLASS_EVENTPREVIEW_LENGTH_length = "4"
-GRID_CLASS_EVENTPREVIEW_NUM_offset = "9"
-GRID_CLASS_EVENTPREVIEW_NUM_length = "2"
-GRID_CLASS_EVENTPREVIEW_VALUE_offset = "11"
-GRID_CLASS_EVENTPREVIEW_VALUE_length = "2"
-GRID_CLASS_ELEMENTNAME_code = "0x052"
-GRID_CLASS_ELEMENTNAME_frame = "%c%03x_..%c"
-GRID_CLASS_ELEMENTNAME_frame_start = "%c%03x_...."
-GRID_CLASS_ELEMENTNAME_frame_end = "%c"
-GRID_CLASS_ELEMENTNAME_NUM_offset = "5"
-GRID_CLASS_ELEMENTNAME_NUM_length = "2"
-GRID_CLASS_ELEMENTNAME_LENGTH_offset = "7"
-GRID_CLASS_ELEMENTNAME_LENGTH_length = "2"
-GRID_CLASS_ELEMENTNAME_NAME_offset = "9"
-GRID_CLASS_ELEMENTNAME_NAME_length = "0"
-GRID_CLASS_CONFIG_code = "0x060"
-GRID_CLASS_CONFIG_frame = "%c%03x_................%c"
-GRID_CLASS_CONFIG_frame_start = "%c%03x_................"
-GRID_CLASS_CONFIG_frame_end = "%c"
-GRID_CLASS_CONFIG_frame_check = "%c%03x_..%c"
-GRID_CLASS_CONFIG_LASTHEADER_offset = "5"
-GRID_CLASS_CONFIG_LASTHEADER_length = "2"
-GRID_CLASS_CONFIG_VERSIONMAJOR_offset = "5"
-GRID_CLASS_CONFIG_VERSIONMAJOR_length = "2"
-GRID_CLASS_CONFIG_VERSIONMINOR_offset = "7"
-GRID_CLASS_CONFIG_VERSIONMINOR_length = "2"
-GRID_CLASS_CONFIG_VERSIONPATCH_offset = "9"
-GRID_CLASS_CONFIG_VERSIONPATCH_length = "2"
-GRID_CLASS_CONFIG_PAGENUMBER_offset = "11"
-GRID_CLASS_CONFIG_PAGENUMBER_length = "2"
-GRID_CLASS_CONFIG_ELEMENTNUMBER_offset = "13"
-GRID_CLASS_CONFIG_ELEMENTNUMBER_length = "2"
-GRID_CLASS_CONFIG_EVENTTYPE_offset = "15"
-GRID_CLASS_CONFIG_EVENTTYPE_length = "2"
-GRID_CLASS_CONFIG_ACTIONLENGTH_offset = "17"
-GRID_CLASS_CONFIG_ACTIONLENGTH_length = "4"
-GRID_CLASS_CONFIG_ACTIONSTRING_offset = "21"
-GRID_CLASS_CONFIG_ACTIONSTRING_length = "0"
-GRID_CLASS_PAGESTORE_code = "0x061"
-GRID_CLASS_PAGESTORE_frame = "%c%03x_..%c"
-GRID_CLASS_PAGESTORE_LASTHEADER_offset = "5"
-GRID_CLASS_PAGESTORE_LASTHEADER_length = "2"
-GRID_CLASS_NVMERASE_code = "0x062"
-GRID_CLASS_NVMERASE_frame = "%c%03x_..%c"
-GRID_CLASS_NVMERASE_LASTHEADER_offset = "5"
-GRID_CLASS_NVMERASE_LASTHEADER_length = "2"
-GRID_CLASS_PAGEDISCARD_code = "0x063"
-GRID_CLASS_PAGEDISCARD_frame = "%c%03x_..%c"
-GRID_CLASS_PAGEDISCARD_LASTHEADER_offset = "5"
-GRID_CLASS_PAGEDISCARD_LASTHEADER_length = "2"
-GRID_CLASS_PAGECLEAR_code = "0x064"
-GRID_CLASS_PAGECLEAR_frame = "%c%03x_..%c"
-GRID_CLASS_PAGECLEAR_LASTHEADER_offset = "5"
-GRID_CLASS_PAGECLEAR_LASTHEADER_length = "2"
-GRID_CLASS_NVMDEFRAG_code = "0x065"
-GRID_CLASS_NVMDEFRAG_frame = "%c%03x_..%c"
-GRID_CLASS_NVMDEFRAG_LASTHEADER_offset = "5"
-GRID_CLASS_NVMDEFRAG_LASTHEADER_length = "2"
-GRID_CLASS_IMEDIATE_code = "0x085"
-GRID_CLASS_IMEDIATE_frame_start = "%c%03x_...."
-GRID_CLASS_IMEDIATE_frame_end = "%c"
-GRID_CLASS_IMEDIATE_ACTIONLENGTH_offset = "5"
-GRID_CLASS_IMEDIATE_ACTIONLENGTH_length = "4"
-GRID_CLASS_IMEDIATE_ACTIONSTRING_offset = "9"
-GRID_CLASS_IMEDIATE_ACTIONSTRING_length = "0"
-GRID_CLASS_HIDKEYSTATUS_code = "0x090"
-GRID_CLASS_HIDKEYSTATUS_frame = "%c%03x_..%c"
-GRID_CLASS_HIDKEYSTATUS_ISENABLED_offset = "5"
-GRID_CLASS_HIDKEYSTATUS_ISENABLED_length = "2"
-GRID_CLASS_HIDKEYBOARD_code = "0x091"
-GRID_CLASS_HIDKEYBOARD_frame = "%c%03x_........%c"
-GRID_CLASS_HIDKEYBOARD_frame_start = "%c%03x_........"
-GRID_CLASS_HIDKEYBOARD_frame_end = "%c"
-GRID_CLASS_HIDKEYBOARD_DEFAULTDELAY_offset = "5"
-GRID_CLASS_HIDKEYBOARD_DEFAULTDELAY_length = "2"
-GRID_CLASS_HIDKEYBOARD_LENGTH_offset = "7"
-GRID_CLASS_HIDKEYBOARD_LENGTH_length = "2"
-GRID_CLASS_HIDKEYBOARD_KEYISMODIFIER_offset = "9"
-GRID_CLASS_HIDKEYBOARD_KEYISMODIFIER_length = "1"
-GRID_CLASS_HIDKEYBOARD_KEYSTATE_offset = "10"
-GRID_CLASS_HIDKEYBOARD_KEYSTATE_length = "1"
-GRID_CLASS_HIDKEYBOARD_KEYCODE_offset = "11"
-GRID_CLASS_HIDKEYBOARD_KEYCODE_length = "2"
-GRID_CLASS_HIDKEYBOARD_DELAY_offset = "10"
-GRID_CLASS_HIDKEYBOARD_DELAY_length = "3"
-GRID_CLASS_HIDMOUSEMOVE_code = "0x092"
-GRID_CLASS_HIDMOUSEMOVE_frame = "%c%03x_....%c"
-GRID_CLASS_HIDMOUSEMOVE_POSITION_offset = "5"
-GRID_CLASS_HIDMOUSEMOVE_POSITION_length = "2"
-GRID_CLASS_HIDMOUSEMOVE_AXIS_offset = "7"
-GRID_CLASS_HIDMOUSEMOVE_AXIS_length = "2"
-GRID_CLASS_HIDMOUSEBUTTON_code = "0x093"
-GRID_CLASS_HIDMOUSEBUTTON_frame = "%c%03x_....%c"
-GRID_CLASS_HIDMOUSEBUTTON_STATE_offset = "5"
-GRID_CLASS_HIDMOUSEBUTTON_STATE_length = "2"
-GRID_CLASS_HIDMOUSEBUTTON_BUTTON_offset = "7"
-GRID_CLASS_HIDMOUSEBUTTON_BUTTON_length = "2"
-GRID_CLASS_HIDGAMEPADMOVE_code = "0x094"
-GRID_CLASS_HIDGAMEPADMOVE_frame = "%c%03x_....%c"
-GRID_CLASS_HIDGAMEPADMOVE_AXIS_offset = "5"
-GRID_CLASS_HIDGAMEPADMOVE_AXIS_length = "2"
-GRID_CLASS_HIDGAMEPADMOVE_POSITION_offset = "7"
-GRID_CLASS_HIDGAMEPADMOVE_POSITION_length = "2"
-GRID_CLASS_HIDGAMEPADBUTTON_code = "0x095"
-GRID_CLASS_HIDGAMEPADBUTTON_frame = "%c%03x_....%c"
-GRID_CLASS_HIDGAMEPADBUTTON_BUTTON_offset = "5"
-GRID_CLASS_HIDGAMEPADBUTTON_BUTTON_length = "2"
-GRID_CLASS_HIDGAMEPADBUTTON_STATE_offset = "7"
-GRID_CLASS_HIDGAMEPADBUTTON_STATE_length = "2"
+character_lookup = {
+  "0": "NUL",
+  "1": "SOH",
+  "2": "STX",
+  "3": "ETX",
+  "23": "EOB",
+  "4": "EOT",
+  "10": "LF",
+  "6": "ACK",
+  "21": "NAK",
+  "24": "CAN",
+  "17": "NORTH",
+  "18": "EAST",
+  "19": "SOUTH",
+  "20": "WEST",
+  "14": "DCT",
+  "15": "BRC",
+  "7": "BELL"
+}
+# Generated Python code from JSON
+
+class_database = {
+  "MIDI": {
+    "class_name": "MIDI",
+    "class_code": 0,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "CHANNEL": {
+        "offset": 5,
+        "length": 2
+      },
+      "COMMAND": {
+        "offset": 7,
+        "length": 2
+      },
+      "PARAM1": {
+        "offset": 9,
+        "length": 2
+      },
+      "PARAM2": {
+        "offset": 11,
+        "length": 2
+      }
+    }
+  },
+  "MIDISYSEX": {
+    "class_name": "MIDISYSEX",
+    "class_code": 1,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LENGTH": {
+        "offset": 5,
+        "length": 4
+      },
+      "PAYLOAD": {
+        "offset": 9,
+        "length": 2
+      }
+    }
+  },
+  "HEARTBEAT": {
+    "class_name": "HEARTBEAT",
+    "class_code": 16,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "TYPE": {
+        "offset": 5,
+        "length": 2
+      },
+      "HWCFG": {
+        "offset": 7,
+        "length": 2
+      },
+      "VMAJOR": {
+        "offset": 9,
+        "length": 2
+      },
+      "VMINOR": {
+        "offset": 11,
+        "length": 2
+      },
+      "VPATCH": {
+        "offset": 13,
+        "length": 2
+      },
+      "PORTSTATE": {
+        "offset": 15,
+        "length": 2
+      }
+    }
+  },
+  "SERIALNUMBER": {
+    "class_name": "SERIALNUMBER",
+    "class_code": 17,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "WORD0": {
+        "offset": 5,
+        "length": 8
+      },
+      "WORD1": {
+        "offset": 13,
+        "length": 8
+      },
+      "WORD2": {
+        "offset": 21,
+        "length": 8
+      },
+      "WORD3": {
+        "offset": 29,
+        "length": 8
+      }
+    }
+  },
+  "RESETCAUSE": {
+    "class_name": "RESETCAUSE",
+    "class_code": 18,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "CAUSE": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "RESET": {
+    "class_name": "RESET",
+    "class_code": 19,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      }
+    }
+  },
+  "UPTIME": {
+    "class_name": "UPTIME",
+    "class_code": 20,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "UPTIME": {
+        "offset": 5,
+        "length": 8
+      }
+    }
+  },
+  "DEBUGTEXT": {
+    "class_name": "DEBUGTEXT",
+    "class_code": 32,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "TEXT": {
+        "offset": 5,
+        "length": 0
+      }
+    }
+  },
+  "DEBUGTASK": {
+    "class_name": "DEBUGTASK",
+    "class_code": 33,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LENGTH": {
+        "offset": 5,
+        "length": 4
+      },
+      "OUTPUT": {
+        "offset": 9,
+        "length": 0
+      }
+    }
+  },
+  "WEBSOCKET": {
+    "class_name": "WEBSOCKET",
+    "class_code": 34,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "TEXT": {
+        "offset": 5,
+        "length": 0
+      }
+    }
+  },
+  "PAGEACTIVE": {
+    "class_name": "PAGEACTIVE",
+    "class_code": 48,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "PAGENUMBER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "PAGECOUNT": {
+    "class_name": "PAGECOUNT",
+    "class_code": 49,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "PAGENUMBER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "LEDPREVIEW": {
+    "class_name": "LEDPREVIEW",
+    "class_code": 66,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LENGTH": {
+        "offset": 5,
+        "length": 4
+      },
+      "NUM": {
+        "offset": 9,
+        "length": 2
+      },
+      "RED": {
+        "offset": 11,
+        "length": 2
+      },
+      "GRE": {
+        "offset": 13,
+        "length": 2
+      },
+      "BLU": {
+        "offset": 15,
+        "length": 2
+      }
+    }
+  },
+  "EVENT": {
+    "class_name": "EVENT",
+    "class_code": 80,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "PAGENUMBER": {
+        "offset": 5,
+        "length": 2
+      },
+      "ELEMENTNUMBER": {
+        "offset": 7,
+        "length": 2
+      },
+      "EVENTTYPE": {
+        "offset": 9,
+        "length": 2
+      },
+      "EVENTPARAM": {
+        "offset": 11,
+        "length": 2
+      }
+    }
+  },
+  "EVENTPREVIEW": {
+    "class_name": "EVENTPREVIEW",
+    "class_code": 81,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LENGTH": {
+        "offset": 5,
+        "length": 4
+      },
+      "NUM": {
+        "offset": 9,
+        "length": 2
+      },
+      "VALUE": {
+        "offset": 11,
+        "length": 2
+      }
+    }
+  },
+  "ELEMENTNAME": {
+    "class_name": "ELEMENTNAME",
+    "class_code": 82,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "NUM": {
+        "offset": 5,
+        "length": 2
+      },
+      "LENGTH": {
+        "offset": 7,
+        "length": 2
+      },
+      "NAME": {
+        "offset": 9,
+        "length": 0
+      }
+    }
+  },
+  "CONFIG": {
+    "class_name": "CONFIG",
+    "class_code": 96,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      },
+      "VERSIONMAJOR": {
+        "offset": 5,
+        "length": 2
+      },
+      "VERSIONMINOR": {
+        "offset": 7,
+        "length": 2
+      },
+      "VERSIONPATCH": {
+        "offset": 9,
+        "length": 2
+      },
+      "PAGENUMBER": {
+        "offset": 11,
+        "length": 2
+      },
+      "ELEMENTNUMBER": {
+        "offset": 13,
+        "length": 2
+      },
+      "EVENTTYPE": {
+        "offset": 15,
+        "length": 2
+      },
+      "ACTIONLENGTH": {
+        "offset": 17,
+        "length": 4
+      },
+      "ACTIONSTRING": {
+        "offset": 21,
+        "length": 0
+      }
+    }
+  },
+  "PAGESTORE": {
+    "class_name": "PAGESTORE",
+    "class_code": 97,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "NVMERASE": {
+    "class_name": "NVMERASE",
+    "class_code": 98,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "PAGEDISCARD": {
+    "class_name": "PAGEDISCARD",
+    "class_code": 99,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "PAGECLEAR": {
+    "class_name": "PAGECLEAR",
+    "class_code": 100,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "NVMDEFRAG": {
+    "class_name": "NVMDEFRAG",
+    "class_code": 101,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "IMEDIATE": {
+    "class_name": "IMEDIATE",
+    "class_code": 133,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "ACTIONLENGTH": {
+        "offset": 5,
+        "length": 4
+      },
+      "ACTIONSTRING": {
+        "offset": 9,
+        "length": 0
+      }
+    }
+  },
+  "HIDKEYSTATUS": {
+    "class_name": "HIDKEYSTATUS",
+    "class_code": 144,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "ISENABLED": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
+  "HIDKEYBOARD": {
+    "class_name": "HIDKEYBOARD",
+    "class_code": 145,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "DEFAULTDELAY": {
+        "offset": 5,
+        "length": 2
+      },
+      "LENGTH": {
+        "offset": 7,
+        "length": 2
+      },
+      "KEYISMODIFIER": {
+        "offset": 9,
+        "length": 1
+      },
+      "KEYSTATE": {
+        "offset": 10,
+        "length": 1
+      },
+      "KEYCODE": {
+        "offset": 11,
+        "length": 2
+      },
+      "DELAY": {
+        "offset": 10,
+        "length": 3
+      }
+    }
+  },
+  "HIDMOUSEMOVE": {
+    "class_name": "HIDMOUSEMOVE",
+    "class_code": 146,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "POSITION": {
+        "offset": 5,
+        "length": 2
+      },
+      "AXIS": {
+        "offset": 7,
+        "length": 2
+      }
+    }
+  },
+  "HIDMOUSEBUTTON": {
+    "class_name": "HIDMOUSEBUTTON",
+    "class_code": 147,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "STATE": {
+        "offset": 5,
+        "length": 2
+      },
+      "BUTTON": {
+        "offset": 7,
+        "length": 2
+      }
+    }
+  },
+  "HIDGAMEPADMOVE": {
+    "class_name": "HIDGAMEPADMOVE",
+    "class_code": 148,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "AXIS": {
+        "offset": 5,
+        "length": 2
+      },
+      "POSITION": {
+        "offset": 7,
+        "length": 2
+      }
+    }
+  },
+  "HIDGAMEPADBUTTON": {
+    "class_name": "HIDGAMEPADBUTTON",
+    "class_code": 149,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "BUTTON": {
+        "offset": 5,
+        "length": 2
+      },
+      "STATE": {
+        "offset": 7,
+        "length": 2
+      }
+    }
+  }
+}
