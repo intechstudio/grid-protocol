@@ -23,10 +23,9 @@ from .lists import *
 
 import json
 
-constant_value = "Foo"
-
 RX = 0
 TX = 1
+
 
 
 
@@ -41,7 +40,7 @@ class Decoder(srd.Decoder):
     outputs = []
     tags = ['Audio', 'PC']
     options = (
-        {'id': 'data_format', 'desc': 'Displayed data format','default': 'hex', 'values': ('hex', 'dec', 'char')},
+        {'id': 'data_format', 'desc': 'Displayed data format','default': 'char', 'values': ('hex', 'dec', 'char')},
     )
     annotations = (
         ('text-verbose', 'Text (verbose)'),
@@ -92,9 +91,30 @@ class Decoder(srd.Decoder):
         part["data"].append(data)
         part["es"] = es
 
+
         if data in part["delimiters"]:
 
-            result_string = self.options['data_format']+' '+constant_value+' '.join(map(str, part["data"]))
+
+            result_string = ''
+
+            for elem in part["data"]:
+
+                if self.options['data_format'] == 'dec':
+                    result_string += str(elem) + ' '
+                elif self.options['data_format'] == 'hex':
+                    result_string += '0x{:02x}'.format(elem) + ' '
+                elif self.options['data_format'] == 'char':
+                    char = str(elem)
+
+                    if char in character_lookup:
+                        result_string += " " + character_lookup[char] + " "
+                    else:
+                        result_string += chr(elem) + ' '
+
+
+                
+
+
             self.put(part["ss"], part["es"], self.out_ann, [part["target"], [result_string]])
             part["ss"] = -1
             part["es"] = -1
