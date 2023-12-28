@@ -528,11 +528,11 @@ class_database = {
         "offset": 3,
         "length": 1
       },
-      "POSITION": {
+      "AXIS": {
         "offset": 5,
         "length": 2
       },
-      "AXIS": {
+      "POSITION": {
         "offset": 7,
         "length": 2
       }
@@ -546,11 +546,11 @@ class_database = {
         "offset": 3,
         "length": 1
       },
-      "STATE": {
+      "BUTTON": {
         "offset": 5,
         "length": 2
       },
-      "BUTTON": {
+      "STATE": {
         "offset": 7,
         "length": 2
       }
