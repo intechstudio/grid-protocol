@@ -210,6 +210,20 @@ class_database = {
       }
     }
   },
+  "PACKAGE": {
+    "class_name": "PACKAGE",
+    "class_code": 35,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "TEXT": {
+        "offset": 5,
+        "length": 0
+      }
+    }
+  },
   "PAGEACTIVE": {
     "class_name": "PAGEACTIVE",
     "class_code": 48,
