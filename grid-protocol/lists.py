@@ -302,8 +302,12 @@ class_database = {
         "offset": 9,
         "length": 2
       },
-      "EVENTPARAM": {
+      "EVENTPARAM1": {
         "offset": 11,
+        "length": 2
+      },
+      "EVENTPARAM2": {
+        "offset": 13,
         "length": 2
       }
     }
