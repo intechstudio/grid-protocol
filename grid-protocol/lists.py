@@ -472,8 +472,8 @@ class_database = {
       }
     }
   },
-  "IMEDIATE": {
-    "class_name": "IMEDIATE",
+  "IMMEDIATE": {
+    "class_name": "IMMEDIATE",
     "class_code": 133,
     "class_params": {
       "INSTRUCTION": {
