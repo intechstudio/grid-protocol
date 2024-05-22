@@ -8,6 +8,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "lib": ["es2017", "dom"]
-  }
+    "lib": ["es2017", "dom"],
+    "outDir": "./dist" // Specify the output directory here
+  },
+  "include": ["src"] // Specify the directory containing your source files
 }
