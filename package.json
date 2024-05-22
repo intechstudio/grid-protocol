@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest run",
+    "postinstall": "patch-package",
     "clean": "rm -rf dist",
     "build": "tsc",
     "prepack": "npm run build"
