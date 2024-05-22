@@ -1,6 +1,9 @@
 import { grid } from "./grid-protocol";
 import { formatText } from "lua-fmt";
-import { minify } from "luamin";
+// @ts-ignore
+import * as luamin from "luamin";
+
+const minify: any = luamin.minify;
 
 class GridValidator {
   public regex_short: any = {};
@@ -60,11 +63,14 @@ class GridValidator {
 }
 
 export class GridScript {
-  static validator = new GridValidator(
+  static validator: any = new GridValidator(
     grid.getProperty("LUA")
   );
-  static splitShortScript(script: string, mode: string) {
-    let lookupType: any;
+  static splitShortScript(
+    script: string,
+    mode: "short" | "human"
+  ) {
+    let lookupType: string;
 
     switch (mode) {
       case "short":

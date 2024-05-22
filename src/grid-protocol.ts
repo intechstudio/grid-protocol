@@ -1,4 +1,5 @@
-import * as grid_protocol from "./grid_protocol_bot.json";
+import * as protocol_data from "./grid_protocol_bot.json";
+const grid_protocol: Record<string, string> = protocol_data;
 
 import lodash from "lodash";
 
@@ -187,10 +188,10 @@ const editor_lua_properties = [
 ];
 
 function returnDeepestObjects(obj: any) {
-  var found = {};
-  let parent = "";
+  var found: any = {};
+  let parent: string = "";
 
-  function _find(obj, d) {
+  function _find(obj: any, d: any) {
     for (var key in obj) {
       if (d == 0) {
         parent = key;
@@ -212,13 +213,17 @@ function returnDeepestObjects(obj: any) {
 }
 
 function mapObjectsToArray(array: any[], object: any) {
-  function mapper(baseArray, type, allowed) {
+  function mapper(
+    baseArray: any[],
+    type: any,
+    allowed: any
+  ) {
     return (baseArray = baseArray.map((e, i) => {
       return { type: type, allowed: allowed, ...e };
     }));
   }
 
-  for (const key in object) {
+  for (const key in object as any) {
     if (key == "B") {
       array = [
         ...array,
@@ -309,16 +314,17 @@ let brc_parameters: any =
   parse_brc_parameters_from_protocol();
 
 function parse_brc_parameters_from_protocol() {
-  let brcparams = {};
+  let brcparams: any = {};
 
-  for (const key in grid_protocol) {
+  for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
       if (
         key.startsWith("GRID_BRC_") &&
         key.endsWith("length")
       ) {
         let splitted = key.split("_");
-        let parameter_name = splitted[splitted.length - 2];
+        let parameter_name: string =
+          splitted[splitted.length - 2];
 
         if (brcparams[parameter_name] === undefined) {
           brcparams[parameter_name] = {};
@@ -333,7 +339,8 @@ function parse_brc_parameters_from_protocol() {
         key.endsWith("offset")
       ) {
         let splitted = key.split("_");
-        let parameter_name = splitted[splitted.length - 2];
+        let parameter_name: string =
+          splitted[splitted.length - 2];
 
         if (brcparams[parameter_name] === undefined) {
           brcparams[parameter_name] = {};
@@ -350,17 +357,18 @@ function parse_brc_parameters_from_protocol() {
 }
 
 function class_code_decode_encode_init() {
-  let name_from_code = {};
-  let code_from_name = {};
+  let name_from_code: any = {};
+  let code_from_name: any = {};
 
-  for (const key in grid_protocol) {
+  for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
       if (
         key.startsWith("GRID_CLASS_") &&
         key.endsWith("code")
       ) {
         let splitted = key.split("_");
-        let class_name = splitted[splitted.length - 2];
+        let class_name: string =
+          splitted[splitted.length - 2];
         name_from_code[grid_protocol[key]] = class_name;
         code_from_name[class_name] = grid_protocol[key];
       }
@@ -371,10 +379,10 @@ function class_code_decode_encode_init() {
 }
 
 function instr_code_decode_encode_init() {
-  let instrcodes = {};
-  let instrnames = {};
+  let instrcodes: any = {};
+  let instrnames: any = {};
 
-  for (const key in grid_protocol) {
+  for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
       if (
         key.startsWith("GRID_INSTR_") &&
@@ -395,9 +403,9 @@ function instr_code_decode_encode_init() {
 }
 
 function parse_class_parameters_from_protocol() {
-  let classparams = {};
+  let classparams: any = {};
 
-  for (const key in grid_protocol) {
+  for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
       if (
         key === "GRID_CLASS_length" ||
@@ -409,9 +417,11 @@ function parse_class_parameters_from_protocol() {
         key.endsWith("length")
       ) {
         let splitted = key.split("_");
-        let class_name = splitted[splitted.length - 3];
+        let class_name: string =
+          splitted[splitted.length - 3];
 
-        let parameter_name = splitted[splitted.length - 2];
+        let parameter_name: string =
+          splitted[splitted.length - 2];
         let parameter_length = parseInt(grid_protocol[key]);
 
         if (classparams[class_name] === undefined) {
@@ -433,9 +443,11 @@ function parse_class_parameters_from_protocol() {
         key.endsWith("offset")
       ) {
         let splitted = key.split("_");
-        let class_name = splitted[splitted.length - 3];
+        let class_name: string =
+          splitted[splitted.length - 3];
 
-        let parameter_name = splitted[splitted.length - 2];
+        let parameter_name: string =
+          splitted[splitted.length - 2];
         let parameter_offset = parseInt(grid_protocol[key]);
 
         if (classparams[class_name] === undefined) {
@@ -790,35 +802,35 @@ const elementEvents = {
 };
 
 interface GridClass {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface GridLua {
-  [key: string]: number | string;
+  [key: string]: any;
 }
 
 interface GridBRC {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface GridEvents {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface GridParameters {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface GridConst {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface GridInstr {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface HWCFG {
-  [key: string]: number;
+  [key: string]: any;
 }
 
 interface LuaAutocompleteFunction {
@@ -874,7 +886,7 @@ class GridProperty {
     let CONFIG_LENGTH: number = 0;
     let LUA_AUTOCOMPLETE: LuaAutocompleteFunction[] = [];
 
-    for (const key in grid_protocol) {
+    for (const key in grid_protocol as any) {
       if (typeof grid_protocol[key] !== "object") {
         // GRID MODULE HWCFGS
         if (key.startsWith("GRID_MODULE_")) {
@@ -935,7 +947,7 @@ class GridProperty {
         // GRID BRC
         if (key.startsWith("GRID_BRC_")) {
           let paramSet = key.split("_");
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           if (paramSet[paramSet.length - 1] !== "frame") {
             createNestedObject(
               BRC,
@@ -958,7 +970,7 @@ class GridProperty {
           !/_LIST_/gm.test(key)
         ) {
           let paramSet = key.split("_");
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           createNestedObject(LUA, paramSet.slice(3), value);
         }
 
@@ -967,7 +979,7 @@ class GridProperty {
           key.startsWith("GRID_LUA_FNC_G") &&
           key.endsWith("_human")
         ) {
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: value,
             type: "function",
@@ -978,7 +990,7 @@ class GridProperty {
           key.startsWith("GRID_LUA_FNC_EP") &&
           key.endsWith("_human")
         ) {
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
             type: "function",
@@ -993,7 +1005,7 @@ class GridProperty {
           key.startsWith("GRID_LUA_FNC_E") &&
           key.endsWith("_human")
         ) {
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
             type: "function",
@@ -1010,7 +1022,7 @@ class GridProperty {
           key.startsWith("GRID_LUA_FNC_B") &&
           key.endsWith("_human")
         ) {
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
             type: "function",
@@ -1027,7 +1039,7 @@ class GridProperty {
           key.startsWith("GRID_LUA_FNC_P") &&
           key.endsWith("_human")
         ) {
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
             type: "function",
@@ -1043,14 +1055,14 @@ class GridProperty {
         // GRID LUA KEYWORDS
         if (key.startsWith("GRID_LUA_KW_")) {
           let paramSet = key.split("_");
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           createNestedObject(LUA, paramSet.slice(2), value);
         }
 
         // GRID CLASSES
         if (key.startsWith("GRID_CLASS_")) {
           let paramSet = key.split("_");
-          let value = grid_protocol[key];
+          let value: any = grid_protocol[key];
           if (paramSet[paramSet.length - 1] !== "frame") {
             // not sure why fram is unsupported...
             createNestedObject(
@@ -1104,11 +1116,14 @@ class GridProtocol {
     hwcfg: number
   ): ModuleType | undefined {
     const HWCFG = grid.getProperty("HWCFG");
-    let type = undefined;
+    let type: any = undefined;
 
-    for (const key in HWCFG) {
+    for (const key in HWCFG as any) {
       if (HWCFG[key] === hwcfg) {
-        type = ModuleType[key.substring(0, 4)];
+        type =
+          ModuleType[
+            key.substring(0, 4) as keyof typeof ModuleType
+          ];
       }
     }
 
@@ -1168,10 +1183,10 @@ class GridProtocol {
       this.properties.getProperty("CONST").BRC
     );
 
-    for (const key in brc_parameters) {
+    for (const key in brc_parameters as any) {
       let offset = brc_parameters[key].offset;
       let length = brc_parameters[key].length;
-      let value = descr.brc_parameters[key];
+      let value: any = descr.brc_parameters[key];
 
       if (descr.brc_parameters[key] === undefined) {
         write_integer_to_asciicode_array(
@@ -1214,12 +1229,14 @@ class GridProtocol {
       parseInt(instr_code_from_name[descr.class_instr])
     );
 
-    for (const key in class_parameters[descr.class_name]) {
+    for (const key in class_parameters[
+      descr.class_name
+    ] as any) {
       let offset =
         class_parameters[descr.class_name][key].offset;
       let length =
         class_parameters[descr.class_name][key].length;
-      let value = descr.class_parameters[key];
+      let value: any = descr.class_parameters[key];
 
       if (length > 0) {
         if (value === undefined) {
@@ -1343,7 +1360,7 @@ class GridProtocol {
     // decode all of the BRC parameters
     let brc: any = {};
 
-    for (const key in brc_parameters) {
+    for (const key in brc_parameters as any) {
       brc[brc_parameters[key].name] =
         read_integer_from_asciicode_array(
           asciicode_array,
@@ -1431,7 +1448,7 @@ class GridProtocol {
     }
 
     raw_class_array.forEach((raw_class, i) => {
-      let class_code_string =
+      let class_code_string: string =
         "0x" +
         String.fromCharCode(raw_class.raw[0]) +
         String.fromCharCode(raw_class.raw[1]) +
@@ -1455,7 +1472,7 @@ class GridProtocol {
 
         for (const key in class_parameters[
           raw_class.class_name
-        ]) {
+        ] as any) {
           let current_parameter =
             class_parameters[raw_class.class_name][key];
 

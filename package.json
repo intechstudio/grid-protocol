@@ -4,8 +4,11 @@
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "postinstall": "cd node_modules && for pkg in $(ls -d */); do cd $pkg && patch-package && cd ..; done"
+    "test": "vitest run",
+    "postinstall": "patch-package",
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,11 +28,16 @@
     "lodash": "^4.17.21",
     "lua-fmt": "^2.6.0",
     "luamin": "^1.0.4",
-    "typescript": "^5.4.5",
     "patch-package": "^8.0.0"
   },
   "files": [
-    "src",
-    "patches"
-  ]
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "devDependencies": {
+    "@types/lodash": "^4.17.4",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
 }
