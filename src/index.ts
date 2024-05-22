@@ -7,6 +7,6 @@ export {
   Architecture,
   CEEAT,
   grid,
-} from "./src/grid-protocol";
+} from "./grid-protocol";
 
-export { GridScript } from "./src/string-operations";
+export { GridScript } from "./string-operations";

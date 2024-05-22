@@ -1,8 +1,7 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.40",
+  "version": "1.2.41",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
-  "main": "index.ts",
   "scripts": {
     "test": "vitest run",
     "postinstall": "patch-package",
@@ -35,6 +34,9 @@
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*"
   ],
+  "exports": {
+    ".": "./main.js"
+  },
   "devDependencies": {
     "@types/lodash": "^4.17.4",
     "typescript": "^5.4.5",
