@@ -1,13 +1,16 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.48",
+  "version": "1.2.49",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "vitest run",
     "postinstall": "patch-package",
     "clean": "rm -rf dist",
     "build": "webpack --mode production",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run remove-deps",
+    "remove-deps": "npm prune --production"
+  
   },
   "repository": {
     "type": "git",
@@ -41,6 +44,7 @@
     "@types/lodash": "^4.17.4",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^12.0.2",
+    "npm-run-all": "^4.1.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0",
