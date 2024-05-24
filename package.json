@@ -8,9 +8,8 @@
     "clean": "rm -rf dist",
     "build": "webpack --mode production",
     "prepack": "npm run build",
-    "prepublishOnly": "npm run remove-deps",
+    "prepublishOnly": "npm run build && npm run remove-deps",
     "remove-deps": "npm prune --production"
-  
   },
   "repository": {
     "type": "git",
