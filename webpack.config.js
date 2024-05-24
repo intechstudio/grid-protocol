@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src_js/index.js',
@@ -20,6 +21,13 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/grid_protocol_bot.json' }
+            ]
+        })
+    ],
     externals: {
         // Specify any dependencies you don't want to bundle here.
         // For example: 'react': 'React'
