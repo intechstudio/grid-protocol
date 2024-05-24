@@ -1,6 +1,6 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.42",
+  "version": "1.2.43",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "vitest run",
@@ -31,6 +31,7 @@
   },
   "files": [
     "dist",
+    "patches",
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*"
   ],
