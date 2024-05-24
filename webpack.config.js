@@ -2,22 +2,21 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src_js/index.js',
+    mode: 'production',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js',
-        library: 'MyLibrary',
-        libraryTarget: 'umd',
-        globalObject: 'this'
+        filename: 'index.js'
+    },
+    resolve: {
+        extensions: ['.ts', '.js']
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                test: /\.ts$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
             }
         ]
     },
@@ -28,8 +27,4 @@ module.exports = {
             ]
         })
     ],
-    externals: {
-        // Specify any dependencies you don't want to bundle here.
-        // For example: 'react': 'React'
-    }
 };
