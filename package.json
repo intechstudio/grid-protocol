@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
-    "remove-deps": "npm prune --production"
+    "remove-deps": "ls"
   },
   "repository": {
     "type": "git",
