@@ -9,7 +9,7 @@
     "sourceMap": true,
     "strict": true,
     "lib": ["es2017", "dom"],
-    "outDir": "./dist" // Specify the output directory here
+    "outDir": "./src_js" // Specify the output directory here
   },
   "include": ["src"] // Specify the directory containing your source files
 }
