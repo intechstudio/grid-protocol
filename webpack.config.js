@@ -4,7 +4,7 @@ module.exports = {
     entry: './src_js/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'index.js',
         library: 'MyLibrary',
         libraryTarget: 'umd',
         globalObject: 'this'
