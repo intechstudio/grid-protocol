@@ -9,7 +9,7 @@
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
     "remove-deps": "node remove-dependencies.js",
-    "patch": "echo 'Patching dependencies...' && patch-package"
+    "patch": "echo 'Patching dependencies...' && npx patch-package"
   },
   "repository": {
     "type": "git",
