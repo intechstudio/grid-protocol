@@ -1,12 +1,11 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.51",
+  "version": "1.2.52",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "vitest run",
-    "postinstall": "patch-package",
     "clean": "rm -rf dist",
-    "build": "webpack --mode production",
+    "build": "patch-package && webpack --mode production",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
     "remove-deps": "node remove-dependencies.js"
@@ -36,10 +35,10 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "lua-fmt": "^2.6.0",
-    "luamin": "^1.0.4",
-    "patch-package": "^8.0.0"
+    "luamin": "^1.0.4"
   },
   "devDependencies": {
+    "patch-package": "^8.0.0",
     "@types/lodash": "^4.17.4",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^12.0.2",
