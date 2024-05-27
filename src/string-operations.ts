@@ -245,4 +245,13 @@ export class GridScript {
     const formatted = formatText(human);
     return formatted.trim();
   }
+
+  static checkSyntac(script: string) {
+    try {
+      formatText(script);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
