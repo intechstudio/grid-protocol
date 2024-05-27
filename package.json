@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
-    "remove-deps": "ls"
+    "remove-deps": "node remove-dependencies.js"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,6 @@
     "url": "https://github.com/intechstudio/grid-protocol/issues"
   },
   "homepage": "https://github.com/intechstudio/grid-protocol#readme",
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "lua-fmt": "^2.6.0",
-    "luamin": "^1.0.4",
-    "patch-package": "^8.0.0"
-  },
   "files": [
     "dist"
   ],
