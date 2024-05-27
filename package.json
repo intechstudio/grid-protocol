@@ -3,13 +3,13 @@
   "version": "1.2.56",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
-    "test": "vitest run",
+    "test": "patch && vitest run",
     "clean": "rm -rf dist",
-    "build": "webpack --mode production",
+    "build": "patch && webpack --mode production",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
     "remove-deps": "node remove-dependencies.js",
-    "postinstall": "echo 'Patching dependencies...' && patch-package"
+    "patch": "echo 'Patching dependencies...' && patch-package"
   },
   "repository": {
     "type": "git",
