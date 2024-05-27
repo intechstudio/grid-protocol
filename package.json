@@ -1,12 +1,11 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.56",
+  "version": "1.2.55",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
-    "test": "vitest run",
-    "postInstall": "patch-package",
+    "test": "patch-package && vitest run",
     "clean": "rm -rf dist",
-    "build": "webpack --mode production",
+    "build": "patch-package && webpack --mode production",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run remove-deps",
     "remove-deps": "node remove-dependencies.js"

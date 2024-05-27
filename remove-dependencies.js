@@ -13,6 +13,9 @@ fs.readFile("package.json", "utf8", (err, data) => {
   // Remove dependencies
   delete packageJson.dependencies;
 
+  // Remove devDependencies
+  delete packageJson.devDependencies;
+
   // Write modified package.json back to file
   fs.writeFile(
     "package.json",
