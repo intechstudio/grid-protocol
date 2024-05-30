@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true, 
-    "declaration": true, // This option is crucial for generating .d.ts files   
+    "target": "es5",
+    "module": "esnext",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "strict": true,
-    "lib": ["es2017", "dom"],
-    "outDir": "./dist" // Specify the output directory here
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
-  "include": ["src"] // Specify the directory containing your source files
+  "include": ["src"]
 }

@@ -246,7 +246,7 @@ export class GridScript {
     return formatted.trim();
   }
 
-  static checkSyntac(script: string) {
+  static checkSyntax(script: string) {
     try {
       formatText(script);
       return true;

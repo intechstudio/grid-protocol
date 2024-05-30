@@ -1513,6 +1513,45 @@ class GridProtocol {
       }
     });
   }
+
+  public lua_function_to_human_map() {
+    const res = new Map<string, string>();
+    for (const key in grid_protocol) {
+      if (typeof grid_protocol[key] === "object") {
+        continue;
+      }
+      if (
+        key.startsWith("GRID_LUA_FNC") &&
+        key.endsWith("_human")
+      ) {
+        res.set(key, grid_protocol[key]);
+      }
+    }
+    return res;
+  }
+
+  public module_hwcfgs() {
+    const res: any[] = [];
+    for (const key in grid_protocol) {
+      if (typeof grid_protocol[key] === "object") {
+        continue;
+      }
+
+      if (key.startsWith("GRID_MODULE_")) {
+        const split = key.split("_");
+        console.log(split);
+        res.push({
+          type: ModuleType[
+            split[2] as keyof typeof ModuleType
+          ],
+          revision: split[3],
+          hwcfg: grid_protocol[key],
+        });
+      }
+    }
+
+    return res;
+  }
 }
 
 export const grid = new GridProtocol();
