@@ -111,7 +111,7 @@ export class GridScript {
     pattern.push(`${"(?<space>([\\s\\n]))"}`);
     // if its special
     pattern.push(
-      `${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&]))"}`
+      `${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&#]))"}`
     );
     // if its backslash
     pattern.push(`${"(?<backslash>(\\\\))"}`);
@@ -161,6 +161,7 @@ export class GridScript {
       splitArray,
       "short"
     );
+    console.log(splitArray, script);
     return shorted;
   }
 
@@ -236,7 +237,9 @@ export class GridScript {
 
   static compressScript(script: string) {
     const short = GridScript.shortify(script);
+    console.log(short);
     const minified = GridScript.minifyScript(short);
+    console.log(minified);
     return minified.trim();
   }
 
