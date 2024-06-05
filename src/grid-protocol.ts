@@ -1539,7 +1539,6 @@ class GridProtocol {
 
       if (key.startsWith("GRID_MODULE_")) {
         const split = key.split("_");
-        console.log(split);
         res.push({
           type: ModuleType[
             split[2] as keyof typeof ModuleType
