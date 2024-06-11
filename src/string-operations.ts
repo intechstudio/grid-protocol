@@ -111,7 +111,7 @@ export class GridScript {
     pattern.push(`${"(?<space>([\\s\\n]))"}`);
     // if its special
     pattern.push(
-      `${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&]))"}`
+      `${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&#]))"}`
     );
     // if its backslash
     pattern.push(`${"(?<backslash>(\\\\))"}`);
