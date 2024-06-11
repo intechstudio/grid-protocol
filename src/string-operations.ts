@@ -161,7 +161,6 @@ export class GridScript {
       splitArray,
       "short"
     );
-    console.log(splitArray, script);
     return shorted;
   }
 
@@ -237,9 +236,7 @@ export class GridScript {
 
   static compressScript(script: string) {
     const short = GridScript.shortify(script);
-    console.log(short);
     const minified = GridScript.minifyScript(short);
-    console.log(minified);
     return minified.trim();
   }
 
