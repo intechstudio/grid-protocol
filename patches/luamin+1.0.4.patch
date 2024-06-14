@@ -2,7 +2,7 @@ diff --git a/node_modules/luamin/luamin.js b/node_modules/luamin/luamin.js
 index a37f6b1..9088a7a 100644
 --- a/node_modules/luamin/luamin.js
 +++ b/node_modules/luamin/luamin.js
-@@ -1,24 +1,29 @@
+@@ -1,24 +1,30 @@
  /*! https://mths.be/luamin v1.0.4 by @mathias */
 -;(function(root) {
 +
@@ -39,10 +39,11 @@ index a37f6b1..9088a7a 100644
 +import { rsort } from "semver";
 +	luaparse.defaultOptions.comments = true;
 +	luaparse.defaultOptions.locations = true;
++	luaparse.defaultOptions.luaVersion = '5.3';
  	luaparse.defaultOptions.scope = true;
  	var parse = luaparse.parse;
  
-@@ -123,6 +128,7 @@
+@@ -123,6 +129,7 @@
  	var identifierMap;
  	var identifiersInUse;
  	var generateIdentifier = function(originalName) {
@@ -50,7 +51,7 @@ index a37f6b1..9088a7a 100644
  		// Preserve `self` in methods
  		if (originalName == 'self') {
  			return originalName;
-@@ -244,16 +250,16 @@
+@@ -244,16 +251,16 @@
  				? generateIdentifier(expression.name)
  				: expression.name;
  
@@ -71,7 +72,7 @@ index a37f6b1..9088a7a 100644
  		} else if (
  			expressionType == 'LogicalExpression' ||
  			expressionType == 'BinaryExpression'
-@@ -413,7 +419,6 @@
+@@ -413,7 +420,6 @@
  			throw TypeError('Unknown expression type: `' + expressionType + '`');
  
  		}
@@ -79,7 +80,7 @@ index a37f6b1..9088a7a 100644
  		return result;
  	};
  
-@@ -428,7 +433,6 @@
+@@ -428,7 +434,6 @@
  	var formatStatement = function(statement) {
  		var result = '';
  		var statementType = statement.type;
@@ -87,7 +88,7 @@ index a37f6b1..9088a7a 100644
  		if (statementType == 'AssignmentStatement') {
  
  			// left-hand side
-@@ -448,7 +452,11 @@
+@@ -448,7 +453,11 @@
  				}
  			});
  
@@ -100,7 +101,7 @@ index a37f6b1..9088a7a 100644
  
  			result = 'local ';
  
-@@ -614,7 +622,7 @@
+@@ -614,7 +623,7 @@
  		return result;
  	};
  
@@ -109,7 +110,7 @@ index a37f6b1..9088a7a 100644
  		// `argument` can be a Lua code snippet (string)
  		// or a luaparse-compatible AST (object)
  		var ast = typeof argument == 'string'
-@@ -638,11 +646,17 @@
+@@ -638,11 +647,17 @@
  			throw Error('Missing required AST property: `globals`');
  		}
  
@@ -128,7 +129,7 @@ index a37f6b1..9088a7a 100644
  	var luamin = {
  		'version': '1.0.4',
  		'minify': minify
-@@ -667,5 +681,5 @@
+@@ -667,5 +682,5 @@
  	} else { // in Rhino or a web browser
  		root.luamin = luamin;
  	}
