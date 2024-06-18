@@ -1,5 +1,5 @@
 diff --git a/node_modules/luamin/luamin.js b/node_modules/luamin/luamin.js
-index a37f6b1..9088a7a 100644
+index a37f6b1..c65c015 100644
 --- a/node_modules/luamin/luamin.js
 +++ b/node_modules/luamin/luamin.js
 @@ -1,24 +1,30 @@
@@ -51,7 +51,7 @@ index a37f6b1..9088a7a 100644
  		// Preserve `self` in methods
  		if (originalName == 'self') {
  			return originalName;
-@@ -244,16 +251,16 @@
+@@ -244,20 +251,21 @@
  				? generateIdentifier(expression.name)
  				: expression.name;
  
@@ -72,7 +72,21 @@ index a37f6b1..9088a7a 100644
  		} else if (
  			expressionType == 'LogicalExpression' ||
  			expressionType == 'BinaryExpression'
-@@ -413,7 +420,6 @@
+ 		) {
++			console.log(expression)
+ 
+ 			// If an expression with precedence x
+ 			// contains an expression with precedence < x,
+@@ -289,7 +297,7 @@
+ 					associativity != options.direction &&
+ 					options.parent != '+' &&
+ 					!(options.parent == '*' && (operator == '/' || operator == '*'))
+-				)
++				) || expression.inParens
+ 			) {
+ 				// The most simple case here is that of
+ 				// protecting the parentheses on the RHS of
+@@ -413,7 +421,6 @@
  			throw TypeError('Unknown expression type: `' + expressionType + '`');
  
  		}
@@ -80,7 +94,7 @@ index a37f6b1..9088a7a 100644
  		return result;
  	};
  
-@@ -428,7 +434,6 @@
+@@ -428,7 +435,6 @@
  	var formatStatement = function(statement) {
  		var result = '';
  		var statementType = statement.type;
@@ -88,20 +102,26 @@ index a37f6b1..9088a7a 100644
  		if (statementType == 'AssignmentStatement') {
  
  			// left-hand side
-@@ -448,7 +453,11 @@
+@@ -448,7 +454,17 @@
  				}
  			});
  
 -		} else if (statementType == 'LocalStatement') {
 +		} 
 +		else if (statementType == 'Comment'){
-+			result = joinStatements(result, statement.raw + " ");
++			const blockComment = statement.raw.startsWith("--[[") && statement.raw.endsWith("]]");
++			if(blockComment){
++				result = joinStatements(result, statement.raw + " ");
++			}
++			else {
++				result = joinStatements(result, `\n${statement.raw}\n`);
++			}
 +		}
 +		else if (statementType == 'LocalStatement') {
  
  			result = 'local ';
  
-@@ -614,7 +623,7 @@
+@@ -614,7 +630,7 @@
  		return result;
  	};
  
@@ -110,7 +130,7 @@ index a37f6b1..9088a7a 100644
  		// `argument` can be a Lua code snippet (string)
  		// or a luaparse-compatible AST (object)
  		var ast = typeof argument == 'string'
-@@ -638,11 +647,17 @@
+@@ -638,11 +654,17 @@
  			throw Error('Missing required AST property: `globals`');
  		}
  
@@ -129,7 +149,7 @@ index a37f6b1..9088a7a 100644
  	var luamin = {
  		'version': '1.0.4',
  		'minify': minify
-@@ -667,5 +682,5 @@
+@@ -667,5 +689,5 @@
  	} else { // in Rhino or a web browser
  		root.luamin = luamin;
  	}

@@ -231,6 +231,7 @@ export class GridScript {
   static minifyScript(value: string) {
     var code = value;
     const minified = minify(code);
+    console.log(minified);
     return minified;
   }
 
