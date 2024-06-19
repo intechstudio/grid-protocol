@@ -160,7 +160,7 @@ class_database = {
       },
       "UPTIME": {
         "offset": 5,
-        "length": 8
+        "length": 16
       }
     }
   },
