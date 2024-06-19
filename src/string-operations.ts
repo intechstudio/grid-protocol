@@ -1,5 +1,5 @@
 import { grid } from "./grid-protocol";
-import { formatText } from "lua-fmt";
+import { formatText } from "grid-lua-fmt";
 // @ts-ignore
 import * as luamin from "luamin";
 

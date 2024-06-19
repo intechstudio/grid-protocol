@@ -23,9 +23,32 @@ test("Default configuration compression/expansion", function () {
   });
 });
 
-// test minifier single quote handling patch
-test("Minifier", function () {
+test("Various quotemark combination", function () {
   let luaString = `local str="hello('(d'"`;
   const compressed = GridScript.compressScript(luaString);
   expect(compressed).toMatch(luaString);
+});
+
+//Unexpected:
+//midi_send(0, 0, 0, 0) -- asd midi_send(0,0,0,0)
+test("Comment parsing: Between lines", function () {
+  let luaString = `midi_send(0, 0, 0, 0)\n-- asd\nmidi_send(0, 0, 0, 0)`;
+  const compressed = GridScript.compressScript(luaString);
+  const expanded = GridScript.expandScript(compressed);
+  expect(expanded).toMatch(luaString);
+});
+
+//  Unexpected:
+//  midi_send(
+//      ch,
+//      176,
+//      cc,
+//      val
+//      -- asd
+//  )
+test("Comment parsing: New line", function () {
+  let luaString = `midi_send(ch, 176, cc, val)\n-- asd`;
+  const compressed = GridScript.compressScript(luaString);
+  const expanded = GridScript.expandScript(compressed);
+  expect(expanded).toMatch(luaString);
 });
