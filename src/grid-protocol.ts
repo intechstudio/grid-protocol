@@ -1530,6 +1530,22 @@ class GridProtocol {
     return res;
   }
 
+  public lua_function_helpers() {
+    const res = new Map<string, string>();
+    for (const key in grid_protocol) {
+      if (typeof grid_protocol[key] === "object") {
+        continue;
+      }
+      if (
+        key.startsWith("GRID_LUA_FNC") &&
+        key.endsWith("_usage")
+      ) {
+        res.set(key, grid_protocol[key]);
+      }
+    }
+    return res;
+  }
+
   public module_hwcfgs() {
     const res: any[] = [];
     for (const key in grid_protocol) {
