@@ -1524,26 +1524,41 @@ class GridProtocol {
         key.startsWith("GRID_LUA_FNC") &&
         key.endsWith("_human")
       ) {
-        res.set(key, grid_protocol[key]);
+        res.set(key.split("_human")[0], grid_protocol[key]);
       }
     }
     return res;
   }
 
-  public lua_function_helpers() {
-    const res = new Map<string, string>();
+  public lua_function_forbiddens() {
+    const res: string[] = [];
     for (const key in grid_protocol) {
       if (typeof grid_protocol[key] === "object") {
         continue;
       }
       if (
         key.startsWith("GRID_LUA_FNC") &&
-        key.endsWith("_usage")
+        key.endsWith("_short")
       ) {
-        res.set(key, grid_protocol[key]);
+        res.push(grid_protocol[key]);
       }
     }
     return res;
+  }
+
+  public get_lua_function_helper(
+    fncKey: string
+  ): string | undefined {
+    for (const key in grid_protocol) {
+      if (typeof grid_protocol[key] === "object") {
+        continue;
+      }
+      if (key.endsWith("_usage") && key.includes(fncKey)) {
+        return grid_protocol[key];
+      }
+    }
+
+    return undefined;
   }
 
   public module_hwcfgs() {
@@ -1566,6 +1581,39 @@ class GridProtocol {
     }
 
     return res;
+  }
+
+  public is_element_compatible_with(
+    element: ElementType,
+    target: ElementType
+  ): boolean {
+    const filtredEvents = [EventType.INIT, EventType.TIMER];
+
+    const elementEvents = grid
+      .get_element_events(element)
+      .map((e) => e.desc as EventType)
+      .filter(
+        (e) => !filtredEvents.includes(e as EventType)
+      );
+
+    const configEvents = grid
+      .get_element_events(target)
+      .map((e) => e.desc as EventType)
+      .filter(
+        (e) => !filtredEvents.includes(e as EventType)
+      );
+
+    const compatibleEvents = elementEvents.reduce(
+      (acc: EventType[], value: EventType) => {
+        if (configEvents.includes(value)) {
+          acc.push(value);
+        }
+        return acc;
+      },
+      []
+    );
+
+    return compatibleEvents.length === elementEvents.length;
   }
 }
 

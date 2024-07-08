@@ -1,6 +1,6 @@
 {
   "name": "grid-protocol",
-  "version": "1.2.63",
+  "version": "1.2.64",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "npx patch-package && vitest run",
