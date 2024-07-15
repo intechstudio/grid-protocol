@@ -31,7 +31,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "grid-lua-fmt": "^2.6.5",
+    "@intechstudio/grid-luafmt": "^1.20240715.744",
     "lodash": "^4.17.21",
     "luamin": "^1.0.4"
   },
