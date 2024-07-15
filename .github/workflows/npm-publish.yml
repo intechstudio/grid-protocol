@@ -15,6 +15,7 @@ jobs:
           node-version: "18.16.1"
       - run: npm i
       - run: npm run test
+
   build:
     needs: unit-tests
     runs-on: ubuntu-latest
@@ -35,6 +36,10 @@ jobs:
         with:
           node-version: "18.16.1"
           registry-url: https://registry.npmjs.org/
+      - run: |  
+          echo "action_date=$(date +1.%Y%m%d.%-H%M)" >> $PACKAGE_VERSION_ENV
+          echo "Setting new version to $PACKAGE_VERSION_ENV"
+          npm version $PACKAGE_VERSION_ENV --no-git-tag-version
       - run: npm i
       - run: npm publish
         env:
