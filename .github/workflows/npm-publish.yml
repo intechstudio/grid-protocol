@@ -38,8 +38,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: |  
           echo "action_date=$(date +1.%Y%m%d.%-H%M)" >> $GITHUB_ENV
-          echo "Setting new version to ${{ env.action_date }}"
-          npm version ${{ env.action_date }} --no-git-tag-version
+          echo "Setting new version to ${{ $GITHUB_ENV.action_date }}"
+          npm version ${{ $GITHUB_ENV.action_date }} --no-git-tag-version
       - run: npm i
       - run: npm publish
         env:
