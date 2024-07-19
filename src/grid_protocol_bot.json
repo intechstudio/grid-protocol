@@ -236,6 +236,8 @@
     "GRID_LUA_FNC_G_LIMIT_human": "limit",
     "GRID_LUA_FNC_G_MAPSAT_short": "gmaps",
     "GRID_LUA_FNC_G_MAPSAT_human": "map_saturate",
+    "GRID_LUA_FNC_G_SIGN_short": "sign",
+    "GRID_LUA_FNC_G_SIGN_human": "sgn",
     "GRID_LUA_FNC_G_SEGCALC_short": "gsc",
     "GRID_LUA_FNC_G_SEGCALC_human": "segment_calculate",
     "GRID_LUA_FNC_G_WEBSOCKET_SEND_short": "gwss",
