@@ -15,12 +15,12 @@ export enum ModuleType {
 }
 
 export enum EventType {
-  INIT = "init",
+  SETUP = "setup",
   POTMETER = "potmeter",
   ENCODER = "encoder",
   BUTTON = "button",
-  MAPMODE = "mapmode",
-  MIDIRX = "midirx",
+  UTILITY = "utility",
+  MIDIRX = "midi rx",
   TIMER = "timer",
   ENDLESS = "endless",
 }
@@ -28,7 +28,7 @@ export enum EventType {
 export function NumberToEventType(value: Number) {
   switch (value) {
     case 0:
-      return EventType.INIT;
+      return EventType.SETUP;
     case 1:
       return EventType.POTMETER;
     case 2:
@@ -36,7 +36,7 @@ export function NumberToEventType(value: Number) {
     case 3:
       return EventType.BUTTON;
     case 4:
-      return EventType.MAPMODE;
+      return EventType.UTILITY;
     case 5:
       return EventType.MIDIRX;
     case 6:
@@ -50,7 +50,7 @@ export function NumberToEventType(value: Number) {
 
 export function EventTypeToNumber(value: EventType) {
   switch (value) {
-    case EventType.INIT:
+    case EventType.SETUP:
       return 0;
     case EventType.POTMETER:
       return 1;
@@ -58,7 +58,7 @@ export function EventTypeToNumber(value: EventType) {
       return 2;
     case EventType.BUTTON:
       return 3;
-    case EventType.MAPMODE:
+    case EventType.UTILITY:
       return 4;
     case EventType.MIDIRX:
       return 5;
@@ -578,50 +578,50 @@ interface CEEAT {
 
 // control element event assignment table.
 export const CEEAT: Record<EventType, CEEAT> = {
-  [EventType.INIT]: {
-    desc: "init",
+  [EventType.SETUP]: {
+    desc: EventType.SETUP,
     value: 0,
     key: "INIT",
   },
 
   [EventType.POTMETER]: {
-    desc: "potmeter",
+    desc: EventType.POTMETER,
     value: 1,
     key: "AC",
   },
 
   [EventType.ENCODER]: {
-    desc: "encoder",
+    desc: EventType.ENCODER,
     value: 2,
     key: "EC",
   },
 
   [EventType.BUTTON]: {
-    desc: "button",
+    desc: EventType.BUTTON,
     value: 3,
     key: "BC",
   },
 
-  [EventType.MAPMODE]: {
-    desc: "utility",
+  [EventType.UTILITY]: {
+    desc: EventType.UTILITY,
     value: 4,
     key: "MAP",
   },
 
   [EventType.MIDIRX]: {
-    desc: "midi rx",
+    desc: EventType.MIDIRX,
     value: 5,
     key: "MIDIRX",
   },
 
   [EventType.TIMER]: {
-    desc: "timer",
+    desc: EventType.TIMER,
     value: 6,
     key: "TIMER",
   },
 
   [EventType.ENDLESS]: {
-    desc: "endless",
+    desc: EventType.ENDLESS,
     value: 7,
     key: "ENDLESS",
   },
@@ -684,117 +684,117 @@ const moduleElements: {
 const elementEvents = {
   [ElementType.BUTTON]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_BUTTON_INIT,
     },
     {
-      ...CEEAT.button,
+      ...CEEAT[EventType.BUTTON],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.POTMETER]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
     },
     {
-      ...CEEAT.potmeter,
+      ...CEEAT[EventType.POTMETER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.FADER]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
     },
     {
-      ...CEEAT.potmeter,
+      ...CEEAT[EventType.POTMETER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.ENCODER]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_ENCODER_INIT,
     },
     {
-      ...CEEAT.button,
+      ...CEEAT[EventType.BUTTON],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
     },
     {
-      ...CEEAT.encoder,
+      ...CEEAT[EventType.ENCODER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_ENCODER_ENCODER,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.ENDLESS]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_ENDLESS_INIT,
     },
     {
-      ...CEEAT.button,
+      ...CEEAT[EventType.BUTTON],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_ENDLESS_BUTTON,
     },
     {
-      ...CEEAT.endless,
+      ...CEEAT[EventType.ENDLESS],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_ENDLESS_ENDLESS,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.SYSTEM]: [
     {
-      ...CEEAT.init,
+      ...CEEAT[EventType.SETUP],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_INIT,
     },
     {
-      ...CEEAT.mapmode,
+      ...CEEAT[EventType.UTILITY],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_MAPMODE,
     },
     {
-      ...CEEAT.midirx,
+      ...CEEAT[EventType.MIDIRX],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_MIDIRX,
     },
     {
-      ...CEEAT.timer,
+      ...CEEAT[EventType.TIMER],
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
@@ -1587,7 +1587,10 @@ class GridProtocol {
     element: ElementType,
     target: ElementType
   ): boolean {
-    const filtredEvents = [EventType.INIT, EventType.TIMER];
+    const filtredEvents = [
+      EventType.SETUP,
+      EventType.TIMER,
+    ];
 
     const elementEvents = grid
       .get_element_events(element)
