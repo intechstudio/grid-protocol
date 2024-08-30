@@ -249,6 +249,7 @@
     "GRID_LUA_FNC_G_IMMEDIATE_SEND_short": "gis",
     "GRID_LUA_FNC_G_IMMEDIATE_SEND_human": "immediate_send",
     "GRID_LUA_FNC_G_IMMEDIATE_SEND_fnptr": "l_grid_immediate_send",
+    "GRID_LUA_FNC_G_IMMEDIATE_SEND_usage": "immediate_send(int x, int y, string lua_code) Executes lua_code on the module addressed by x and y. Use x = nil and y = nil to trigger on all modules.",
     "GRID_LUA_FNC_G_GUI_DRAW_PIXEL_short": "ggdp",
     "GRID_LUA_FNC_G_GUI_DRAW_PIXEL_human": "gui_draw_pixel",
     "GRID_LUA_FNC_G_GUI_DRAW_PIXEL_fnptr": "l_grid_gui_draw_pixel",
