@@ -840,7 +840,7 @@ const elementEvents = {
         {
       ...CEEAT[EventType.SETUP],
       defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_INIT,
+        grid_protocol.GRID_ACTIONSTRING_LCD_INIT,
     }
   ],
 };
