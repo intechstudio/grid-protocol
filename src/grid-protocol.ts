@@ -13,7 +13,7 @@ export enum ModuleType {
   TEK1 = "TEK1",
   VSN0 = "VSN0",
   VSN1 = "VSN1",
-  VSNR = "VSNR",
+  VSN1R = "VSN1R",
   VSN2 = "VSN2",
   PB44 = "PB44",
 }
@@ -692,7 +692,7 @@ const moduleElements: {
     ...Array(241), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
-  [ModuleType.VSNR]: [
+  [ModuleType.VSN1R]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
