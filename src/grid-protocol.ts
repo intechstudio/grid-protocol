@@ -1166,7 +1166,7 @@ class GridProtocol {
       if (HWCFG[key] === hwcfg) {
         type =
           ModuleType[
-            key.substring(0, 4) as keyof typeof ModuleType
+            key.split("_")[0] as keyof typeof ModuleType
           ];
       }
     }
