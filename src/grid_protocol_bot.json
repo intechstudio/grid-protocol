@@ -757,6 +757,6 @@
     "GRID_LUA_FNC_L_ELEMENT_INDEX_short": "ind",
     "GRID_LUA_FNC_L_ELEMENT_INDEX_human": "element_index",
     "GRID_LUA_FNC_L_LIST_length": "1",
-    "GRID_LUA_LCD_META_init": "lcd_meta = { __index = {     \" GRID_LUA_FNC_L_ELEMENT_INDEX_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_L_ELEMENT_INDEX_helper \", a) end,     \" GRID_LUA_FNC_A_INIT_short \" = function (self) print('undefined action') end,     gtt = function (self,a) \" GRID_LUA_FNC_G_TIMER_START_short \"(self.index,a) end,  gtp = function (self) \" GRID_LUA_FNC_G_TIMER_STOP_short \"(self.index) end,  get = function (self,a) \" GRID_LUA_FNC_G_EVENT_TRIGGER_short \"(self.index,a) end    }}",
+    "GRID_LUA_L_META_init": "lcd_meta = { __index = {     \" GRID_LUA_FNC_L_ELEMENT_INDEX_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_L_ELEMENT_INDEX_helper \", a) end,     \" GRID_LUA_FNC_A_INIT_short \" = function (self) print('undefined action') end,     gtt = function (self,a) \" GRID_LUA_FNC_G_TIMER_START_short \"(self.index,a) end,  gtp = function (self) \" GRID_LUA_FNC_G_TIMER_STOP_short \"(self.index) end,  get = function (self,a) \" GRID_LUA_FNC_G_EVENT_TRIGGER_short \"(self.index,a) end    }}",
     "GRID_ACTIONSTRING_LCD_INIT": "<?lua --[[@cb]] --[[lcd init]] ?>"
 }
