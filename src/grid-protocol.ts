@@ -11,6 +11,10 @@ export enum ModuleType {
   PO16 = "PO16",
   TEK2 = "TEK2",
   TEK1 = "TEK1",
+  VSN0 = "VSN0",
+  VSN1 = "VSN1",
+  VSN1R = "VSN1R",
+  VSN2 = "VSN2",
   PB44 = "PB44",
 }
 
@@ -78,6 +82,7 @@ export enum ElementType {
   ENCODER = "encoder",
   FADER = "fader",
   ENDLESS = "endless",
+  LCD = "lcd",
 }
 
 export enum Architecture {
@@ -669,7 +674,39 @@ const moduleElements: {
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
-    ...Array(242), // Filling with undefined values until index 254
+    ...Array(1).fill(ElementType.LCD),
+    ...Array(241), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.VSN0]: [
+    ...Array(8).fill(ElementType.BUTTON),
+    ...Array(2).fill(ElementType.ENDLESS),
+    ...Array(245), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.VSN1]: [
+    ...Array(8).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.ENDLESS),
+    ...Array(4).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.LCD),
+    ...Array(241), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.VSN1R]: [
+    ...Array(8).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.ENDLESS),
+    ...Array(4).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.LCD),
+    ...Array(241), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.VSN2]: [
+    ...Array(8).fill(ElementType.BUTTON),
+    ...Array(4).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.LCD),
+    ...Array(4).fill(ElementType.BUTTON),
+    ...Array(1).fill(ElementType.LCD),
+    ...Array(237), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
   [ModuleType.PB44]: [
@@ -798,6 +835,13 @@ const elementEvents = {
       defaultConfig:
         grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
+  ],
+  [ElementType.LCD]: [
+        {
+      ...CEEAT[EventType.SETUP],
+      defaultConfig:
+        grid_protocol.GRID_ACTIONSTRING_SYSTEM_INIT,
+    }
   ],
 };
 
