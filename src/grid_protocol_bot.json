@@ -7,6 +7,7 @@
     "GRID_PARAMETER_ELEMENT_BUTTON": "2",
     "GRID_PARAMETER_ELEMENT_ENCODER": "3",
     "GRID_PARAMETER_ELEMENT_ENDLESS": "4",
+    "GRID_PARAMETER_ELEMENT_LCD": "5",
     "GRID_PARAMETER_EVENT_INIT": "0",
     "GRID_PARAMETER_EVENT_POTMETER": "1",
     "GRID_PARAMETER_EVENT_ENCODER": "2",
@@ -750,5 +751,12 @@
     "GRID_LUA_FNC_P_LIST_length": "8",
     "GRID_LUA_P_META_init": "potmeter_meta = { __index = {      \" GRID_LUA_FNC_P_ELEMENT_INDEX_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_ELEMENT_INDEX_helper \", a) end,     \" GRID_LUA_FNC_P_POTMETER_NUMBER_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_NUMBER_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_VALUE_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_VALUE_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_MIN_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_MIN_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_MAX_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_MAX_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_MODE_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_MODE_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_ELAPSED_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_ELAPSED_helper \", a) end,   \" GRID_LUA_FNC_P_POTMETER_STATE_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_P_POTMETER_STATE_helper \", a) end,     \" GRID_LUA_FNC_A_INIT_short \" = function (self) print('undefined action') end,  \" GRID_LUA_FNC_A_POTMETER_short \" = function (self) print('undefined action') end,  \" GRID_LUA_FNC_A_TIMER_short \" = function (self) print('undefined action') end,    gtt = function (self,a) \" GRID_LUA_FNC_G_TIMER_START_short \"(self.index,a) end,  gtp = function (self) \" GRID_LUA_FNC_G_TIMER_STOP_short \"(self.index) end,  get = function (self,a) \" GRID_LUA_FNC_G_EVENT_TRIGGER_short \"(self.index,a) end,  gen = function (self,a) return gen(self.index,a) end    }}",
     "GRID_ACTIONSTRING_POTMETER_INIT": "<?lua --[[@l]] local num,val,red,gre,blu=self:ind(),self:pva(),glr(),glg(),glb()--[[@glc]] glc(num,1,red,gre,blu)--[[@glp]] glp(num,1,val) ?>",
-    "GRID_ACTIONSTRING_POTMETER_POTMETER": "<?lua --[[@l]] local num,val,ch,cc=self:ind(),self:pva(),(gmy()*4+gpc())%16,(32+gmx()*16+self:ind())%128--[[@gms]] gms(ch,176,cc,val)--[[@glp]] glp(num,1,val) ?>"
+    "GRID_ACTIONSTRING_POTMETER_POTMETER": "<?lua --[[@l]] local num,val,ch,cc=self:ind(),self:pva(),(gmy()*4+gpc())%16,(32+gmx()*16+self:ind())%128--[[@gms]] gms(ch,176,cc,val)--[[@glp]] glp(num,1,val) ?>",
+    "GRID_LUA_FNC_L_ELEMENT_INDEX_index": "0",
+    "GRID_LUA_FNC_L_ELEMENT_INDEX_helper": "0",
+    "GRID_LUA_FNC_L_ELEMENT_INDEX_short": "ind",
+    "GRID_LUA_FNC_L_ELEMENT_INDEX_human": "element_index",
+    "GRID_LUA_FNC_L_LIST_length": "1",
+    "GRID_LUA_LCD_META_init": "lcd_meta = { __index = {     \" GRID_LUA_FNC_L_ELEMENT_INDEX_short \"=function (self,a) return gtv(self.index, \" GRID_LUA_FNC_L_ELEMENT_INDEX_helper \", a) end,     \" GRID_LUA_FNC_A_INIT_short \" = function (self) print('undefined action') end,     gtt = function (self,a) \" GRID_LUA_FNC_G_TIMER_START_short \"(self.index,a) end,  gtp = function (self) \" GRID_LUA_FNC_G_TIMER_STOP_short \"(self.index) end,  get = function (self,a) \" GRID_LUA_FNC_G_EVENT_TRIGGER_short \"(self.index,a) end    }}",
+    "GRID_ACTIONSTRING_LCD_INIT": "<?lua --[[@cb]] --[[lcd init]] ?>"
 }
