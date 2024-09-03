@@ -638,67 +638,57 @@ const moduleElements: {
 } = {
   [ModuleType.PO16]: [
     ...Array(16).fill(ElementType.POTMETER),
-    ...Array(239), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.PBF4]: [
     ...Array(4).fill(ElementType.POTMETER),
     ...Array(4).fill(ElementType.FADER),
     ...Array(4).fill(ElementType.BUTTON),
-    ...Array(243), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.BU16]: [
     ...Array(16).fill(ElementType.BUTTON),
-    ...Array(239), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.EN16]: [
     ...Array(16).fill(ElementType.ENCODER),
-    ...Array(239), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.EF44]: [
     ...Array(4).fill(ElementType.ENCODER),
     ...Array(4).fill(ElementType.FADER),
-    ...Array(247), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.TEK2]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(2).fill(ElementType.ENDLESS),
-    ...Array(245), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.TEK1]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.LCD),
-    ...Array(241), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.VSN0]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(2).fill(ElementType.ENDLESS),
-    ...Array(245), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.VSN1]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.LCD),
-    ...Array(241), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.VSN1R]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.LCD),
-    ...Array(241), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.VSN2]: [
     ...Array(8).fill(ElementType.BUTTON),
@@ -706,14 +696,12 @@ const moduleElements: {
     ...Array(1).fill(ElementType.LCD),
     ...Array(4).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.LCD),
-    ...Array(237), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
   [ModuleType.PB44]: [
     ...Array(8).fill(ElementType.POTMETER),
     ...Array(8).fill(ElementType.BUTTON),
-    ...Array(239), // Filling with undefined values until index 254
-    ElementType.SYSTEM, // Add system element at index 255
+    ElementType.SYSTEM,
   ],
 };
 
