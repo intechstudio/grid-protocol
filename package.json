@@ -1,6 +1,6 @@
 {
   "name": "@intechstudio/grid-protocol",
-  "version": "1.2.65",
+  "version": "1.2.66",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "npx patch-package && vitest run",
@@ -31,7 +31,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@intechstudio/grid-luafmt": "^1.20240715.744",
+    "@intechstudio/grid-luafmt": "^1.20241030.1424",
     "lodash": "^4.17.21",
     "luamin": "^1.0.4"
   },
