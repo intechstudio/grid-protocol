@@ -218,11 +218,7 @@ function returnDeepestObjects(obj: any) {
 }
 
 function mapObjectsToArray(array: any[], object: any) {
-  function mapper(
-    baseArray: any[],
-    type: any,
-    allowed: any
-  ) {
+  function mapper(baseArray: any[], type: any, allowed: any) {
     return (baseArray = baseArray.map((e, i) => {
       return { type: type, allowed: allowed, ...e };
     }));
@@ -230,56 +226,34 @@ function mapObjectsToArray(array: any[], object: any) {
 
   for (const key in object as any) {
     if (key == "B") {
-      array = [
-        ...array,
-        ...mapper(object[key], "button", ["3"]),
-      ];
+      array = [...array, ...mapper(object[key], "button", ["3"])];
     }
 
     if (key == "EP") {
-      array = [
-        ...array,
-        ...mapper(object[key], "endless", ["2"]),
-      ];
+      array = [...array, ...mapper(object[key], "endless", ["2"])];
     }
 
     if (key == "E") {
-      array = [
-        ...array,
-        ...mapper(object[key], "encoder", ["2"]),
-      ];
+      array = [...array, ...mapper(object[key], "encoder", ["2"])];
     }
 
     if (key == "G") {
-      array = [
-        ...array,
-        ...mapper(object[key], "global", ["2", "3", "1"]),
-      ];
+      array = [...array, ...mapper(object[key], "global", ["2", "3", "1"])];
     }
 
     if (key == "P") {
-      array = [
-        ...array,
-        ...mapper(object[key], "potmeter", ["1"]),
-      ];
+      array = [...array, ...mapper(object[key], "potmeter", ["1"])];
     }
 
     if (key == "KW") {
-      array = [
-        ...array,
-        ...mapper(object[key], "keyword", ["1", "2", "3"]),
-      ];
+      array = [...array, ...mapper(object[key], "keyword", ["1", "2", "3"])];
     }
   }
 
   return array;
 }
 
-function createNestedObject(
-  base: any,
-  names: any,
-  value: any
-) {
+function createNestedObject(base: any, names: any, value: any) {
   // to avoid array property overwriting
 
   if (value == "epva") {
@@ -289,8 +263,7 @@ function createNestedObject(
   let _names = [...names];
 
   // If a value is given, remove the last name and keep it for later:
-  var lastName =
-    arguments.length === 3 ? _names.pop() : false;
+  var lastName = arguments.length === 3 ? _names.pop() : false;
 
   // Walk the hierarchy, creating new objects where needed.
   // If the lastName was removed, then the last object is not set yet:
@@ -313,47 +286,33 @@ let [class_name_from_code, class_code_from_name] =
 let [instr_name_from_code, instr_code_from_name] =
   instr_code_decode_encode_init();
 
-let class_parameters: any =
-  parse_class_parameters_from_protocol();
-let brc_parameters: any =
-  parse_brc_parameters_from_protocol();
+let class_parameters: any = parse_class_parameters_from_protocol();
+let brc_parameters: any = parse_brc_parameters_from_protocol();
 
 function parse_brc_parameters_from_protocol() {
   let brcparams: any = {};
 
   for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
-      if (
-        key.startsWith("GRID_BRC_") &&
-        key.endsWith("length")
-      ) {
+      if (key.startsWith("GRID_BRC_") && key.endsWith("length")) {
         let splitted = key.split("_");
-        let parameter_name: string =
-          splitted[splitted.length - 2];
+        let parameter_name: string = splitted[splitted.length - 2];
 
         if (brcparams[parameter_name] === undefined) {
           brcparams[parameter_name] = {};
         }
 
         brcparams[parameter_name].name = parameter_name;
-        brcparams[parameter_name].length = parseInt(
-          grid_protocol[key]
-        );
-      } else if (
-        key.startsWith("GRID_BRC_") &&
-        key.endsWith("offset")
-      ) {
+        brcparams[parameter_name].length = parseInt(grid_protocol[key]);
+      } else if (key.startsWith("GRID_BRC_") && key.endsWith("offset")) {
         let splitted = key.split("_");
-        let parameter_name: string =
-          splitted[splitted.length - 2];
+        let parameter_name: string = splitted[splitted.length - 2];
 
         if (brcparams[parameter_name] === undefined) {
           brcparams[parameter_name] = {};
         }
 
-        brcparams[parameter_name].offset = parseInt(
-          grid_protocol[key]
-        );
+        brcparams[parameter_name].offset = parseInt(grid_protocol[key]);
       }
     }
   }
@@ -367,13 +326,9 @@ function class_code_decode_encode_init() {
 
   for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
-      if (
-        key.startsWith("GRID_CLASS_") &&
-        key.endsWith("code")
-      ) {
+      if (key.startsWith("GRID_CLASS_") && key.endsWith("code")) {
         let splitted = key.split("_");
-        let class_name: string =
-          splitted[splitted.length - 2];
+        let class_name: string = splitted[splitted.length - 2];
         name_from_code[grid_protocol[key]] = class_name;
         code_from_name[class_name] = grid_protocol[key];
       }
@@ -389,17 +344,11 @@ function instr_code_decode_encode_init() {
 
   for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
-      if (
-        key.startsWith("GRID_INSTR_") &&
-        key.endsWith("code")
-      ) {
+      if (key.startsWith("GRID_INSTR_") && key.endsWith("code")) {
         let splitted = key.split("_");
-        let instr_name =
-          splitted[splitted.length - 2].toUpperCase();
-        instrcodes[grid_protocol[key].toLowerCase()] =
-          instr_name;
-        instrnames[instr_name] =
-          grid_protocol[key].toLowerCase();
+        let instr_name = splitted[splitted.length - 2].toUpperCase();
+        instrcodes[grid_protocol[key].toLowerCase()] = instr_name;
+        instrnames[instr_name] = grid_protocol[key].toLowerCase();
       }
     }
   }
@@ -412,63 +361,40 @@ function parse_class_parameters_from_protocol() {
 
   for (const key in grid_protocol as any) {
     if (typeof grid_protocol[key] !== "object") {
-      if (
-        key === "GRID_CLASS_length" ||
-        key === "GRID_CLASS_offset"
-      ) {
+      if (key === "GRID_CLASS_length" || key === "GRID_CLASS_offset") {
         // they keys should have been depricated, are not useful, even in firmware
-      } else if (
-        key.startsWith("GRID_CLASS_") &&
-        key.endsWith("length")
-      ) {
+      } else if (key.startsWith("GRID_CLASS_") && key.endsWith("length")) {
         let splitted = key.split("_");
-        let class_name: string =
-          splitted[splitted.length - 3];
+        let class_name: string = splitted[splitted.length - 3];
 
-        let parameter_name: string =
-          splitted[splitted.length - 2];
+        let parameter_name: string = splitted[splitted.length - 2];
         let parameter_length = parseInt(grid_protocol[key]);
 
         if (classparams[class_name] === undefined) {
           classparams[class_name] = {};
         }
-        if (
-          classparams[class_name][parameter_name] ===
-          undefined
-        ) {
+        if (classparams[class_name][parameter_name] === undefined) {
           classparams[class_name][parameter_name] = {};
         }
 
-        classparams[class_name][parameter_name].name =
-          parameter_name;
-        classparams[class_name][parameter_name].length =
-          parameter_length;
-      } else if (
-        key.startsWith("GRID_CLASS_") &&
-        key.endsWith("offset")
-      ) {
+        classparams[class_name][parameter_name].name = parameter_name;
+        classparams[class_name][parameter_name].length = parameter_length;
+      } else if (key.startsWith("GRID_CLASS_") && key.endsWith("offset")) {
         let splitted = key.split("_");
-        let class_name: string =
-          splitted[splitted.length - 3];
+        let class_name: string = splitted[splitted.length - 3];
 
-        let parameter_name: string =
-          splitted[splitted.length - 2];
+        let parameter_name: string = splitted[splitted.length - 2];
         let parameter_offset = parseInt(grid_protocol[key]);
 
         if (classparams[class_name] === undefined) {
           classparams[class_name] = {};
         }
-        if (
-          classparams[class_name][parameter_name] ===
-          undefined
-        ) {
+        if (classparams[class_name][parameter_name] === undefined) {
           classparams[class_name][parameter_name] = {};
         }
 
-        classparams[class_name][parameter_name].name =
-          parameter_name;
-        classparams[class_name][parameter_name].offset =
-          parameter_offset;
+        classparams[class_name][parameter_name].name = parameter_name;
+        classparams[class_name][parameter_name].offset = parameter_offset;
       }
     }
   }
@@ -490,9 +416,8 @@ function read_integer_from_asciicode_array(
   let ret_value: any = 0;
   for (let i = 0; i < length; i++) {
     ret_value +=
-      parseInt(
-        "0x" + String.fromCharCode(array[offset + i])
-      ) * Math.pow(16, length - 1 - i);
+      parseInt("0x" + String.fromCharCode(array[offset + i])) *
+      Math.pow(16, length - 1 - i);
   }
 
   // if elemnt in ascii array was not valid hex character (0...9 or a...f)
@@ -509,10 +434,7 @@ function write_integer_to_asciicode_array(
   length: number,
   value: any
 ) {
-  let hex_value_array = value
-    .toString(16)
-    .padStart(length, "0")
-    .split("");
+  let hex_value_array = value.toString(16).padStart(length, "0").split("");
 
   for (let i = offset; i < offset + length; i++) {
     array[i] = hex_value_array[i - offset].charCodeAt(0);
@@ -722,126 +644,104 @@ const elementEvents = {
   [ElementType.BUTTON]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_BUTTON_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_BUTTON_INIT,
     },
     {
       ...CEEAT[EventType.BUTTON],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.POTMETER]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
     },
     {
       ...CEEAT[EventType.POTMETER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.FADER]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_POTMETER_INIT,
     },
     {
       ...CEEAT[EventType.POTMETER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_POTMETER_POTMETER,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.ENCODER]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_ENCODER_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_ENCODER_INIT,
     },
     {
       ...CEEAT[EventType.BUTTON],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_BUTTON_BUTTON,
     },
     {
       ...CEEAT[EventType.ENCODER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_ENCODER_ENCODER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_ENCODER_ENCODER,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.ENDLESS]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_ENDLESS_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_ENDLESS_INIT,
     },
     {
       ...CEEAT[EventType.BUTTON],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_ENDLESS_BUTTON,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_ENDLESS_BUTTON,
     },
     {
       ...CEEAT[EventType.ENDLESS],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_ENDLESS_ENDLESS,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_ENDLESS_ENDLESS,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.SYSTEM]: [
     {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_INIT,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_INIT,
     },
     {
       ...CEEAT[EventType.UTILITY],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_MAPMODE,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_MAPMODE,
     },
     {
       ...CEEAT[EventType.MIDIRX],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_MIDIRX,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_MIDIRX,
     },
     {
       ...CEEAT[EventType.TIMER],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
   [ElementType.LCD]: [
-        {
+    {
       ...CEEAT[EventType.SETUP],
-      defaultConfig:
-        grid_protocol.GRID_ACTIONSTRING_LCD_INIT,
-    }
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_LCD_INIT,
+    },
   ],
 };
 
@@ -934,9 +834,7 @@ class GridProperty {
       if (typeof grid_protocol[key] !== "object") {
         // GRID MODULE HWCFGS
         if (key.startsWith("GRID_MODULE_")) {
-          const paramName: string = key.substring(
-            "GRID_MODULE_".length
-          );
+          const paramName: string = key.substring("GRID_MODULE_".length);
           HWCFG[paramName] = +grid_protocol[key];
         }
 
@@ -950,9 +848,7 @@ class GridProperty {
           );
         }
 
-        if (
-          key == "GRID_PARAMETER_ACTIONSTRING_maxlength"
-        ) {
+        if (key == "GRID_PARAMETER_ACTIONSTRING_maxlength") {
           CONFIG_LENGTH = +grid_protocol[key];
         }
 
@@ -971,9 +867,7 @@ class GridProperty {
         }
 
         // GRID TEMPLATE PARAMETERS
-        if (
-          key.startsWith("GRID_PARAMETER_TEMPLATEINDEX_")
-        ) {
+        if (key.startsWith("GRID_PARAMETER_TEMPLATEINDEX_")) {
           const param = key
             .substr("GRID_PARAMETER_TEMPLATEINDEX_".length)
             .slice(0, -5);
@@ -982,9 +876,7 @@ class GridProperty {
 
         // GRID PROTOCOL VERSION
         if (key.startsWith("GRID_PROTOCOL_VERSION_")) {
-          const param = key.substr(
-            "GRID_PROTOCOL_VERSION_".length
-          );
+          const param = key.substr("GRID_PROTOCOL_VERSION_".length);
           VERSION[param] = +grid_protocol[key];
         }
 
@@ -993,11 +885,7 @@ class GridProperty {
           let paramSet = key.split("_");
           let value: any = grid_protocol[key];
           if (paramSet[paramSet.length - 1] !== "frame") {
-            createNestedObject(
-              BRC,
-              paramSet.slice(2),
-              value
-            );
+            createNestedObject(BRC, paramSet.slice(2), value);
           }
         }
 
@@ -1019,10 +907,7 @@ class GridProperty {
         }
 
         // AUTOCOMPLETE FUNCTIONS
-        if (
-          key.startsWith("GRID_LUA_FNC_G") &&
-          key.endsWith("_human")
-        ) {
+        if (key.startsWith("GRID_LUA_FNC_G") && key.endsWith("_human")) {
           let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: value,
@@ -1030,10 +915,7 @@ class GridProperty {
           });
         }
 
-        if (
-          key.startsWith("GRID_LUA_FNC_EP") &&
-          key.endsWith("_human")
-        ) {
+        if (key.startsWith("GRID_LUA_FNC_EP") && key.endsWith("_human")) {
           let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
@@ -1045,10 +927,7 @@ class GridProperty {
             type: "function",
             elementtype: ElementType.SYSTEM,
           });
-        } else if (
-          key.startsWith("GRID_LUA_FNC_E") &&
-          key.endsWith("_human")
-        ) {
+        } else if (key.startsWith("GRID_LUA_FNC_E") && key.endsWith("_human")) {
           let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
@@ -1062,10 +941,7 @@ class GridProperty {
           });
         }
 
-        if (
-          key.startsWith("GRID_LUA_FNC_B") &&
-          key.endsWith("_human")
-        ) {
+        if (key.startsWith("GRID_LUA_FNC_B") && key.endsWith("_human")) {
           let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
@@ -1079,10 +955,7 @@ class GridProperty {
           });
         }
 
-        if (
-          key.startsWith("GRID_LUA_FNC_P") &&
-          key.endsWith("_human")
-        ) {
+        if (key.startsWith("GRID_LUA_FNC_P") && key.endsWith("_human")) {
           let value: any = grid_protocol[key];
           LUA_AUTOCOMPLETE.push({
             label: "self:" + value,
@@ -1109,11 +982,7 @@ class GridProperty {
           let value: any = grid_protocol[key];
           if (paramSet[paramSet.length - 1] !== "frame") {
             // not sure why fram is unsupported...
-            createNestedObject(
-              CLASSES,
-              paramSet.slice(2),
-              value
-            );
+            createNestedObject(CLASSES, paramSet.slice(2), value);
           }
         }
       }
@@ -1141,22 +1010,21 @@ class GridProperty {
   private extendLua(propObject: GridLua): GridLua[] {
     const deepObjects = returnDeepestObjects(propObject);
     //console.log(deepObjects)
-    const array = mapObjectsToArray(
-      editor_lua_properties,
-      deepObjects
-    );
+    const array = mapObjectsToArray(editor_lua_properties, deepObjects);
     return array;
   }
 }
 
-class GridProtocol {
-  private properties = new GridProperty();
+import { ActionBlock as _ActionBlock } from "./actionBlockInformation";
+export namespace grid {
+  const properties = new GridProperty();
+  export const ActionBlock = _ActionBlock;
 
-  public getProperty(key: string): any {
-    return this.properties.getProperty(key);
+  export function getProperty(key: string): any {
+    return properties.getProperty(key);
   }
 
-  public module_type_from_hwcfg(
+  export function module_type_from_hwcfg(
     hwcfg: number
   ): ModuleType | undefined {
     const HWCFG = grid.getProperty("HWCFG");
@@ -1164,25 +1032,22 @@ class GridProtocol {
 
     for (const key in HWCFG as any) {
       if (HWCFG[key] === hwcfg) {
-        type =
-          ModuleType[
-            key.split("_")[0] as keyof typeof ModuleType
-          ];
+        type = ModuleType[key.split("_")[0] as keyof typeof ModuleType];
       }
     }
 
     return type;
   }
 
-  public get_module_element_list(type: ModuleType) {
+  export function get_module_element_list(type: ModuleType) {
     return moduleElements[type];
   }
 
-  public get_element_events(type: ElementType) {
+  export function get_element_events(type: ElementType) {
     return elementEvents[type];
   }
 
-  public module_architecture_from_hwcfg(hwcfg: number) {
+  export function module_architecture_from_hwcfg(hwcfg: number) {
     if (hwcfg % 2 === 1) {
       return Architecture.ESP32;
     } else {
@@ -1190,7 +1055,7 @@ class GridProtocol {
     }
   }
 
-  public encode_packet(descriptor: any) {
+  export function encode_packet(descriptor: any) {
     if (descriptor === undefined) {
       return;
     }
@@ -1200,32 +1065,25 @@ class GridProtocol {
     descr.brc_parameters.ID = utility_genId();
     descr.brc_parameters.SX = 0;
     descr.brc_parameters.SY = 0;
-    descr.brc_parameters.SESSION =
-      this.properties.getProperty("SESSION");
+    descr.brc_parameters.SESSION = properties.getProperty("SESSION");
     descr.brc_parameters.MSGAGE = 0;
 
     if (descr.brc_parameters.DX !== undefined) {
-      descr.brc_parameters.DX =
-        parseInt(descr.brc_parameters.DX) + 127;
+      descr.brc_parameters.DX = parseInt(descr.brc_parameters.DX) + 127;
     } else {
       descr.brc_parameters.DX = 0; // assume global
     }
 
     if (descr.brc_parameters.DY !== undefined) {
-      descr.brc_parameters.DY =
-        parseInt(descr.brc_parameters.DY) + 127;
+      descr.brc_parameters.DY = parseInt(descr.brc_parameters.DY) + 127;
     } else {
       descr.brc_parameters.DY = 0; // assume global
     }
 
     // put brc parameters into hexarray
     let BRC_ARRAY: any = [];
-    BRC_ARRAY.push(
-      this.properties.getProperty("CONST").SOH
-    );
-    BRC_ARRAY.push(
-      this.properties.getProperty("CONST").BRC
-    );
+    BRC_ARRAY.push(properties.getProperty("CONST").SOH);
+    BRC_ARRAY.push(properties.getProperty("CONST").BRC);
 
     for (const key in brc_parameters as any) {
       let offset = brc_parameters[key].offset;
@@ -1233,32 +1091,18 @@ class GridProtocol {
       let value: any = descr.brc_parameters[key];
 
       if (descr.brc_parameters[key] === undefined) {
-        write_integer_to_asciicode_array(
-          BRC_ARRAY,
-          offset,
-          length,
-          0
-        );
+        write_integer_to_asciicode_array(BRC_ARRAY, offset, length, 0);
       } else {
-        write_integer_to_asciicode_array(
-          BRC_ARRAY,
-          offset,
-          length,
-          value
-        );
+        write_integer_to_asciicode_array(BRC_ARRAY, offset, length, value);
       }
     }
 
-    BRC_ARRAY.push(
-      this.properties.getProperty("CONST").EOB
-    );
+    BRC_ARRAY.push(properties.getProperty("CONST").EOB);
 
     // put class parameters into hexarray
     let CLASS_ARRAY: any = [];
 
-    CLASS_ARRAY.push(
-      this.properties.getProperty("CONST").STX
-    );
+    CLASS_ARRAY.push(properties.getProperty("CONST").STX);
 
     write_integer_to_asciicode_array(
       CLASS_ARRAY,
@@ -1273,13 +1117,9 @@ class GridProtocol {
       parseInt(instr_code_from_name[descr.class_instr])
     );
 
-    for (const key in class_parameters[
-      descr.class_name
-    ] as any) {
-      let offset =
-        class_parameters[descr.class_name][key].offset;
-      let length =
-        class_parameters[descr.class_name][key].length;
+    for (const key in class_parameters[descr.class_name] as any) {
+      let offset = class_parameters[descr.class_name][key].offset;
+      let length = class_parameters[descr.class_name][key].length;
       let value: any = descr.class_parameters[key];
 
       if (length > 0) {
@@ -1287,12 +1127,7 @@ class GridProtocol {
           // skip
           //console.log("MISSING CLASS PARAMETER!")
         } else {
-          write_integer_to_asciicode_array(
-            CLASS_ARRAY,
-            offset,
-            length,
-            value
-          );
+          write_integer_to_asciicode_array(CLASS_ARRAY, offset, length, value);
         }
       } else {
         if (value !== undefined) {
@@ -1306,12 +1141,8 @@ class GridProtocol {
       }
     }
 
-    CLASS_ARRAY.push(
-      this.properties.getProperty("CONST").ETX
-    );
-    CLASS_ARRAY.push(
-      this.properties.getProperty("CONST").EOT
-    );
+    CLASS_ARRAY.push(properties.getProperty("CONST").ETX);
+    CLASS_ARRAY.push(properties.getProperty("CONST").EOT);
 
     let MESSAGE_ARRAY: any = [...BRC_ARRAY, ...CLASS_ARRAY];
 
@@ -1337,21 +1168,15 @@ class GridProtocol {
     }; // return id for checking communication issues
   }
 
-  public decode_packet_frame(asciicode_array: number[]) {
+  export function decode_packet_frame(asciicode_array: number[]) {
     // use the last two characters to determine the received checksum
     let received_checksum =
       parseInt(
-        "0x" +
-          String.fromCharCode(
-            asciicode_array[asciicode_array.length - 1]
-          )
+        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 1])
       ) *
         1 +
       parseInt(
-        "0x" +
-          String.fromCharCode(
-            asciicode_array[asciicode_array.length - 2]
-          )
+        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 2])
       ) *
         16;
 
@@ -1375,19 +1200,13 @@ class GridProtocol {
     }
 
     // check if SOH character is found
-    if (
-      asciicode_array[0] !==
-      parseInt(grid_protocol.GRID_CONST_SOH)
-    ) {
+    if (asciicode_array[0] !== parseInt(grid_protocol.GRID_CONST_SOH)) {
       console.log("Frame error: SOH not found!");
       return undefined;
     }
 
     // check if BRC character is found
-    if (
-      asciicode_array[1] !==
-      parseInt(grid_protocol.GRID_CONST_BRC)
-    ) {
+    if (asciicode_array[1] !== parseInt(grid_protocol.GRID_CONST_BRC)) {
       console.log("Frame error: BRC not found!");
       return undefined;
     }
@@ -1405,12 +1224,11 @@ class GridProtocol {
     let brc: any = {};
 
     for (const key in brc_parameters as any) {
-      brc[brc_parameters[key].name] =
-        read_integer_from_asciicode_array(
-          asciicode_array,
-          brc_parameters[key].offset,
-          brc_parameters[key].length
-        );
+      brc[brc_parameters[key].name] = read_integer_from_asciicode_array(
+        asciicode_array,
+        brc_parameters[key].offset,
+        brc_parameters[key].length
+      );
     }
 
     brc.SX -= 127;
@@ -1431,33 +1249,18 @@ class GridProtocol {
     }
 
     // check if EOB character is found
-    if (
-      asciicode_array[22] !==
-      parseInt(grid_protocol.GRID_CONST_EOB)
-    ) {
+    if (asciicode_array[22] !== parseInt(grid_protocol.GRID_CONST_EOB)) {
       console.log("Frame error: EOB not found!");
       return undefined;
     }
 
-    let class_asciicode_array = asciicode_array.slice(
-      23,
-      -3
-    );
+    let class_asciicode_array = asciicode_array.slice(23, -3);
 
     let class_blocks: any = [];
 
-    for (
-      let i = 0, start_index = 0;
-      i < class_asciicode_array.length;
-      i++
-    ) {
-      if (
-        class_asciicode_array[i] ===
-        parseInt(grid_protocol.GRID_CONST_ETX)
-      ) {
-        class_blocks.push(
-          class_asciicode_array.slice(start_index, i + 1)
-        );
+    for (let i = 0, start_index = 0; i < class_asciicode_array.length; i++) {
+      if (class_asciicode_array[i] === parseInt(grid_protocol.GRID_CONST_ETX)) {
+        class_blocks.push(class_asciicode_array.slice(start_index, i + 1));
         start_index = i + 1;
       }
     }
@@ -1467,8 +1270,7 @@ class GridProtocol {
     for (let i = 0; i < class_blocks.length; i++) {
       // check first and last charaters, make sure they are STX and ETX
       if (
-        class_blocks[i][0] ===
-          parseInt(grid_protocol.GRID_CONST_STX) &&
+        class_blocks[i][0] === parseInt(grid_protocol.GRID_CONST_STX) &&
         class_blocks[i][class_blocks[i].length - 1] ===
           parseInt(grid_protocol.GRID_CONST_ETX)
       ) {
@@ -1486,7 +1288,7 @@ class GridProtocol {
     return return_array;
   }
 
-  public decode_packet_classes(raw_class_array: any[]) {
+  export function decode_packet_classes(raw_class_array: any[]) {
     if (raw_class_array === undefined) {
       return undefined;
     }
@@ -1497,102 +1299,77 @@ class GridProtocol {
         String.fromCharCode(raw_class.raw[0]) +
         String.fromCharCode(raw_class.raw[1]) +
         String.fromCharCode(raw_class.raw[2]);
-      let class_instr_string =
-        "0x" + String.fromCharCode(raw_class.raw[3]);
+      let class_instr_string = "0x" + String.fromCharCode(raw_class.raw[3]);
 
-      if (
-        class_name_from_code[class_code_string] !==
-        undefined
-      ) {
-        raw_class.class_name =
-          class_name_from_code[class_code_string];
+      if (class_name_from_code[class_code_string] !== undefined) {
+        raw_class.class_name = class_name_from_code[class_code_string];
 
-        raw_class.class_instr =
-          instr_name_from_code[class_instr_string];
+        raw_class.class_instr = instr_name_from_code[class_instr_string];
 
         raw_class.class_parameters = {};
 
         raw_class.timestamp = Date.now();
 
-        for (const key in class_parameters[
-          raw_class.class_name
-        ] as any) {
-          let current_parameter =
-            class_parameters[raw_class.class_name][key];
+        for (const key in class_parameters[raw_class.class_name] as any) {
+          let current_parameter = class_parameters[raw_class.class_name][key];
 
           let parameter_offset =
-            class_parameters[raw_class.class_name][key]
-              .offset - 1;
+            class_parameters[raw_class.class_name][key].offset - 1;
           let parameter_length =
-            class_parameters[raw_class.class_name][key]
-              .length;
+            class_parameters[raw_class.class_name][key].length;
 
           let parameter_value;
 
           if (parameter_length > 0) {
-            parameter_value =
-              read_integer_from_asciicode_array(
-                raw_class.raw,
-                parameter_offset,
-                parameter_length
-              );
+            parameter_value = read_integer_from_asciicode_array(
+              raw_class.raw,
+              parameter_offset,
+              parameter_length
+            );
           } else {
             // variable length string
-            parameter_value =
-              read_string_from_asciicode_array(
-                raw_class.raw,
-                parameter_offset,
-                parameter_length
-              );
+            parameter_value = read_string_from_asciicode_array(
+              raw_class.raw,
+              parameter_offset,
+              parameter_length
+            );
           }
 
-          raw_class.class_parameters[
-            current_parameter.name
-          ] = {};
+          raw_class.class_parameters[current_parameter.name] = {};
 
-          raw_class.class_parameters[
-            current_parameter.name
-          ] = parameter_value;
+          raw_class.class_parameters[current_parameter.name] = parameter_value;
         }
       }
     });
   }
 
-  public lua_function_to_human_map() {
+  export function lua_function_to_human_map() {
     const res = new Map<string, string>();
     for (const key in grid_protocol) {
       if (typeof grid_protocol[key] === "object") {
         continue;
       }
-      if (
-        key.startsWith("GRID_LUA_FNC") &&
-        key.endsWith("_human")
-      ) {
+      if (key.startsWith("GRID_LUA_FNC") && key.endsWith("_human")) {
         res.set(key.split("_human")[0], grid_protocol[key]);
       }
     }
     return res;
   }
 
-  public lua_function_forbiddens() {
+  export function lua_function_forbiddens() {
     const res: string[] = [];
     for (const key in grid_protocol) {
       if (typeof grid_protocol[key] === "object") {
         continue;
       }
-      if (
-        key.startsWith("GRID_LUA_FNC") &&
-        key.endsWith("_short")
-      ) {
+      if (key.startsWith("GRID_LUA_FNC") && key.endsWith("_short")) {
         res.push(grid_protocol[key]);
       }
     }
     return res;
   }
 
-  public get_lua_function_helper(
-    fncKey: string
-  ): string | undefined {
+  export function get_lua_function_helper(fncKey: string): string | undefined {
     for (const key in grid_protocol) {
       if (typeof grid_protocol[key] === "object") {
         continue;
@@ -1605,7 +1382,7 @@ class GridProtocol {
     return undefined;
   }
 
-  public module_hwcfgs() {
+  export function module_hwcfgs() {
     const res: any[] = [];
     for (const key in grid_protocol) {
       if (typeof grid_protocol[key] === "object") {
@@ -1615,9 +1392,7 @@ class GridProtocol {
       if (key.startsWith("GRID_MODULE_")) {
         const split = key.split("_");
         res.push({
-          type: ModuleType[
-            split[2] as keyof typeof ModuleType
-          ],
+          type: ModuleType[split[2] as keyof typeof ModuleType],
           revision: split[3],
           hwcfg: grid_protocol[key],
         });
@@ -1627,28 +1402,21 @@ class GridProtocol {
     return res;
   }
 
-  public is_element_compatible_with(
+  export function is_element_compatible_with(
     element: ElementType,
     target: ElementType
   ): boolean {
-    const filtredEvents = [
-      EventType.SETUP,
-      EventType.TIMER,
-    ];
+    const filtredEvents = [EventType.SETUP, EventType.TIMER];
 
     const elementEvents = grid
       .get_element_events(element)
       .map((e) => e.desc as EventType)
-      .filter(
-        (e) => !filtredEvents.includes(e as EventType)
-      );
+      .filter((e) => !filtredEvents.includes(e as EventType));
 
     const configEvents = grid
       .get_element_events(target)
       .map((e) => e.desc as EventType)
-      .filter(
-        (e) => !filtredEvents.includes(e as EventType)
-      );
+      .filter((e) => !filtredEvents.includes(e as EventType));
 
     const compatibleEvents = elementEvents.reduce(
       (acc: EventType[], value: EventType) => {
@@ -1663,5 +1431,3 @@ class GridProtocol {
     return compatibleEvents.length === elementEvents.length;
   }
 }
-
-export const grid = new GridProtocol();
