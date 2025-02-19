@@ -12,7 +12,7 @@ export enum ModuleType {
   TEK2 = "TEK2",
   TEK1 = "TEK1",
   VSN0 = "VSN0",
-  VSN1 = "VSN1",
+  VSN1L = "VSN1L",
   VSN1R = "VSN1R",
   VSN2 = "VSN2",
   PB44 = "PB44",
