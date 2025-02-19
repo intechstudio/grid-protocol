@@ -606,7 +606,7 @@ const moduleElements: {
     ...Array(245), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
-  [ModuleType.VSN1]: [
+  [ModuleType.VSN1L]: [
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(1).fill(ElementType.ENDLESS),
     ...Array(4).fill(ElementType.BUTTON),
