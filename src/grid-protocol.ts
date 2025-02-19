@@ -969,6 +969,20 @@ class GridProperty {
           });
         }
 
+        if (key.startsWith("GRID_LUA_FNC_L") && key.endsWith("_human")) {
+          let value: any = grid_protocol[key];
+          LUA_AUTOCOMPLETE.push({
+            label: "self:" + value,
+            type: "function",
+            elementtype: ElementType.LCD,
+          });
+          LUA_AUTOCOMPLETE.push({
+            label: "element[0]:" + value,
+            type: "function",
+            elementtype: ElementType.SYSTEM,
+          });
+        }
+
         // GRID LUA KEYWORDS
         if (key.startsWith("GRID_LUA_KW_")) {
           let paramSet = key.split("_");
