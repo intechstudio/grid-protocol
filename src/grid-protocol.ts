@@ -245,6 +245,10 @@ function mapObjectsToArray(array: any[], object: any) {
       array = [...array, ...mapper(object[key], "potmeter", ["1"])];
     }
 
+    if (key == "L") {
+      array = [...array, ...mapper(object[key], "lcd", ["1"])];
+    }
+
     if (key == "KW") {
       array = [...array, ...mapper(object[key], "keyword", ["1", "2", "3"])];
     }
