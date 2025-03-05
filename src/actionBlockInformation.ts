@@ -1,5 +1,5 @@
 export namespace ActionBlock {
-  const shortHumanMap: { [key: string]: string } = {
+  export const shortHumanMap: { [key: string]: string } = {
     bprel: "Release",
     bpre: "End",
     bpr: "Press",
