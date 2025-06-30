@@ -27,6 +27,7 @@ export enum EventType {
   MIDIRX = "midi rx",
   TIMER = "timer",
   ENDLESS = "endless",
+  DRAW = "draw",
 }
 
 export function NumberToEventType(value: Number) {
@@ -47,6 +48,8 @@ export function NumberToEventType(value: Number) {
       return EventType.TIMER;
     case 7:
       return EventType.ENDLESS;
+    case 8:
+      return EventType.DRAW;
     default:
       throw "Unknown event type";
   }
@@ -70,6 +73,8 @@ export function EventTypeToNumber(value: EventType) {
       return 6;
     case EventType.ENDLESS:
       return 7;
+    case EventType.DRAW:
+      return 8;
     default:
       throw "Unknown event type";
   }
@@ -556,6 +561,12 @@ export const CEEAT: Record<EventType, CEEAT> = {
     value: 7,
     key: "ENDLESS",
   },
+
+  [EventType.DRAW]: {
+    desc: EventType.DRAW,
+    value: 8,
+    key: "DRAW",
+  },
 };
 
 // Define the module types and their associated element types
@@ -745,6 +756,10 @@ const elementEvents = {
     {
       ...CEEAT[EventType.SETUP],
       defaultConfig: grid_protocol.GRID_ACTIONSTRING_LCD_INIT,
+    },
+    {
+      ...CEEAT[EventType.DRAW],
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_LCD_DRAW,
     },
   ],
 };
