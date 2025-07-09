@@ -766,6 +766,7 @@
     "GRID_LUA_FNC_G_ELEMENTNAME_source": "grid_lua_src_elementname_lua",
     "GRID_LUA_FNC_G_ELEMENTNAME_short": "gen",
     "GRID_LUA_FNC_G_ELEMENTNAME_human": "element_name",
+    "GRID_LUA_FNC_G_EVENTFNAME_source": "grid_lua_src_eventfname_lua",
     "GRID_LUA_FNC_G_LIMIT_source": "grid_lua_src_limit_lua",
     "GRID_LUA_FNC_G_LIMIT_short": "glim",
     "GRID_LUA_FNC_G_LIMIT_human": "limit",
