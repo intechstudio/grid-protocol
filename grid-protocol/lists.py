@@ -356,6 +356,43 @@ class_database = {
       }
     }
   },
+  "EVENTVIEW": {
+    "class_name": "EVENTVIEW",
+    "class_code": 83,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "PAGE": {
+        "offset": 5,
+        "length": 2
+      },
+      "ELEMENT": {
+        "offset": 7,
+        "length": 2
+      },
+      "EVENT": {
+        "offset": 9,
+        "length": 2
+      },
+      "VALUE1": {
+        "offset": 11,
+        "length": 4
+      },
+      "MIN1": {
+        "offset": 15,
+        "length": 4
+      },
+      "MAX1": {
+        "offset": 19,
+        "length": 4
+      },
+      "SEGMENT": {
+        "HEAD_length": 2
+      }
+    }
+  },
   "CONFIG": {
     "class_name": "CONFIG",
     "class_code": 96,
