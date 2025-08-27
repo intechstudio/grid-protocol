@@ -819,6 +819,7 @@
     "GRID_LUA_FNC_G_TOML_source": "grid_lua_src_toml_lua",
     "GRID_LUA_FNC_G_SIMPLECOLOR_source": "grid_lua_src_simplecolor_lua",
     "GRID_LUA_FNC_G_SIMPLEMIDI_source": "grid_lua_src_simplemidi_lua",
+    "GRID_LUA_FNC_G_AUTOVALUE_source": "grid_lua_src_autovalue_lua",
     "GRID_LUA_SYS_META_init": "system_meta = { __index = {type = 'system', \"  GRID_LUA_FNC_ASSIGN_META_GTV(GRID_LUA_FNC_S_ELEMENT_INDEX_short, GRID_LUA_FNC_S_ELEMENT_INDEX_index) \",\"     GRID_LUA_FNC_ASSIGN_META_UNDEF(GRID_LUA_FNC_A_INIT_short) \",\"   GRID_LUA_FNC_ASSIGN_META_UNDEF(GRID_LUA_FNC_A_TIMER_short) \",\"   GRID_LUA_FNC_ASSIGN_META_UNDEF(GRID_LUA_FNC_A_MAPMODE_short) \",\"   GRID_LUA_FNC_ASSIGN_META_UNDEF(GRID_LUA_FNC_A_MIDIRX_short) \",post_init_cb = function (self) self:\"GRID_LUA_FNC_A_INIT_short\"() end,\"     GRID_LUA_FNC_ASSIGN_META_PAR1(\"gtt\", GRID_LUA_FNC_G_TIMER_START_short) \",\"   GRID_LUA_FNC_ASSIGN_META_PAR0(\"gtp\", GRID_LUA_FNC_G_TIMER_STOP_short) \",\"   GRID_LUA_FNC_ASSIGN_META_PAR1(\"get\", GRID_LUA_FNC_G_EVENT_TRIGGER_short) \",}}",
     "GRID_ACTIONSTRING_SYSTEM_INIT": "<?lua --[[@cb]] --[[page init]] ?>",
     "GRID_ACTIONSTRING_SYSTEM_MAPMODE": "<?lua --[[@cb]] gpl(gpn()) ?>",
