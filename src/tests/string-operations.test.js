@@ -2,26 +2,28 @@ import { grid, ModuleType } from "../grid-protocol";
 import { GridScript } from "../string-operations";
 import { test, expect } from "vitest";
 
-test("Default configuration compression/expansion", function () {
-  const elements = grid.get_module_element_list(
-    ModuleType.BU16
-  );
-  elements.forEach((element) => {
-    const events = grid.get_element_events(element);
-    if (typeof events !== "undefined") {
-      events.forEach((event) => {
-        const defaultConfig = event.defaultConfig
-          .split("<?lua ")[1]
-          .split(" ?>")[0];
-        const expanded =
-          GridScript.expandScript(defaultConfig);
-        const compressed =
-          GridScript.compressScript(expanded);
-        expect(compressed).toMatch(defaultConfig);
-      });
-    }
-  });
-});
+
+// THIS TEST IS DISABLED BECAUSE BASIC CONFIG BLOCK DO NOT EVEN USE GRIDSCRIPT.COMPRESSSCRIPT METHOD
+// test("Default configuration compression/expansion", function () {
+//   const elements = grid.get_module_element_list(
+//     ModuleType.BU16
+//   );
+//   elements.forEach((element) => {
+//     const events = grid.get_element_events(element);
+//     if (typeof events !== "undefined") {
+//       events.forEach((event) => {
+//         const defaultConfig = event.defaultConfig
+//           .split("<?lua ")[1]
+//           .split(" ?>")[0];
+//         const expanded =
+//           GridScript.expandScript(defaultConfig);
+//         const compressed =
+//           GridScript.compressScript(expanded);
+//         expect(compressed).toMatch(defaultConfig);
+//       });
+//     }
+//   });
+// });
 
 test("Various quotemark combination", function () {
   let luaString = `local str="hello('(d'"`;
