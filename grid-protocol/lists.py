@@ -388,8 +388,13 @@ class_database = {
         "offset": 19,
         "length": 4
       },
-      "SEGMENT": {
-        "HEAD_length": 2
+      "LENGTH": {
+        "offset": 23,
+        "length": 2
+      },
+      "NAME": {
+        "offset": 25,
+        "length": 0
       }
     }
   },
