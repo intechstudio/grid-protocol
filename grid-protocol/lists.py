@@ -97,6 +97,10 @@ class_database = {
       "PORTSTATE": {
         "offset": 15,
         "length": 2
+      },
+      "GCCOUNT": {
+        "offset": 17,
+        "length": 2
       }
     }
   },
