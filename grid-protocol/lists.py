@@ -398,6 +398,16 @@ class_database = {
       }
     }
   },
+  "NAMEPREVIEW": {
+    "class_name": "NAMEPREVIEW",
+    "class_code": 84,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      }
+    }
+  },
   "CONFIG": {
     "class_name": "CONFIG",
     "class_code": 96,

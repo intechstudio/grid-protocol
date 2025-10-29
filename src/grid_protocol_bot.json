@@ -705,6 +705,7 @@
     "GRID_CLASS_EVENTVIEW_LENGTH_length": "2",
     "GRID_CLASS_EVENTVIEW_NAME_offset": "25",
     "GRID_CLASS_EVENTVIEW_NAME_length": "0",
+    "GRID_CLASS_NAMEPREVIEW_code": "0x054",
     "GRID_CLASS_CONFIG_code": "0x060",
     "GRID_CLASS_CONFIG_frame": "\"%c%03x_................%c\", GRID_CONST_STX, GRID_CLASS_CONFIG_code, GRID_CONST_ETX",
     "GRID_CLASS_CONFIG_frame_start": "\"%c%03x_................\", GRID_CONST_STX, GRID_CLASS_CONFIG_code",
