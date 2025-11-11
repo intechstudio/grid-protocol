@@ -1228,6 +1228,7 @@ export namespace grid {
           received_checksum +
           " Calculated: " +
           calculated_checksum
+          " Message: ", asciicode_array
       );
       return undefined;
     }
