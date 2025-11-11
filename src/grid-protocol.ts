@@ -1227,8 +1227,7 @@ export namespace grid {
         "Checksum mismatch, packet dropped! Received: " +
           received_checksum +
           " Calculated: " +
-          calculated_checksum
-          " Message: ", asciicode_array
+          calculated_checksum, asciicode_array
       );
       return undefined;
     }
