@@ -1,7 +1,7 @@
 import * as protocol_data from "./grid_protocol_bot.json";
 const grid_protocol: Record<string, string> = protocol_data;
 
-import lodash from "lodash";
+import { cloneDeep } from "lodash";
 
 export enum ModuleType {
   BU16 = "BU16",
@@ -1093,7 +1093,7 @@ export namespace grid {
       return;
     }
 
-    let descr: any = lodash.cloneDeep(descriptor);
+    let descr: any = cloneDeep(descriptor);
 
     descr.brc_parameters.ID = utility_genId();
     descr.brc_parameters.SX = 0;
