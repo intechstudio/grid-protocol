@@ -30,8 +30,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@wasm-fmt/lua_fmt": "^0.2.0",
-    "lodash": "^4.17.21"
+    "@wasm-fmt/lua_fmt": "^0.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.8",

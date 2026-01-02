@@ -1,7 +1,24 @@
 import * as protocol_data from "./grid_protocol_bot.json";
 const grid_protocol: Record<string, string> = protocol_data;
 
-import { cloneDeep } from "lodash";
+function cloneDeep<T>(value: T): T {
+  if (value === null || typeof value !== "object") {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(cloneDeep) as any;
+  }
+
+  const result: any = {};
+  for (const key in value as any) {
+    if (Object.prototype.hasOwnProperty.call(value, key)) {
+      result[key] = cloneDeep((value as any)[key]);
+    }
+  }
+
+  return result;
+}
 
 export enum ModuleType {
   BU16 = "BU16",
