@@ -20,5 +20,5 @@ export default {
     nodeResolve(),
     commonjs(),
   ],
-  external: ["tslib"],
+  external: ["tslib", "@wasm-fmt/lua_fmt", "lodash"],
 };
