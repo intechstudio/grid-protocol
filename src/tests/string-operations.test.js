@@ -1,6 +1,12 @@
 import { grid, ModuleType } from "../grid-protocol";
 import { GridScript } from "../string-operations";
-import { test, expect } from "vitest";
+import { initLuaFormatter } from "../lua-formatter";
+import { test, expect, beforeAll } from "vitest";
+
+// Initialize the Lua formatter before running any tests
+beforeAll(async () => {
+  await initLuaFormatter();
+});
 
 
 // THIS TEST IS DISABLED BECAUSE BASIC CONFIG BLOCK DO NOT EVEN USE GRIDSCRIPT.COMPRESSSCRIPT METHOD

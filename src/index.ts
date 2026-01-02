@@ -10,3 +10,5 @@ export {
 } from "./grid-protocol";
 
 export { GridScript } from "./string-operations";
+
+export { initLuaFormatter } from "./lua-formatter";

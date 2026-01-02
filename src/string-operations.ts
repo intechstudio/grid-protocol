@@ -1,9 +1,5 @@
 import { grid } from "./grid-protocol";
-import { formatText } from "@intechstudio/grid-luafmt";
-// @ts-ignore
-import * as luamin from "luamin";
-
-const minify: any = luamin.minify;
+import { minifyLua, beautifyLua } from "./lua-formatter";
 
 class GridValidator {
   public regex_short: any = {};
@@ -230,7 +226,7 @@ export class GridScript {
 
   static minifyScript(value: string) {
     var code = value;
-    const minified = minify(code);
+    const minified = minifyLua(code);
     return minified;
   }
 
@@ -242,13 +238,13 @@ export class GridScript {
 
   static expandScript(script: string) {
     const human = GridScript.humanize(script);
-    const formatted = formatText(human);
+    const formatted = beautifyLua(human);
     return formatted.trim();
   }
 
   static checkSyntax(script: string) {
     try {
-      formatText(script);
+      beautifyLua(script);
       return true;
     } catch (e) {
       return false;
