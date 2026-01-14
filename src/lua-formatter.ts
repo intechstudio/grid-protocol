@@ -79,6 +79,12 @@ export function minifyLua(code: string): string {
     .replace(/\n+/g, "\n") // Collapse multiple newlines to max 1
     .trim(); // Remove leading/trailing whitespace
 
+  // If the minified code ends with an inline comment (-- but not block comment),
+  // append a newline to prevent issues when concatenating more code later
+  if (/--(?!\[\[).*$/.test(minified) && !minified.endsWith("]]")) {
+    return minified + "\n";
+  }
+
   return minified;
 }
 
