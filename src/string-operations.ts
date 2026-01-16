@@ -233,7 +233,7 @@ export class GridScript {
   static compressScript(script: string) {
     const short = GridScript.shortify(script);
     const minified = GridScript.minifyScript(short);
-    return minified.trim();
+    return minified;
   }
 
   static expandScript(script: string) {

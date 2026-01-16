@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
-    "test": "npx patch-package && vitest run",
+    "test": "vitest run",
     "clean": "rm -rf dist",
-    "build": "npx patch-package && rollup -c",
+    "build": "rollup -c",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build"
   },
@@ -37,7 +37,6 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/lodash": "^4.17.4",
-    "patch-package": "^8.0.0",
     "rollup": "^4.18.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-loader": "^9.5.1",
