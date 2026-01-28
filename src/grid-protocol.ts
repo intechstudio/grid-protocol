@@ -761,10 +761,6 @@ const elementEvents = {
       defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_MAPMODE,
     },
     {
-      ...CEEAT[EventType.MIDIRX],
-      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_MIDIRX,
-    },
-    {
       ...CEEAT[EventType.TIMER],
       defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
