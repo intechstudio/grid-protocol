@@ -33,6 +33,7 @@ export enum ModuleType {
   VSN1R = "VSN1R",
   VSN2 = "VSN2",
   PB44 = "PB44",
+  OCTV = "OCTV",
 }
 
 export enum EventType {
@@ -667,6 +668,12 @@ const moduleElements: {
     ...Array(8).fill(ElementType.POTMETER),
     ...Array(8).fill(ElementType.BUTTON),
     ...Array(239), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.OCTV]: [
+    ...Array(8).fill(ElementType.ENCODER),
+    ...Array(13).fill(ElementType.BUTTON),
+    ...Array(234), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
 };
