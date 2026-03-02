@@ -1,6 +1,6 @@
 {
   "name": "@intechstudio/grid-protocol",
-  "version": "0.0.1",
+  "version": "1.20260302.1314",
   "description": "Grid protocol descriptors automatically generated from the grid-fw repository!",
   "scripts": {
     "test": "vitest run",
