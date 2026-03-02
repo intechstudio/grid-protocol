@@ -546,6 +546,32 @@ class_database = {
       }
     }
   },
+  "EVALUATE": {
+    "class_name": "EVALUATE",
+    "class_code": 134,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "LASTHEADER": {
+        "offset": 5,
+        "length": 2
+      },
+      "ELEMENTS": {
+        "offset": 7,
+        "length": 2
+      },
+      "ELEMENT": {
+        "TYPE_offset": 0,
+        "TYPE_length": 2,
+        "SIZE_offset": 2,
+        "SIZE_length": 4,
+        "DATA_offset": 6,
+        "DATA_length": 0
+      }
+    }
+  },
   "HIDKEYSTATUS": {
     "class_name": "HIDKEYSTATUS",
     "class_code": 144,
