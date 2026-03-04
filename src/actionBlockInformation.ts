@@ -56,12 +56,15 @@ export namespace ActionBlock {
   };
 
   const displayNameToShortMap: { [key: string]: string } = Object.keys(
-    shortHumanMap
-  ).reduce((acc, short) => {
-    const displayName = shortHumanMap[short];
-    acc[displayName] = short;
-    return acc;
-  }, {} as { [key: string]: string });
+    shortHumanMap,
+  ).reduce(
+    (acc, short) => {
+      const displayName = shortHumanMap[short];
+      acc[displayName] = short;
+      return acc;
+    },
+    {} as { [key: string]: string },
+  );
 
   export function displayNameToShort(displayName: string): string | undefined {
     return displayNameToShortMap[displayName];

@@ -24,19 +24,17 @@ class GridValidator {
       regex_human[type] = inputSet
         .filter((obj) => obj.type === type)
         .map((v) =>
-          type == "arithmetic_operator" ||
-          type == "relational_operator"
+          type == "arithmetic_operator" || type == "relational_operator"
             ? `${"\\" + v.human}`
-            : `${"\\b" + v.human + "\\b"}`
+            : `${"\\b" + v.human + "\\b"}`,
         )
         .join("|");
       regex_short[type] = inputSet
         .filter((obj) => obj.type === type)
         .map((v) =>
-          type == "arithmetic_operator" ||
-          type == "relational_operator"
+          type == "arithmetic_operator" || type == "relational_operator"
             ? `${"\\" + v.short}`
-            : `${"\\b" + v.short + "\\b"}`
+            : `${"\\b" + v.short + "\\b"}`,
         )
         .join("|");
       lookup[i] = inputSet
@@ -59,13 +57,8 @@ class GridValidator {
 }
 
 export class GridScript {
-  static validator: any = new GridValidator(
-    grid.getProperty("LUA")
-  );
-  static splitShortScript(
-    script: string,
-    mode: "short" | "human"
-  ) {
+  static validator: any = new GridValidator(grid.getProperty("LUA"));
+  static splitShortScript(script: string, mode: "short" | "human") {
     let lookupType: string;
 
     switch (mode) {
@@ -81,34 +74,22 @@ export class GridScript {
 
     for (const key in GridScript.validator[lookupType]) {
       pattern.push(
-        `${
-          "(?<" +
-          key +
-          ">" +
-          GridScript.validator[lookupType][key] +
-          ")"
-        }`
+        `${"(?<" + key + ">" + GridScript.validator[lookupType][key] + ")"}`,
       );
     }
 
     // for "," in functions
     pattern.push(`${"(?<separator>(,))"}`);
     // for parenthesis ")" "("
-    pattern.push(
-      `${"(?<parenthesis>([\\)\\(\\]\\[\\}\\{]))"}`
-    );
+    pattern.push(`${"(?<parenthesis>([\\)\\(\\]\\[\\}\\{]))"}`);
     // if its a simple integer
     pattern.push(`${"(?<integer>([+-]?[1-9]\\d*|0))"}`);
     // if its if-then-end
-    pattern.push(
-      `${"(?<ifblock>(\\bif\\b|\\bthen\\b|\\bend\\b))"}`
-    );
+    pattern.push(`${"(?<ifblock>(\\bif\\b|\\bthen\\b|\\bend\\b))"}`);
     // if its new line or space
     pattern.push(`${"(?<space>([\\s\\n]))"}`);
     // if its special
-    pattern.push(
-      `${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&#]))"}`
-    );
+    pattern.push(`${"(?<special>(\\blocal\\b|[=._@:;'\"`~|^<>&#]))"}`);
     // if its backslash
     pattern.push(`${"(?<backslash>(\\\\))"}`);
     // if unknown
@@ -136,27 +117,15 @@ export class GridScript {
 
   static humanize(script: string) {
     // We should heaviliy consider handling spaces and returns better!
-    const splitArray = GridScript.splitShortScript(
-      script,
-      "short"
-    );
-    const humanized = GridScript.splitArrayToString(
-      splitArray,
-      "human"
-    );
+    const splitArray = GridScript.splitShortScript(script, "short");
+    const humanized = GridScript.splitArrayToString(splitArray, "human");
     return humanized;
   }
 
   static shortify(script: string) {
     // We should heaviliy consider handling spaces and returns better!
-    const splitArray = GridScript.splitShortScript(
-      script,
-      "human"
-    );
-    const shorted = GridScript.splitArrayToString(
-      splitArray,
-      "short"
-    );
+    const splitArray = GridScript.splitShortScript(script, "human");
+    const shorted = GridScript.splitArrayToString(splitArray, "short");
     return shorted;
   }
 
@@ -175,10 +144,7 @@ export class GridScript {
     return bool;
   }
 
-  static splitArrayToString(
-    splitArray: any[],
-    direction: string
-  ) {
+  static splitArrayToString(splitArray: any[], direction: string) {
     let returnFormat: string;
     let lookupFormat: string;
 
@@ -199,23 +165,17 @@ export class GridScript {
 
     splitArray.forEach((element) => {
       const found = GridScript.validator.lookup.find(
-        (lookup_element: any) =>
-          lookup_element[lookupFormat] == element.value
+        (lookup_element: any) => lookup_element[lookupFormat] == element.value,
       );
 
       try {
-        if (
-          GridScript.typeCheck(element.type, element.value)
-        ) {
+        if (GridScript.typeCheck(element.type, element.value)) {
           string += `${found[returnFormat]}`;
         } else {
           string += element.value;
         }
       } catch (error) {
-        console.warn(
-          `Could not ${returnFormat}ize section!`,
-          element
-        );
+        console.warn(`Could not ${returnFormat}ize section!`, element);
 
         string += element.value;
       }

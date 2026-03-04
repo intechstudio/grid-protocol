@@ -8,7 +8,6 @@ beforeAll(async () => {
   await initLuaFormatter();
 });
 
-
 // THIS TEST IS DISABLED BECAUSE BASIC CONFIG BLOCK DO NOT EVEN USE GRIDSCRIPT.COMPRESSSCRIPT METHOD
 // test("Default configuration compression/expansion", function () {
 //   const elements = grid.get_module_element_list(

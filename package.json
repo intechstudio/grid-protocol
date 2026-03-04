@@ -6,6 +6,8 @@
     "test": "vitest run",
     "clean": "rm -rf dist",
     "build": "rollup -c",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build"
   },
@@ -37,6 +39,8 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/lodash": "^4.17.4",
+    "lodash": "^4.17.23",
+    "prettier": "^3.8.1",
     "rollup": "^4.18.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-loader": "^9.5.1",

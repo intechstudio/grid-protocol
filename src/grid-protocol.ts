@@ -432,7 +432,7 @@ function parse_class_parameters_from_protocol() {
 function read_integer_from_asciicode_array(
   array: number[],
   offset: number,
-  length: number
+  length: number,
 ): number | undefined {
   // check is parameters are valid, make sure we don't overrun the buffer
   if (array.length < offset + length) {
@@ -459,7 +459,7 @@ function write_integer_to_asciicode_array(
   array: any[],
   offset: number,
   length: number,
-  value: any
+  value: any,
 ) {
   let hex_value_array = value.toString(16).padStart(length, "0").split("");
 
@@ -474,7 +474,7 @@ function write_string_to_asciicode_array(
   array: any[],
   offset: number,
   length: number,
-  value: any
+  value: any,
 ) {
   let string_in_array = value.split("");
 
@@ -488,7 +488,7 @@ function write_string_to_asciicode_array(
 function read_string_from_asciicode_array(
   array: any[],
   offset: number,
-  length: number
+  length: number,
 ) {
   // check is parameters are valid, make sure we don't overrun the buffer
   if (array.length > 0 && array.length < offset + length) {
@@ -846,7 +846,7 @@ class GridProperty {
 
   public getProperty(key: string) {
     const obj = Object.entries(this.props).find(
-      ([objKey, objValue]) => key === objKey
+      ([objKey, objValue]) => key === objKey,
     );
     if (typeof obj === "undefined") {
       throw `GridProtocol: Unknown property of ${key}!`;
@@ -883,7 +883,7 @@ class GridProperty {
           console.log(
             "HEARTBEAT_INTERVAL",
             grid_protocol[key],
-            HEARTBEAT_INTERVAL
+            HEARTBEAT_INTERVAL,
           );
         }
 
@@ -1078,7 +1078,7 @@ export namespace grid {
   }
 
   export function module_type_from_hwcfg(
-    hwcfg: number
+    hwcfg: number,
   ): ModuleType | undefined {
     const HWCFG = grid.getProperty("HWCFG");
     let type: any = undefined;
@@ -1161,13 +1161,13 @@ export namespace grid {
       CLASS_ARRAY,
       1,
       3,
-      parseInt(class_code_from_name[descr.class_name])
+      parseInt(class_code_from_name[descr.class_name]),
     );
     write_integer_to_asciicode_array(
       CLASS_ARRAY,
       4,
       1,
-      parseInt(instr_code_from_name[descr.class_instr])
+      parseInt(instr_code_from_name[descr.class_instr]),
     );
 
     for (const key in class_parameters[descr.class_name] as any) {
@@ -1188,7 +1188,7 @@ export namespace grid {
             CLASS_ARRAY,
             offset,
             value.length,
-            value
+            value,
           );
         }
       }
@@ -1204,7 +1204,7 @@ export namespace grid {
       MESSAGE_ARRAY,
       brc_parameters.LEN.offset,
       brc_parameters.LEN.length,
-      len
+      len,
     );
 
     let checksum = [...MESSAGE_ARRAY]
@@ -1225,11 +1225,11 @@ export namespace grid {
     // use the last two characters to determine the received checksum
     let received_checksum =
       parseInt(
-        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 1])
+        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 1]),
       ) *
         1 +
       parseInt(
-        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 2])
+        "0x" + String.fromCharCode(asciicode_array[asciicode_array.length - 2]),
       ) *
         16;
 
@@ -1247,7 +1247,8 @@ export namespace grid {
         "Checksum mismatch, packet dropped! Received: " +
           received_checksum +
           " Calculated: " +
-          calculated_checksum, asciicode_array
+          calculated_checksum,
+        asciicode_array,
       );
       return undefined;
     }
@@ -1280,7 +1281,7 @@ export namespace grid {
       brc[brc_parameters[key].name] = read_integer_from_asciicode_array(
         asciicode_array,
         brc_parameters[key].offset,
-        brc_parameters[key].length
+        brc_parameters[key].length,
       );
     }
 
@@ -1296,7 +1297,7 @@ export namespace grid {
           asciicode_array.length
         }, brc.LEN: ${brc.LEN}, brc_len should be: ${
           asciicode_array.length - 2
-        }`
+        }`,
       );
       return undefined;
     }
@@ -1377,14 +1378,14 @@ export namespace grid {
             parameter_value = read_integer_from_asciicode_array(
               raw_class.raw,
               parameter_offset,
-              parameter_length
+              parameter_length,
             );
           } else {
             // variable length string
             parameter_value = read_string_from_asciicode_array(
               raw_class.raw,
               parameter_offset,
-              parameter_length
+              parameter_length,
             );
           }
 
@@ -1457,7 +1458,7 @@ export namespace grid {
 
   export function is_element_compatible_with(
     element: ElementType,
-    target: ElementType
+    target: ElementType,
   ): boolean {
     const filtredEvents = [EventType.SETUP, EventType.TIMER];
 
@@ -1478,7 +1479,7 @@ export namespace grid {
         }
         return acc;
       },
-      []
+      [],
     );
 
     return compatibleEvents.length === elementEvents.length;

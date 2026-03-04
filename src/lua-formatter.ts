@@ -22,10 +22,10 @@ export async function initLuaFormatter(): Promise<void> {
 function checkInitialized(): boolean {
   if (!isInitialized) {
     console.error(
-      "ERROR: Lua formatter not initialized! Call 'await initLuaFormatter()' before using minifyLua() or beautifyLua()"
+      "ERROR: Lua formatter not initialized! Call 'await initLuaFormatter()' before using minifyLua() or beautifyLua()",
     );
     throw new Error(
-      "Lua formatter not initialized. Call initLuaFormatter() first."
+      "Lua formatter not initialized. Call initLuaFormatter() first.",
     );
   }
   return true;
