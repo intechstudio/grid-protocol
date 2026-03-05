@@ -18,33 +18,27 @@ npm run build
 ### Minify (human-readable → device format)
 
 ```bash
-# Inline script
 node minify.mjs "midi_send(ch, 176, cc, val)" 2>/dev/null
-
-# From a file
-node minify.mjs path/to/script.lua 2>/dev/null
-```
-
-Example output:
-
-```
-gms(ch,176,cc,val)
+# gms(ch,176,cc,val)
 ```
 
 ### Humanize (device format → human-readable)
 
 ```bash
-# Inline script
 node humanize.mjs "gms(ch,176,cc,val)" 2>/dev/null
-
-# From a file
-node humanize.mjs path/to/script.lua 2>/dev/null
-```
-
-Example output:
-
-```
-midi_send(ch, 176, cc, val)
+# midi_send(ch, 176, cc, val)
 ```
 
 > Note: Invalid Lua syntax will throw a parse error with the token and position.
+
+> Note: When passing scripts with special characters as shell arguments, use single quotes to avoid shell interpretation: `node minify.mjs 'self:midi_send(-1, -1, -1, -1)'`
+
+> Note: JSON output from the inspect scripts will have special characters escaped (e.g. `"` → `\"`, newline → `\n`). This is expected — parse the JSON before using the strings.
+
+### Inspect protocol data
+
+```bash
+node list-modules.mjs 2>/dev/null    # module types and their elements
+node list-elements.mjs 2>/dev/null   # element types, events and default configs
+node list-functions.mjs 2>/dev/null  # Lua functions grouped by element type
+```
