@@ -945,5 +945,859 @@
   "GRID_LUA_L_TYPE": "Lcd",
   "GRID_LUA_L_META_init": "GRID_LUA_L_TYPE \" = { __index = {type = 'lcd', post_init_cb = function (self) self:\"GRID_LUA_FNC_A_INIT_short\"() end,\"     GRID_LUA_FNC_ASSIGN_META_PAR1_RET(\"gen\", GRID_LUA_FNC_G_ELEMENTNAME_short) \",}}\"",
   "GRID_ACTIONSTRING_LCD_INIT": "<?lua --[[@cb]] glsb(255)pi,s,c,self.f,self.v,self.id=math.pi,64,{{0,0,0},{255,255,255},{glr(),glg(),glb()}},1,{27,0,100},'VSN1'd={[1]='Linear',[2]='Encoder',[3]='Button',[7]='Endless'}xc,yc,p=160,120,s*5/8;self.eventrx_cb=function(self,hdr,e,v,n)self.v=v;if#n==0 and d[e[3]] then n=d[e[3]]..e[2]end;self.id=string.sub(n,1,(self:lsw()/(s/2)-1)//1)self.f=1 end;self:ldaf(0,0,319,239,c[1])self:ldrr(3,3,317,237,10,c[2]) ?>",
-  "GRID_ACTIONSTRING_LCD_DRAW": "<?lua --[[@cb]] if self.f>0 then self.f=self.f-1;local a,xo=gmaps(self.v[1],self.v[2],self.v[3],0.1,1),#tostring(self.v[1])/2*s/2-#tostring(self.v[1])-s//32;self:ldaf(10,10,310,230,c[1])self:ldrr(xc-p//1-1,yc-p//1-1,xc+p//1+1,yc+p//1+1,s,c[2])self:ldrrf(xc-p*a//1,yc-p*a//1,xc+p*a//1,yc+p*a//1,s,c[3])self:ldft(self.v[1],xc-xo,yc+s,s/2,c[2])local xn=(#self.id*(s/2))/2-s//32;self:ldft(self.id,xc-xn,yc-1.5*s,s/2,c[2])self:ldsw()end ?>"
+  "GRID_ACTIONSTRING_LCD_DRAW": "<?lua --[[@cb]] if self.f>0 then self.f=self.f-1;local a,xo=gmaps(self.v[1],self.v[2],self.v[3],0.1,1),#tostring(self.v[1])/2*s/2-#tostring(self.v[1])-s//32;self:ldaf(10,10,310,230,c[1])self:ldrr(xc-p//1-1,yc-p//1-1,xc+p//1+1,yc+p//1+1,s,c[2])self:ldrrf(xc-p*a//1,yc-p*a//1,xc+p*a//1,yc+p*a//1,s,c[3])self:ldft(self.v[1],xc-xo,yc+s,s/2,c[2])local xn=(#self.id*(s/2))/2-s//32;self:ldft(self.id,xc-xn,yc-1.5*s,s/2,c[2])self:ldsw()end ?>",
+  "luadocs": {
+    "globals": [
+      {
+        "name": "calibration_reset",
+        "short": "gcr",
+        "usage": "calibration_reset() Deletes the calibration file and initializes all calibrations to their defaults."
+      },
+      {
+        "name": "color_auto_layer",
+        "short": "color_auto_layer",
+        "usage": "color_auto_layer(element self) Calculates LED layer based on current event type. Returns 1 for button/potentiometer events, 2 for encoder events, nil for others. User overridable."
+      },
+      {
+        "name": "color_auto_value",
+        "short": "color_auto_value",
+        "usage": "color_auto_value(element self, int segment_index) Calculates LED intensity value based on element type and state. For endless encoders, returns segment-specific value. For other elements, returns mapped value 0-255. User overridable."
+      },
+      {
+        "name": "color_curve",
+        "short": "color_curve",
+        "usage": "color_curve(table color_array) Calculates three-point intensity response curve (min, mid, max) from color array. Processes -1 values as current LED colors. Returns three color tables. User overridable."
+      },
+      {
+        "name": "decode",
+        "short": "gdec",
+        "usage": "decode(string data) Decodes a serialized protocol value. Returns value (any)."
+      },
+      {
+        "name": "element_name",
+        "short": "gen",
+        "usage": "element_name(integer element, string name) Alias helper for element_name_get / element_name_set. Returns name (string)."
+      },
+      {
+        "name": "element_name_get",
+        "short": "ggen",
+        "usage": "element_name_get(integer element) Gets an element's display name. Returns name (string)."
+      },
+      {
+        "name": "element_name_send",
+        "short": "gens",
+        "usage": "element_name_send(integer element) Sends the element name to the editor."
+      },
+      {
+        "name": "element_name_set",
+        "short": "gsen",
+        "usage": "element_name_set(integer element, string name) Sets an element's display name."
+      },
+      {
+        "name": "element_count",
+        "short": "gec",
+        "usage": "element_count(void) Returns the number of elements on the current module."
+      },
+      {
+        "name": "event_trigger",
+        "short": "get",
+        "usage": "event_trigger(integer element, integer event) Triggers an event programmatically."
+      },
+      {
+        "name": "readfile",
+        "short": "gfcat",
+        "usage": "readfile(string path) Reads a file from the module flash. Returns contents (string)."
+      },
+      {
+        "name": "readdir",
+        "short": "gfls",
+        "usage": "readdir() Lists directory contents on the module flash. Returns entries (table)."
+      },
+      {
+        "name": "gamepad_button_send",
+        "short": "ggbs",
+        "usage": "gamepad_button_send(integer button, integer state) Sends an HID gamepad button report."
+      },
+      {
+        "name": "gamepad_move_send",
+        "short": "ggms",
+        "usage": "gamepad_move_send(integer axis, integer position) Sends an HID gamepad axis report."
+      },
+      {
+        "name": "gui_draw_area_filled",
+        "short": "ggdaf",
+        "usage": "gui_draw_area_filled(screen_index, x1, y1, x2, y2, {r, g, b}) Fills an area with the specified color, without alpha blending."
+      },
+      {
+        "name": "gui_draw_demo",
+        "short": "ggdd",
+        "usage": "gui_draw_demo(screen_index, n) Draws the n-th iteration of the demo."
+      },
+      {
+        "name": "gui_draw_fasttext",
+        "short": "ggdft",
+        "usage": "gui_draw_fasttext(screen_index, 'text', x, y, size, {r, g, b}) Draws the specified text at (x, y) with the specified font size and 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_line",
+        "short": "ggdl",
+        "usage": "grid_gui_draw_line(screen_index, x1, y1, x2, y2, {r, g, b}) Draws a line between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_pixel",
+        "short": "ggdpx",
+        "usage": "grid_gui_draw_pixel(screen_index, x, y, {r, g, b}) Draws a pixel at (x, y) with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_polygon",
+        "short": "ggdpo",
+        "usage": "grid_gui_draw_polygon(screen_index, {x1, x2, x3 ...}, {y1, y2, y3 ...}, {r, g, b}) Draws a polygon using the x and y coordinate pairs with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_polygon_filled",
+        "short": "ggdpof",
+        "usage": "grid_gui_draw_polygon_filled(screen_index, {x1, x2, x3 ...}, {y1, y2, y3 ...}, {r, g, b}) Draws a filled polygon using the x and y coordinate pairs with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_rectangle",
+        "short": "ggdr",
+        "usage": "grid_gui_draw_rectangle(screen_index, x1, y1, x2, y2, {r, g, b}) Draws a rectangle between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_rectangle_filled",
+        "short": "ggdrf",
+        "usage": "grid_gui_draw_rectangle_filled(screen_index, x1, y1, x2, y2, {r, g, b}) Draws a filled rectangle between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_rectangle_rounded",
+        "short": "ggdrr",
+        "usage": "grid_gui_draw_rectangle_rounded(screen_index, x1, y1, x2, y2, radius, {r, g, b}) Draws a rounded rectangle between (x1, y1) and (x2, y2) points using pixel based radius with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_rectangle_rounded_filled",
+        "short": "ggdrrf",
+        "usage": "grid_gui_draw_rectangle_rounded_filled(screen_index, x1, y1, x2, y2, radius, {r, g, b}) Draws a filled rounded rectangle between (x1, y1) and (x2, y2) points using pixel based radius with the specified 8-bit color channels."
+      },
+      {
+        "name": "gui_draw_swap",
+        "short": "ggdsw",
+        "usage": "grid_gui_draw_swap(screen_index) Updates the screen with the contents of the background buffer."
+      },
+      {
+        "name": "gui_draw_text",
+        "short": "ggdt",
+        "usage": "gui_draw_text(screen_index, 'text', x, y, size, {r, g, b}) Draws the specified text at (x, y) with the specified font size and 8-bit color channels."
+      },
+      {
+        "name": "gui_get_render_time",
+        "short": "gggrt",
+        "usage": "gui_get_render_time(screen_index) Returns the time spent rendering between the last two swaps, in microseconds."
+      },
+      {
+        "name": "hardware_configuration",
+        "short": "ghwcfg",
+        "usage": "hardware_configuration() Returns the hardware configuration ID. Returns hwcfg (integer)."
+      },
+      {
+        "name": "immediate_send",
+        "short": "gis",
+        "usage": "immediate_send(int x, int y, string lua_code) Executes lua_code on the module addressed by x and y. Use x = nil and y = nil to trigger on all modules."
+      },
+      {
+        "name": "keyboard_send",
+        "short": "gks",
+        "usage": "keyboard_send() Sends an HID keyboard report."
+      },
+      {
+        "name": "lcd_set_backlight",
+        "short": "glsb",
+        "usage": "lcd_set_backlight(strength) Sets the LCD backlight strength between 0 and 255."
+      },
+      {
+        "name": "led_address_get",
+        "short": "glag",
+        "usage": "led_address_get(int element, int n) Returns the hardware index of an element's n-th led, or nil if either parameter is out of bounds."
+      },
+      {
+        "name": "led_default_blue",
+        "short": "glb",
+        "usage": "led_default_blue(integer value) Gets or sets the default blue component of the LED. Returns blue Current value (integer)."
+      },
+      {
+        "name": "led_color",
+        "short": "glc",
+        "usage": "led_color(integer layer, table colors) Sets or gets the LED color (composite helper)."
+      },
+      {
+        "name": "led_animation_rate",
+        "short": "glf",
+        "usage": "led_animation_rate(integer value) Gets or sets the LED animation rate. Returns rate (integer)."
+      },
+      {
+        "name": "led_default_green",
+        "short": "glg",
+        "usage": "led_default_green(integer value) Gets or sets the default green component of the LED. Returns green Current value (integer)."
+      },
+      {
+        "name": "led_color_max",
+        "short": "glx",
+        "usage": "led_color_max(integer value) Gets or sets the LED color maximum intensity. Returns max Current maximum (integer)."
+      },
+      {
+        "name": "led_color_mid",
+        "short": "gld",
+        "usage": "led_color_mid(integer value) Gets or sets the LED color mid intensity. Returns mid Current mid (integer)."
+      },
+      {
+        "name": "led_color_min",
+        "short": "gln",
+        "usage": "led_color_min(integer value) Gets or sets the LED color minimum intensity. Returns min Current minimum (integer)."
+      },
+      {
+        "name": "led_value",
+        "short": "glp",
+        "usage": "led_value(integer value) Gets or sets the LED phase value. Returns phase Current value (integer)."
+      },
+      {
+        "name": "led_animation_phase_rate_type",
+        "short": "glpfs",
+        "usage": "led_animation_phase_rate_type(integer phase, integer frequency, integer shape) Composite phase/frequency/shape setter."
+      },
+      {
+        "name": "led_default_red",
+        "short": "glr",
+        "usage": "led_default_red(integer value) Gets or sets the default red component of the LED. Returns red Current value (integer)."
+      },
+      {
+        "name": "led_animation_type",
+        "short": "gls",
+        "usage": "led_animation_type(integer value) Gets or sets the LED animation type / shape. Returns shape (integer)."
+      },
+      {
+        "name": "led_timeout",
+        "short": "glt",
+        "usage": "led_timeout(integer value) Gets or sets the LED timeout. Returns timeout Current timeout (integer)."
+      },
+      {
+        "name": "limit",
+        "short": "glim",
+        "usage": "limit(number value, number min, number max) Clamps *value* between *min* and *max*. Returns clamped (number)."
+      },
+      {
+        "name": "lookup",
+        "short": "glut",
+        "usage": "lookup(string key) Looks up a protocol value by key. Returns value (any)."
+      },
+      {
+        "name": "map_saturate",
+        "short": "gmaps",
+        "usage": "map_saturate(number value, number from_min, number from_max, number to_min, number to_max) Linearly maps *value* from [from_min, from_max] to [to_min, to_max] and saturates the result to [to_min, to_max]. Returns mapped Mapped and clamped result (number)."
+      },
+      {
+        "name": "midirx_enabled",
+        "short": "mre",
+        "usage": "midirx_enabled(integer value) Gets or sets the MIDI-RX enabled flag. Returns enabled (integer)."
+      },
+      {
+        "name": "midirx_sync",
+        "short": "mrs",
+        "usage": "midirx_sync(integer value) Gets or sets the MIDI-RX sync flag. Returns sync (integer)."
+      },
+      {
+        "name": "midi_sysex_send",
+        "short": "gmss",
+        "usage": "midi_sysex_send() Sends a MIDI SysEx message."
+      },
+      {
+        "name": "midi_auto_ch",
+        "short": "midi_auto_ch",
+        "usage": "midi_auto_ch(element self) Calculates default MIDI channel from grid position. Returns channel 0-15 based on module Y position and page number. User overridable."
+      },
+      {
+        "name": "midi_auto_cmd",
+        "short": "midi_auto_cmd",
+        "usage": "midi_auto_cmd(element self) Calculates default MIDI command type. Returns 144 (Note On) for button events, 176 (Control Change) for others. User overridable."
+      },
+      {
+        "name": "midi_auto_p1",
+        "short": "midi_auto_p1",
+        "usage": "midi_auto_p1(element self) Calculates default MIDI parameter 1 (note/CC number) from grid position. Returns 0-127 based on module X position and element index. User overridable."
+      },
+      {
+        "name": "midi_auto_p2",
+        "short": "midi_auto_p2",
+        "usage": "midi_auto_p2(element self) Calculates default MIDI parameter 2 (value) from element state. Returns value based on event type (button, encoder, potentiometer). User overridable."
+      },
+      {
+        "name": "midi_send",
+        "short": "gms",
+        "usage": "midi_send(int channel, int command, int parameter1, int parameter2) Sends standard MIDI message"
+      },
+      {
+        "name": "module_position_x",
+        "short": "gmx",
+        "usage": "module_position_x() Returns x Module X position on the grid (integer)."
+      },
+      {
+        "name": "module_position_y",
+        "short": "gmy",
+        "usage": "module_position_y() Returns y Module Y position on the grid (integer)."
+      },
+      {
+        "name": "module_rotation",
+        "short": "gmr",
+        "usage": "module_rotation() Returns rotation Module rotation (0, 1, 2, 3) (integer)."
+      },
+      {
+        "name": "mouse_button_send",
+        "short": "gmbs",
+        "usage": "mouse_button_send(integer button, integer state) Sends an HID mouse-button report."
+      },
+      {
+        "name": "mouse_move_send",
+        "short": "gmms",
+        "usage": "mouse_move_send(integer axis, integer position) Sends an HID mouse-move report."
+      },
+      {
+        "name": "package_send",
+        "short": "gps",
+        "usage": "package_send(string message) Sends a package to the editor."
+      },
+      {
+        "name": "page_current",
+        "short": "gpc",
+        "usage": "page_current() Returns the currently active page number. Returns page (integer)."
+      },
+      {
+        "name": "page_load",
+        "short": "gpl",
+        "usage": "page_load(integer page) Loads a specific page."
+      },
+      {
+        "name": "page_next",
+        "short": "gpn",
+        "usage": "page_next() Switch to the next page."
+      },
+      {
+        "name": "page_previous",
+        "short": "gpp",
+        "usage": "page_previous() Switch to the previous page."
+      },
+      {
+        "name": "potmeter_calibration_get",
+        "short": "gpcg",
+        "usage": "potmeter_calibration_get() Returns raw potentiometer values as an array of integers."
+      },
+      {
+        "name": "potmeter_center_set",
+        "short": "gpcs",
+        "usage": "potmeter_center_set({ int c1, ... }) Sets potentiometer calibration centers from an array of integers."
+      },
+      {
+        "name": "potmeter_detent_set",
+        "short": "gpds",
+        "usage": "potmeter_detent_set({ int c1, ... }, bool high) Sets potentiometer detent bounds from an array of integers, where high = true sets high bounds and high = false sets low bounds."
+      },
+      {
+        "name": "random8",
+        "short": "grnd",
+        "usage": "random8() Returns a pseudo-random integer in [0, 255]. Returns value (integer)."
+      },
+      {
+        "name": "range_calibration_get",
+        "short": "grcg",
+        "usage": "range_calibration_get() Returns raw minimum and maximum values as an array of integer arrays."
+      },
+      {
+        "name": "range_calibration_set",
+        "short": "grcs",
+        "usage": "range_calibration_set({ { int min1, int max1 }, ... }) Sets minimum and maximum values from an array of integer arrays."
+      },
+      {
+        "name": "segment_calculate",
+        "short": "gsc",
+        "usage": "segment_calculate(integer value, integer min, integer max, integer segment_index, integer segment_count) Calculates the intensity value for a single LED segment when visualising an endless-encoder position. Returns intensity Segment brightness (0\u2013255) (integer)."
+      },
+      {
+        "name": "sign",
+        "short": "sgn",
+        "usage": "sign(number value) Returns the sign of a number: -1, 0, or 1. Returns sign (integer)."
+      },
+      {
+        "name": "string_get",
+        "short": "gsg",
+        "usage": "string_get(string key) Gets a stored string value. Returns value (string)."
+      },
+      {
+        "name": "timer_source",
+        "short": "gts",
+        "usage": "timer_source() Returns the timer event source element. Returns element (integer)."
+      },
+      {
+        "name": "timer_start",
+        "short": "gtt",
+        "usage": "timer_start(integer element, integer period) Starts the element timer."
+      },
+      {
+        "name": "timer_stop",
+        "short": "gtp",
+        "usage": "timer_stop(integer element) Stops the element timer."
+      },
+      {
+        "name": "version_major",
+        "short": "gvmaj",
+        "usage": "version_major() Returns major Firmware major version (integer)."
+      },
+      {
+        "name": "version_minor",
+        "short": "gvmin",
+        "usage": "version_minor() Returns minor Firmware minor version (integer)."
+      },
+      {
+        "name": "version_patch",
+        "short": "gvpat",
+        "usage": "version_patch() Returns patch Firmware patch version (integer)."
+      },
+      {
+        "name": "websocket_send",
+        "short": "gwss",
+        "usage": "websocket_send(string message) Sends a string via WebSocket."
+      }
+    ],
+    "elements": {
+      "button": [
+        {
+          "name": "button_elapsed_time",
+          "short": "bel",
+          "index": 6,
+          "usage": "self:button_elapsed_time() Returns the elapsed time since last button event in ms. Returns ms (integer)."
+        },
+        {
+          "name": "button_max",
+          "short": "bma",
+          "index": 4,
+          "usage": "self:button_max(integer value) Gets or sets the button maximum. Returns max Current maximum (integer)."
+        },
+        {
+          "name": "button_min",
+          "short": "bmi",
+          "index": 3,
+          "usage": "self:button_min(integer value) Gets or sets the button minimum. Returns min Current minimum (integer)."
+        },
+        {
+          "name": "button_mode",
+          "short": "bmo",
+          "index": 5,
+          "usage": "self:button_mode(integer value) Gets or sets the button mode (step count). 0 = momentary. Returns mode Current mode (integer)."
+        },
+        {
+          "name": "button_state",
+          "short": "bst",
+          "index": 7,
+          "usage": "self:button_state() Returns the button state (0 = released, 127 = pressed). Returns state (integer)."
+        },
+        {
+          "name": "button_step",
+          "short": "bstp",
+          "usage": "self:button_step() Returns the current step index, or false if mode is 0. Returns step (integer|false)."
+        },
+        {
+          "name": "button_value",
+          "short": "bva",
+          "index": 2,
+          "usage": "self:button_value(integer value) Gets or sets the button value. Returns value Current button value (integer)."
+        },
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        },
+        {
+          "name": "led_index",
+          "short": "lix",
+          "index": 1,
+          "usage": "self:led_index() Returns the hardware LED index for this element. Returns led_index (integer)."
+        }
+      ],
+      "encoder": [
+        {
+          "name": "button_elapsed_time",
+          "short": "bel",
+          "index": 6,
+          "usage": "self:button_elapsed_time() Returns ms (integer)."
+        },
+        {
+          "name": "button_max",
+          "short": "bma",
+          "index": 4,
+          "usage": "self:button_max(integer value) Gets or sets the button maximum. Returns max (integer)."
+        },
+        {
+          "name": "button_min",
+          "short": "bmi",
+          "index": 3,
+          "usage": "self:button_min(integer value) Gets or sets the button minimum. Returns min (integer)."
+        },
+        {
+          "name": "button_mode",
+          "short": "bmo",
+          "index": 5,
+          "usage": "self:button_mode(integer value) Gets or sets the button mode. Returns mode (integer)."
+        },
+        {
+          "name": "button_state",
+          "short": "bst",
+          "index": 7,
+          "usage": "self:button_state() Returns state (integer)."
+        },
+        {
+          "name": "button_step",
+          "short": "bstp",
+          "usage": "self:button_step() Returns step (integer|false)."
+        },
+        {
+          "name": "button_value",
+          "short": "bva",
+          "index": 2,
+          "usage": "self:button_value(integer value) Gets or sets the button value. Returns value (integer)."
+        },
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        },
+        {
+          "name": "encoder_elapsed_time",
+          "short": "eel",
+          "index": 13,
+          "usage": "self:encoder_elapsed_time() Returns elapsed time since last encoder event in ms. Returns ms (integer)."
+        },
+        {
+          "name": "encoder_max",
+          "short": "ema",
+          "index": 11,
+          "usage": "self:encoder_max(integer value) Gets or sets the encoder maximum. Returns max (integer)."
+        },
+        {
+          "name": "encoder_min",
+          "short": "emi",
+          "index": 10,
+          "usage": "self:encoder_min(integer value) Gets or sets the encoder minimum. Returns min (integer)."
+        },
+        {
+          "name": "encoder_mode",
+          "short": "emo",
+          "index": 12,
+          "usage": "self:encoder_mode(integer value) Gets or sets the encoder mode. Returns mode (integer)."
+        },
+        {
+          "name": "encoder_number",
+          "short": "enu",
+          "index": 8,
+          "usage": "self:encoder_number() Returns the encoder rotation number / counter. Returns number (integer)."
+        },
+        {
+          "name": "encoder_sensitivity",
+          "short": "ese",
+          "index": 16,
+          "usage": "self:encoder_sensitivity(integer value) Gets or sets the encoder sensitivity. Returns sensitivity (integer)."
+        },
+        {
+          "name": "encoder_state",
+          "short": "est",
+          "index": 14,
+          "usage": "self:encoder_state() Returns the encoder state. Returns state (integer)."
+        },
+        {
+          "name": "encoder_value",
+          "short": "eva",
+          "index": 9,
+          "usage": "self:encoder_value(integer value) Gets or sets the encoder value. Returns value (integer)."
+        },
+        {
+          "name": "encoder_velocity",
+          "short": "ev0",
+          "index": 15,
+          "usage": "self:encoder_velocity() Returns the encoder velocity. Returns velocity (integer)."
+        },
+        {
+          "name": "led_color",
+          "short": "glc",
+          "usage": "self:led_color(integer layer, table colors) Sets or gets the LED color for this element."
+        },
+        {
+          "name": "led_index",
+          "short": "lix",
+          "index": 1,
+          "usage": "self:led_index() Returns the hardware LED index for this element. Returns led_index (integer)."
+        }
+      ],
+      "endless": [
+        {
+          "name": "button_elapsed_time",
+          "short": "bel",
+          "index": 6,
+          "usage": "self:button_elapsed_time() Returns ms (integer)."
+        },
+        {
+          "name": "button_max",
+          "short": "bma",
+          "index": 4,
+          "usage": "self:button_max(integer value) Gets or sets the button maximum. Returns max (integer)."
+        },
+        {
+          "name": "button_min",
+          "short": "bmi",
+          "index": 3,
+          "usage": "self:button_min(integer value) Gets or sets the button minimum. Returns min (integer)."
+        },
+        {
+          "name": "button_mode",
+          "short": "bmo",
+          "index": 5,
+          "usage": "self:button_mode(integer value) Gets or sets the button mode. Returns mode (integer)."
+        },
+        {
+          "name": "button_state",
+          "short": "bst",
+          "index": 7,
+          "usage": "self:button_state() Returns state (integer)."
+        },
+        {
+          "name": "button_value",
+          "short": "bva",
+          "index": 2,
+          "usage": "self:button_value(integer value) Gets or sets the button value. Returns value (integer)."
+        },
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        },
+        {
+          "name": "endless_direction",
+          "short": "epdir",
+          "index": 16,
+          "usage": "self:endless_direction() Returns the endless rotation direction (-1 or 1). Returns direction (integer)."
+        },
+        {
+          "name": "endless_elapsed_time",
+          "short": "epel",
+          "index": 13,
+          "usage": "self:endless_elapsed_time() Returns elapsed time since last endless event in ms. Returns ms (integer)."
+        },
+        {
+          "name": "endless_max",
+          "short": "epma",
+          "index": 11,
+          "usage": "self:endless_max(integer value) Gets or sets the endless maximum. Returns max (integer)."
+        },
+        {
+          "name": "endless_min",
+          "short": "epmi",
+          "index": 10,
+          "usage": "self:endless_min(integer value) Gets or sets the endless minimum. Returns min (integer)."
+        },
+        {
+          "name": "endless_mode",
+          "short": "epmo",
+          "index": 12,
+          "usage": "self:endless_mode(integer value) Gets or sets the endless mode. Returns mode (integer)."
+        },
+        {
+          "name": "endless_sensitivity",
+          "short": "epse",
+          "index": 17,
+          "usage": "self:endless_sensitivity(integer value) Gets or sets the endless sensitivity. Returns sensitivity (integer)."
+        },
+        {
+          "name": "endless_state",
+          "short": "epst",
+          "index": 14,
+          "usage": "self:endless_state() Returns the endless state. Returns state (integer)."
+        },
+        {
+          "name": "endless_value",
+          "short": "epva",
+          "index": 9,
+          "usage": "self:endless_value(integer value) Gets or sets the endless potentiometer value. Returns value (integer)."
+        },
+        {
+          "name": "endless_velocity",
+          "short": "epv0",
+          "index": 15,
+          "usage": "self:endless_velocity() Returns the endless velocity. Returns velocity (integer)."
+        },
+        {
+          "name": "led_index",
+          "short": "lix",
+          "index": 1,
+          "usage": "self:led_index() Returns the hardware LED index for this element. Returns led_index (integer)."
+        },
+        {
+          "name": "led_offset",
+          "short": "lof",
+          "index": 8,
+          "usage": "self:led_offset() Returns the LED offset for the endless ring. Returns offset (integer)."
+        }
+      ],
+      "lcd": [
+        {
+          "name": "draw_area_filled",
+          "short": "ldaf",
+          "usage": "lcd:draw_area_filled(x1, y1, x2, y2, {r, g, b}) Fills an area with the specified color, without alpha blending."
+        },
+        {
+          "name": "draw_demo",
+          "short": "ldd",
+          "usage": "lcd:draw_demo(n) Draws the n-th iteration of the demo."
+        },
+        {
+          "name": "draw_text_fast",
+          "short": "ldft",
+          "usage": "lcd:draw_text_fast('text', x, y, size, {r, g, b}) Draws the specified text at (x, y) with the specified font size and 8-bit color channels."
+        },
+        {
+          "name": "draw_line",
+          "short": "ldl",
+          "usage": "lcd:draw_line(x1, y1, x2, y2, {r, g, b}) Draws a line between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_pixel",
+          "short": "ldpx",
+          "usage": "lcd:draw_pixel(x, y, {r, g, b}) Draws a pixel at (x, y) with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_polygon",
+          "short": "ldpo",
+          "usage": "lcd:draw_polygon({x1, x2, x3 ...}, {y1, y2, y3 ...}, {r, g, b}) Draws a polygon using the x and y coordinate pairs with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_polygon_filled",
+          "short": "ldpof",
+          "usage": "lcd:draw_polygon_filled({x1, x2, x3 ...}, {y1, y2, y3 ...}, {r, g, b}) Draws a filled polygon using the x and y coordinate pairs with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_rectangle",
+          "short": "ldr",
+          "usage": "lcd:draw_rectangle(x1, y1, x2, y2, {r, g, b}) Draws a rectangle between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_rectangle_filled",
+          "short": "ldrf",
+          "usage": "lcd:draw_rectangle_filled(x1, y1, x2, y2, {r, g, b}) Draws a filled rectangle between (x1, y1) and (x2, y2) points with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_rectangle_rounded",
+          "short": "ldrr",
+          "usage": "lcd:draw_rectangle_rounded(x1, y1, x2, y2, radius, {r, g, b}) Draws a rounded rectangle between (x1, y1) and (x2, y2) points using pixel based radius with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_rectangle_rounded_filled",
+          "short": "ldrrf",
+          "usage": "lcd:draw_rectangle_rounded_filled(x1, y1, x2, y2, radius, {r, g, b}) Draws a filled rounded rectangle between (x1, y1) and (x2, y2) points using pixel based radius with the specified 8-bit color channels."
+        },
+        {
+          "name": "draw_swap",
+          "short": "ldsw",
+          "usage": "lcd:draw_swap() Updates the screen with the contents of the background buffer."
+        },
+        {
+          "name": "draw_text",
+          "short": "ldt",
+          "usage": "lcd:draw_text('text', x, y, size, {r, g, b}) Draws the specified text at (x, y) with the specified font size and 8-bit color channels."
+        },
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        },
+        {
+          "name": "get_render_time",
+          "short": "lgrt",
+          "usage": "lcd:get_render_time() Returns the time spent rendering between the last two swaps, in microseconds."
+        },
+        {
+          "name": "screen_height",
+          "short": "lsh",
+          "usage": "lcd:screen_height() Returns the screen height in pixels.",
+          "index": 3
+        },
+        {
+          "name": "screen_index",
+          "short": "lin",
+          "usage": "lcd:screen_index() Returns the screen index used by low-level APIs.",
+          "index": 1
+        },
+        {
+          "name": "screen_width",
+          "short": "lsw",
+          "usage": "lcd:screen_width() Returns the screen width in pixels.",
+          "index": 2
+        }
+      ],
+      "potmeter": [
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        },
+        {
+          "name": "led_index",
+          "short": "lix",
+          "index": 1,
+          "usage": "self:led_index() Returns the hardware LED index for this element. Returns led_index (integer)."
+        },
+        {
+          "name": "potmeter_elapsed_time",
+          "short": "pel",
+          "index": 6,
+          "usage": "self:potmeter_elapsed_time() Returns elapsed time since last potentiometer event in ms. Returns ms (integer)."
+        },
+        {
+          "name": "potmeter_max",
+          "short": "pma",
+          "index": 4,
+          "usage": "self:potmeter_max(integer value) Gets or sets the potentiometer maximum. Returns max (integer)."
+        },
+        {
+          "name": "potmeter_min",
+          "short": "pmi",
+          "index": 3,
+          "usage": "self:potmeter_min(integer value) Gets or sets the potentiometer minimum. Returns min (integer)."
+        },
+        {
+          "name": "potmeter_resolution",
+          "short": "pmo",
+          "index": 5,
+          "usage": "self:potmeter_resolution(integer value) Gets or sets the potentiometer resolution / mode. Returns resolution (integer)."
+        },
+        {
+          "name": "potmeter_state",
+          "short": "pst",
+          "index": 7,
+          "usage": "self:potmeter_state() Returns the potentiometer state. Returns state (integer)."
+        },
+        {
+          "name": "potmeter_value",
+          "short": "pva",
+          "index": 2,
+          "usage": "self:potmeter_value(integer value) Gets or sets the potentiometer value. Returns value Current value (integer)."
+        }
+      ],
+      "system": [
+        {
+          "name": "element_index",
+          "short": "ind",
+          "index": 0,
+          "usage": "self:element_index() Returns the zero-based element index. Returns index (integer)."
+        }
+      ]
+    }
+  }
 }

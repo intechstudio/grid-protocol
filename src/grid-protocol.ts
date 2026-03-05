@@ -1,5 +1,5 @@
 import * as protocol_data from "./grid_protocol_bot.json";
-const grid_protocol: Record<string, string> = protocol_data;
+const grid_protocol: Record<string, any> = protocol_data;
 
 function cloneDeep<T>(value: T): T {
   if (value === null || typeof value !== "object") {
@@ -1483,5 +1483,18 @@ export namespace grid {
     );
 
     return compatibleEvents.length === elementEvents.length;
+  }
+
+  /**
+   * Returns the structured luadocs object from grid_protocol_bot.json.
+   * Contains `globals` (array of global functions) and `elements`
+   * (dict of element-type → array of methods), each with name, short,
+   * and optional usage string.
+   *
+   * Returns undefined if the luadocs key is not present in the JSON
+   * (e.g. older protocol versions before the documentation pipeline).
+   */
+  export function get_luadocs(): any | undefined {
+    return grid_protocol["luadocs"];
   }
 }
