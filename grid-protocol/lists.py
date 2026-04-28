@@ -66,6 +66,20 @@ class_database = {
       }
     }
   },
+  "MIDIRTM": {
+    "class_name": "MIDIRTM",
+    "class_code": 2,
+    "class_params": {
+      "INSTRUCTION": {
+        "offset": 3,
+        "length": 1
+      },
+      "BYTE": {
+        "offset": 5,
+        "length": 2
+      }
+    }
+  },
   "HEARTBEAT": {
     "class_name": "HEARTBEAT",
     "class_code": 16,
