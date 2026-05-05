@@ -34,6 +34,7 @@ export enum ModuleType {
   VSN2 = "VSN2",
   PB44 = "PB44",
   OCTV = "OCTV",
+  XY = "XY",
 }
 
 export enum EventType {
@@ -46,6 +47,7 @@ export enum EventType {
   TIMER = "timer",
   ENDLESS = "endless",
   DRAW = "draw",
+  TOUCH = "touch",
 }
 
 export function NumberToEventType(value: Number) {
@@ -68,6 +70,8 @@ export function NumberToEventType(value: Number) {
       return EventType.ENDLESS;
     case 8:
       return EventType.DRAW;
+    case 9:
+      return EventType.TOUCH;
     default:
       throw "Unknown event type";
   }
@@ -93,6 +97,8 @@ export function EventTypeToNumber(value: EventType) {
       return 7;
     case EventType.DRAW:
       return 8;
+    case EventType.TOUCH:
+      return 9;
     default:
       throw "Unknown event type";
   }
@@ -106,6 +112,7 @@ export enum ElementType {
   FADER = "fader",
   ENDLESS = "endless",
   LCD = "lcd",
+  TOUCH = "touch",
 }
 
 export enum Architecture {
@@ -585,6 +592,12 @@ export const CEEAT: Record<EventType, CEEAT> = {
     value: 8,
     key: "DRAW",
   },
+
+  [EventType.TOUCH]: {
+    desc: EventType.TOUCH,
+    value: 9,
+    key: "TOUCH",
+  },
 };
 
 // Define the module types and their associated element types
@@ -674,6 +687,11 @@ const moduleElements: {
     ...Array(8).fill(ElementType.ENCODER),
     ...Array(13).fill(ElementType.BUTTON),
     ...Array(234), // Filling with undefined values until index 254
+    ElementType.SYSTEM, // Add system element at index 255
+  ],
+  [ModuleType.XY]: [
+    ...Array(5).fill(ElementType.TOUCH),
+    ...Array(250), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
 };
@@ -780,6 +798,20 @@ const elementEvents = {
     {
       ...CEEAT[EventType.DRAW],
       defaultConfig: grid_protocol.GRID_ACTIONSTRING_LCD_DRAW,
+    },
+  ],
+  [ElementType.TOUCH]: [
+    {
+      ...CEEAT[EventType.SETUP],
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_TOUCH_INIT,
+    },
+    {
+      ...CEEAT[EventType.TOUCH],
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_TOUCH_TOUCH,
+    },
+    {
+      ...CEEAT[EventType.TIMER],
+      defaultConfig: grid_protocol.GRID_ACTIONSTRING_SYSTEM_TIMER,
     },
   ],
 };
@@ -1014,6 +1046,20 @@ class GridProperty {
             label: "self:" + value,
             type: "function",
             elementtype: ElementType.LCD,
+          });
+          LUA_AUTOCOMPLETE.push({
+            label: "element[0]:" + value,
+            type: "function",
+            elementtype: ElementType.SYSTEM,
+          });
+        }
+
+        if (key.startsWith("GRID_LUA_FNC_T") && key.endsWith("_human")) {
+          let value: any = grid_protocol[key];
+          LUA_AUTOCOMPLETE.push({
+            label: "self:" + value,
+            type: "function",
+            elementtype: ElementType.TOUCH,
           });
           LUA_AUTOCOMPLETE.push({
             label: "element[0]:" + value,
