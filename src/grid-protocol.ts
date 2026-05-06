@@ -279,6 +279,10 @@ function mapObjectsToArray(array: any[], object: any) {
       array = [...array, ...mapper(object[key], "lcd", ["1"])];
     }
 
+    if (key == "T") {
+      array = [...array, ...mapper(object[key], "touch", ["1"])];
+    }
+
     if (key == "KW") {
       array = [...array, ...mapper(object[key], "keyword", ["1", "2", "3"])];
     }
