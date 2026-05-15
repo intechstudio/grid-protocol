@@ -23,6 +23,15 @@ jobs:
 
       - run: npm ci
 
+      - name: Check formatting
+        run: npm run format -- --check
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
       - name: Set Git identity
         run: |
           git config user.name "$GITHUB_ACTOR"

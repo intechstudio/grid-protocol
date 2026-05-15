@@ -44,6 +44,55 @@ describe("minifyLua", () => {
       expect(result.endsWith("\n")).toBe(false);
     });
   });
+
+  describe("minus operator handling", () => {
+    it("should minify normal subtraction", () => {
+      const result = minifyLua("local x = 10 - 3");
+      expect(result).toBe("local x=10-3");
+    });
+
+    it("should preserve space before unary minus to avoid -- comment", () => {
+      const result = minifyLua("local x = a - -5");
+      expect(result).toBe("local x=a- -5");
+    });
+
+    it("should minify multiplication", () => {
+      const result = minifyLua("local x = a * b");
+      expect(result).toBe("local x=a*b");
+    });
+
+    it("should minify division", () => {
+      const result = minifyLua("local x = a / b");
+      expect(result).toBe("local x=a/b");
+    });
+
+    it("should minify modulo", () => {
+      const result = minifyLua("local x = a % b");
+      expect(result).toBe("local x=a%b");
+    });
+
+    it("should minify comparison operators", () => {
+      expect(minifyLua("if a > b then end")).toBe("if a>b then end");
+      expect(minifyLua("if a < b then end")).toBe("if a<b then end");
+      expect(minifyLua("if a ~= b then end")).toBe("if a~=b then end");
+    });
+
+    it("should minify string concatenation", () => {
+      const result = minifyLua('local x = "a" .. "b"');
+      expect(result).toBe('local x="a".."b"');
+    });
+
+    it("should not create -- comment from subtraction", () => {
+      const result = minifyLua("local x = 10 - 3 -- comment");
+      expect(result).not.toMatch(/10--3/);
+      expect(result).toContain("10-3");
+    });
+
+    it("should handle subtraction with inline comment", () => {
+      const result = minifyLua("local x = 10 - 3\nreturn x -- done");
+      expect(result).toBe("local x=10-3 return x -- done\n");
+    });
+  });
 });
 
 describe("GridScript.compressScript", () => {
@@ -86,6 +135,18 @@ describe("GridScript.compressScript", () => {
       const result = GridScript.compressScript(code);
       // Block comments don't need trailing newline since they have explicit end
       expect(result.endsWith("\n")).toBe(false);
+    });
+  });
+
+  describe("minus operator handling", () => {
+    it("should minify normal subtraction", () => {
+      const result = GridScript.compressScript("local x = 10 - 3");
+      expect(result).toBe("local x=10-3");
+    });
+
+    it("should preserve space before unary minus to avoid -- comment", () => {
+      const result = GridScript.compressScript("local x = a - -5");
+      expect(result).toBe("local x=a- -5");
     });
   });
 });

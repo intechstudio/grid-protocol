@@ -112,7 +112,8 @@ if (key.startsWith("GRID_LUA_FNC_X") && key.endsWith("_human")) {
 **d) Add to `mapObjectsToArray()` in `src/grid-protocol.ts`** — **critical for humanize/shortify to work**. Without this, the element's Lua functions are parsed into the `LUA` tree but never included in the regex lookup used by `GridScript`:
 
 ```typescript
-if (key == "X") {  // must match the prefix letter from bot.json keys
+if (key == "X") {
+  // must match the prefix letter from bot.json keys
   array = [...array, ...mapper(object[key], "myelement", ["1"])];
 }
 ```
@@ -162,31 +163,31 @@ case EventType.MYEVENT:
 
 ## Existing element types and their bot.json prefixes
 
-| ElementType  | bot.json prefix | `mapObjectsToArray` key |
-|-------------|-----------------|-------------------------|
-| BUTTON      | `B`             | `"B"`                   |
-| ENCODER     | `E`             | `"E"`                   |
-| ENDLESS     | `EP`            | `"EP"`                  |
-| POTMETER    | `P`             | `"P"`                   |
-| LCD         | `L`             | `"L"`                   |
-| TOUCH       | `T`             | `"T"`                   |
-| SYSTEM/global | `G`           | `"G"`                   |
+| ElementType   | bot.json prefix | `mapObjectsToArray` key |
+| ------------- | --------------- | ----------------------- |
+| BUTTON        | `B`             | `"B"`                   |
+| ENCODER       | `E`             | `"E"`                   |
+| ENDLESS       | `EP`            | `"EP"`                  |
+| POTMETER      | `P`             | `"P"`                   |
+| LCD           | `L`             | `"L"`                   |
+| TOUCH         | `T`             | `"T"`                   |
+| SYSTEM/global | `G`             | `"G"`                   |
 
 ## Existing modules and their element layouts
 
-| Module | Elements |
-|--------|----------|
-| PO16   | 16× POTMETER |
-| BU16   | 16× BUTTON |
-| EN16   | 16× ENCODER |
-| EF44   | 4× ENCODER + 4× FADER |
-| PBF4   | 4× POTMETER + 4× FADER + 4× BUTTON |
-| TEK1   | 8× BUTTON + 1× ENDLESS + 4× BUTTON + 1× LCD |
-| TEK2   | 8× BUTTON + 2× ENDLESS |
-| VSN1L/R | 8× BUTTON + 1× ENDLESS + 4× BUTTON + 1× LCD |
-| VSN2   | 8× BUTTON + 4× BUTTON + 1× LCD + 4× BUTTON + 1× LCD |
-| PB44   | 8× POTMETER + 8× BUTTON |
-| OCTV   | 8× ENCODER + 13× BUTTON |
-| XY     | 5× TOUCH |
+| Module  | Elements                                            |
+| ------- | --------------------------------------------------- |
+| PO16    | 16× POTMETER                                        |
+| BU16    | 16× BUTTON                                          |
+| EN16    | 16× ENCODER                                         |
+| EF44    | 4× ENCODER + 4× FADER                               |
+| PBF4    | 4× POTMETER + 4× FADER + 4× BUTTON                  |
+| TEK1    | 8× BUTTON + 1× ENDLESS + 4× BUTTON + 1× LCD         |
+| TEK2    | 8× BUTTON + 2× ENDLESS                              |
+| VSN1L/R | 8× BUTTON + 1× ENDLESS + 4× BUTTON + 1× LCD         |
+| VSN2    | 8× BUTTON + 4× BUTTON + 1× LCD + 4× BUTTON + 1× LCD |
+| PB44    | 8× POTMETER + 8× BUTTON                             |
+| OCTV    | 8× ENCODER + 13× BUTTON                             |
+| XY      | 5× TOUCH                                            |
 
 All modules have `ElementType.SYSTEM` at index 255.
