@@ -74,9 +74,9 @@ export function minifyLua(code: string): string {
       return line + " "; // Otherwise, join with space
     })
     .join("") // Combine all
-    .replace(/[ \t]*([(){}\[\],;=+\*\/%><~.])[ \t]*/g, "$1") // Remove spaces/tabs around punctuation and operators (not newlines!)
     .replace(/ - /g, "-") // Remove all spaces around -
-    .replace(/(?<=[^\s])--(?![\[\n])/g, "- -") // Re-insert space between consecutive minus operators (not comments)
+    .replace(/(?<=[a-zA-Z0-9_)])(--)(?![\[\n])/g, "- -") // Re-insert space between consecutive minus operators (not comments)
+    .replace(/[ \t]*([(){}\[\],;=+\*\/%><~.])[ \t]*/g, "$1") // Remove spaces/tabs around punctuation and operators
     .replace(/ +/g, " ") // Collapse multiple spaces
     .replace(/\n+/g, "\n") // Collapse multiple newlines to max 1
     .trim(); // Remove leading/trailing whitespace

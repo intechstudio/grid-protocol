@@ -24,11 +24,11 @@ describe("bot.json actionstrings", () => {
   it.each(Object.entries(actionstrings))(
     "%s should be already minified",
     (key, value) => {
+      // Unescape C-string quotes if present (bot.json may have \" or ")
       const lua = value.replace(/\\"/g, '"');
       const minified = minifyLua(lua);
-      const minifiedEscaped = minified.replace(/"/g, '\\"');
 
-      expect(minifiedEscaped).toBe(value);
+      expect(minified).toBe(lua);
     },
   );
 });
