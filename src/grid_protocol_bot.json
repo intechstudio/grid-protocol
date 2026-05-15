@@ -254,7 +254,7 @@
     "GRID_LUA_FNC_G_EVENT_TRIGGER_fnptr": "l_grid_event_trigger",
     "GRID_LUA_FNC_G_RX_MODE_short": "grxm",
     "GRID_LUA_FNC_G_RX_MODE_human": "rx_mode",
-    "GRID_LUA_FNC_G_RX_MODE_usage": "rx_mode(int type [, int mode]) Get or set RX routing. type: 0=MIDIVOICE 1=MIDISYSEX 2=MIDIRTM. mode: bitmask 0x01=handle 0x02=forward",
+    "GRID_LUA_FNC_G_RX_MODE_usage": "rx_mode(int type [, int mode]) Get or set RX routing. type: 0=MIDIVOICE 1=MIDISYSEX 2=MIDIRTM 3=EVENTVIEW. mode: bitmask 0x01=forward_from_usb 0x02=handle_external 0x04=handle_internal",
     "GRID_LUA_FNC_G_RX_MODE_fnptr": "l_grid_rx_mode",
     "GRID_LUA_FNC_G_MIDIRX_REGISTER_short": "gmrr",
     "GRID_LUA_FNC_G_MIDIRX_REGISTER_human": "midirx_register",
