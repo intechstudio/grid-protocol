@@ -188,7 +188,7 @@
     "GRID_LUA_FNC_G_MIDISYSEX_SEND_fnptr": "l_grid_midi_sysex_send",
     "GRID_LUA_FNC_G_KEYBOARD_SEND_short": "gks",
     "GRID_LUA_FNC_G_KEYBOARD_SEND_human": "keyboard_send",
-    "GRID_LUA_FNC_G_KEYBOARD_SEND_fnptr": "l_grid_usb_keyboard_send",
+    "GRID_LUA_FNC_G_KEYBOARD_SEND_fnptr": "l_grid_keyboard_send",
     "GRID_LUA_FNC_G_MOUSEMOVE_SEND_short": "gmms",
     "GRID_LUA_FNC_G_MOUSEMOVE_SEND_human": "mouse_move_send",
     "GRID_LUA_FNC_G_MOUSEMOVE_SEND_fnptr": "l_grid_mousemove_send",
