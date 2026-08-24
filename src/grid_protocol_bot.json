@@ -951,7 +951,7 @@
     "GRID_ACTIONSTRING_LCD_DRAW": "--[[@cb]]if self.f>0 then self.f=self.f-1 local a,xo=gmaps(self.v[1],self.v[2],self.v[3],0.1,1),#tostring(self.v[1])/2*s/2-#tostring(self.v[1])-s//32 self:ldaf(10,10,310,230,c[1])self:ldrr(xc-p//1-1,yc-p//1-1,xc+p//1+1,yc+p//1+1,s,c[2])self:ldrrf(xc-p*a//1,yc-p*a//1,xc+p*a//1,yc+p*a//1,s,c[3])self:ldft(self.v[1],xc-xo,yc+s,s/2,c[2])local xn=(#self.id*(s/2))/2-s//32 self:ldft(self.id,xc-xn,yc-1.5*s,s/2,c[2])self:ldsw()end",
     "GRID_LUA_T_TYPE": "Touch",
     "GRID_LUA_T_META_init": "GRID_LUA_T_TYPE \" = { __index = {type = 'touch', post_init_cb = function (self) self:\" GRID_LUA_FNC_A_INIT_short \"() end,\"     GRID_LUA_FNC_ASSIGN_META_PAR1_RET(\"gen\", GRID_LUA_FNC_G_ELEMENTNAME_short) \",\"     GRID_LUA_FNC_ASSIGN_META_EVENT(INIT, TOUCH_INIT)     \"}}\"",
-    "GRID_ACTIONSTRING_TOUCH_INIT": "--[[@cb]] self.touch_cb=function(self,id,evt,x,y)print(id,evt,x,y)end",
+    "GRID_ACTIONSTRING_TOUCH_INIT": "--[[@cb]]self.touch_cb=function(self,id,evt,x,y)print(id,evt,x,y)end",
     "GRID_LUA_FNC_G_DECODE_source": "common_src_lua_decode_lua",
     "GRID_LUA_FNC_G_DECODE_short": "gdec",
     "GRID_LUA_FNC_G_DECODE_human": "decode",
