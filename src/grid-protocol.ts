@@ -34,7 +34,7 @@ export enum ModuleType {
   VSN2 = "VSN2",
   PB44 = "PB44",
   OCTV = "OCTV",
-  XY = "XY",
+  ZONA = "ZONA",
 }
 
 export enum EventType {
@@ -693,9 +693,9 @@ const moduleElements: {
     ...Array(234), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
-  [ModuleType.XY]: [
-    ...Array(5).fill(ElementType.TOUCH),
-    ...Array(250), // Filling with undefined values until index 254
+  [ModuleType.ZONA]: [
+    ElementType.TOUCH,
+    ...Array(254), // Filling with undefined values until index 254
     ElementType.SYSTEM, // Add system element at index 255
   ],
 };
@@ -808,10 +808,6 @@ const elementEvents = {
     {
       ...CEEAT[EventType.SETUP],
       defaultConfig: grid_protocol.GRID_ACTIONSTRING_TOUCH_INIT,
-    },
-    {
-      ...CEEAT[EventType.TOUCH],
-      defaultConfig: grid_protocol.GRID_ACTIONSTRING_TOUCH_TOUCH,
     },
     {
       ...CEEAT[EventType.TIMER],
