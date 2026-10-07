@@ -118,6 +118,7 @@ export enum ElementType {
 export enum Architecture {
   ESP32 = "esp32",
   D51 = "d51",
+  RP2350 = "rp2350",
   VIRTUAL = "virtual",
 }
 
@@ -1147,6 +1148,14 @@ export namespace grid {
   }
 
   export function module_architecture_from_hwcfg(hwcfg: number) {
+    // hwcfg is 0x?????X?Y: X (bits 8-11) flags RP2350 hardware; everything
+    // else keeps using Y (bit 0, i.e. hwcfg's parity) to tell ESP32 and D51
+    // apart, same as before X existed.
+    const X = (hwcfg >> 8) & 0xf;
+    if (X === 1) {
+      return Architecture.RP2350;
+    }
+
     if (hwcfg % 2 === 1) {
       return Architecture.ESP32;
     } else {
