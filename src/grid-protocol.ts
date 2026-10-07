@@ -1148,10 +1148,10 @@ export namespace grid {
   }
 
   export function module_architecture_from_hwcfg(hwcfg: number) {
-    // hwcfg is 0x?????X?Y: X (bits 8-11) flags RP2350 hardware; everything
-    // else keeps using Y (bit 0, i.e. hwcfg's parity) to tell ESP32 and D51
-    // apart, same as before X existed.
-    const X = (hwcfg >> 8) & 0xf;
+    // hwcfg is 0b?????X?Y: X (bit 2) flags RP2350 hardware; everything else
+    // keeps using Y (bit 0, i.e. hwcfg's parity) to tell ESP32 and D51 apart,
+    // same as before X existed.
+    const X = (hwcfg >> 2) & 1;
     if (X === 1) {
       return Architecture.RP2350;
     }
