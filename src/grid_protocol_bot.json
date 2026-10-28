@@ -1009,5 +1009,8 @@
     "GRID_LUA_FNC_G_MIDI_AUTO_P2_short": "midi_auto_p2",
     "GRID_LUA_FNC_G_MIDI_AUTO_P2_human": "midi_auto_p2",
     "GRID_LUA_FNC_G_MIDI_AUTO_P2_usage": "midi_auto_p2(element self) Calculates default MIDI parameter 2 (value) from element state. Returns value based on event type (button, encoder, potentiometer). User overridable.",
-    "GRID_LUA_FNC_G_AUTOVALUE_source": "common_src_lua_autovalue_lua"
+    "GRID_LUA_FNC_G_AUTOVALUE_source": "common_src_lua_autovalue_lua",
+    "GRID_LUA_FNC_G_REQUIRE_source": "common_src_lua_require_lua",
+    "GRID_LUA_FNC_G_REQUIRE_short": "gr",
+    "GRID_LUA_FNC_G_REQUIRE_human": "library_load"
 }
