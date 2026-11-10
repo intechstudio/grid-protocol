@@ -1,7 +1,7 @@
 {
     "GRID_PROTOCOL_VERSION_MAJOR": "1",
     "GRID_PROTOCOL_VERSION_MINOR": "5",
-    "GRID_PROTOCOL_VERSION_PATCH": "7",
+    "GRID_PROTOCOL_VERSION_PATCH": "8",
     "GRID_PARAMETER_ELEMENT_SYSTEM": "0",
     "GRID_PARAMETER_ELEMENT_POTMETER": "1",
     "GRID_PARAMETER_ELEMENT_BUTTON": "2",
@@ -979,7 +979,7 @@
     "GRID_ACTIONSTRING_LCD_DRAW": "--[[@cb]]if self.f>0 then self.f=self.f-1 local a,xo=gmaps(self.v[1],self.v[2],self.v[3],0.1,1),#tostring(self.v[1])/2*s/2-#tostring(self.v[1])-s//32 self:ldaf(10,10,310,230,c[1])self:ldrr(xc-p//1-1,yc-p//1-1,xc+p//1+1,yc+p//1+1,s,c[2])self:ldrrf(xc-p*a//1,yc-p*a//1,xc+p*a//1,yc+p*a//1,s,c[3])self:ldft(self.v[1],xc-xo,yc+s,s/2,c[2])local xn=(#self.id*(s/2))/2-s//32 self:ldft(self.id,xc-xn,yc-1.5*s,s/2,c[2])self:ldsw()end",
     "GRID_LUA_T_TYPE": "Touch",
     "GRID_LUA_T_META_init": "GRID_LUA_T_TYPE \" = { __index = {type = 'touch', post_init_cb = function (self) self:\" GRID_LUA_FNC_A_INIT_short \"() end,\"     GRID_LUA_FNC_ASSIGN_META_PAR1_RET(\"gen\", GRID_LUA_FNC_G_ELEMENTNAME_short) \",\"     GRID_LUA_FNC_ASSIGN_META_EVENT(INIT, TOUCH_INIT)     \"}}\"",
-    "GRID_ACTIONSTRING_TOUCH_INIT": "--[[@cb]] function laddr2to1(x,y)return glag(0,x+y*9)end for i=0,self:lwi()*self:lwi()-1 do gln(i,1,0,0,0)gld(i,1,128,128,128)glx(i,1,255,255,255)gls(i,1,1)glf(i,1,1)glp(i,1,255)end--[[@fst]] self.touch_cb = function(self, id, evt, x, y)--[[@cb]] local tp={(x/127)*(self:lwi()-1),(y/127)*(self:lwi()-1)}local xs={math.floor(tp[1]),math.ceil(tp[1])}local ys={math.floor(tp[2]),math.ceil(tp[2])}for i=xs[1],xs[2]do for j=ys[1],ys[2]do local d={tp[1]-i,tp[2]-j}local dist=math.sqrt(d[1]*d[1]+d[2]*d[2])if dist<1 then local pha=math.tointeger((dist*255)//1)glf(laddr2to1(i,j),1,1)glp(laddr2to1(i,j),1,pha)glt(laddr2to1(i,j),1,255-pha)end end end--[[@fen]] end--[[@fst]] self.gesture1_cb = function(self, id, evt, x, y, dir, dis)--[[@cb]] local g1n={[3]=\"single\",[4]=\"double\",[5]=\"flick\"}if g1n[evt]then print(id,g1n[evt],x,y,dir,dis)end--[[@fen]] end",
+    "GRID_ACTIONSTRING_TOUCH_INIT": "--[[@cb]]function laddr2to1(x,y)return glag(0,x+y*9)end for i=0,self:lwi()*self:lwi()-1 do gln(i,1,0,0,0)gld(i,1,128,128,128)glx(i,1,255,255,255)gls(i,1,1)glf(i,1,1)glp(i,1,255)end--[[@fst]]self.touch_cb=function(self,id,evt,x,y)--[[@cb]]local tp={(x/127)*(self:lwi()-1),(y/127)*(self:lwi()-1)}local xs={math.floor(tp[1]),math.ceil(tp[1])}local ys={math.floor(tp[2]),math.ceil(tp[2])}for i=xs[1],xs[2]do for j=ys[1],ys[2]do local d={tp[1]-i,tp[2]-j}local dist=math.sqrt(d[1]*d[1]+d[2]*d[2])if dist<1 then local pha=math.tointeger((dist*255)//1)glf(laddr2to1(i,j),1,1)glp(laddr2to1(i,j),1,pha)glt(laddr2to1(i,j),1,255-pha)end end end--[[@fen]]end--[[@fst]]self.gesture1_cb=function(self,id,evt,x,y,dir,dis)--[[@cb]]local g1n={[3]=\"single\",[4]=\"double\",[5]=\"flick\"}if g1n[evt]then print(id,g1n[evt],x,y,dir,dis)end--[[@fen]]end",
     "GRID_LUA_FNC_G_DECODE_source": "common_src_lua_decode_lua",
     "GRID_LUA_FNC_G_DECODE_short": "gdec",
     "GRID_LUA_FNC_G_DECODE_human": "decode",
